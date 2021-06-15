@@ -1,30 +1,32 @@
 <template>
   <div class="container flex items-center justify-center mx-auto h-screen">
-    <div>
-      <Logo />
-      <h1 class="text-center py-4 text-7xl uppercase font-bold">itams</h1>
-      <div class="">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="border-green-700 border p-4 py-2 rounded text-xl mx-4 hover:bg-green-700 hover:text-white"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="border-gray-700 border p-4 py-2 rounded text-xl mx-4 hover:bg-gray-700 hover:text-white"
-        >
-          GitHub
-        </a>
-      </div>
+    <img
+      class="w-screen h-full absolute inset-0 -z-10"
+      src="~/assets/images/overlay-1.svg"
+      alt=""
+      srcset=""
+    />
+    <div class="absolute inset-0 bg-gray-600 -z-10 opacity-80"></div>
+    <div class="grid grid-cols-5 gap-12 gap-x-16">
+      <NavBox css="bg-purple-900" link="/" name="Vehicle Operation" icon="hard-drive" />
+      <NavBox css="bg-yellow-900" link="/" name="Document Processing" icon="file-text" />
+      <NavBox css="bg-blue-900" link="/" name="Users Management" icon="users" />
+      <NavBox css="bg-red-700" link="/" name="Profiling" icon="database" />
+      <NavBox css="bg-yellow-700" link="/" name="Vehicle" icon="home" />
+      <NavBox css="bg-gray-700" link="/" name="Business Intelligence" icon="activity" />
+      <NavBox css="bg-green-700" link="/" name="Plate" icon="sliders" />
+      <NavBox css="bg-yellow-700" link="/" name="Payment" icon="credit-card" />
+      <NavBox css="bg-yellow-700" link="/" name="Settings" icon="settings" />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import NavBox from '~/components/NavBox.vue'
+export default {
+  name: 'Home',
+  components: {
+    NavBox,
+  },
+}
 </script>

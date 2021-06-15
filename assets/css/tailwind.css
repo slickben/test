@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.icon-shadow {
+    text-shadow: 3px 6px #272634;
+}

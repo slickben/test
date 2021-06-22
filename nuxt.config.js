@@ -37,6 +37,20 @@ export default {
     '@nuxtjs/toast',
   ],
 
+  auth: {
+    strategies: {
+      'laravelSanctum': {
+        provider: 'laravel/sanctum',
+        url: 'http://localhost:3000',
+        endpoints: {
+          login: {
+            url: '/api/login'
+          }
+        }
+      },
+    }
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 

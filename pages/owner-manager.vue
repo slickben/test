@@ -14,14 +14,13 @@
         </div>
     </div>
 </template>
-
 <script>
 
 import Sidebar from "~/components/SideBar.vue"
 import Navigation from "~/components/Navigation.vue"
 
 export default {
-    name: "ProfileManager",
+    name: "OwnerManager",
     components: {
         Sidebar,
         Navigation

@@ -55,6 +55,9 @@ export default {
           },
           user: {
             url: '/user', method: 'get'
+          },
+          logout: {
+            url: '/logout', method: 'post'
           }
         }
       },

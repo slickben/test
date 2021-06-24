@@ -37,14 +37,24 @@ export default {
     '@nuxtjs/toast',
   ],
 
+  // proxy: {
+  //   '/laravel': {
+  //     target: 'https://laravel-auth.nuxtjs.app',
+  //     pathRewrite: { '^/laravel': '/' }
+  //   }
+  // },
+
   auth: {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: 'http://localhost:3000',
+        url: 'http://demo.trems.ng/api/v1',
         endpoints: {
           login: {
-            url: '/api/login'
+            url: '/login', method: 'post'
+          },
+          user: {
+            url: '/user', method: 'get'
           }
         }
       },
@@ -58,7 +68,9 @@ export default {
   
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://demo.trems.ng/api/v1',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

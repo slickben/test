@@ -153,7 +153,7 @@
                     </svg>
                 </div>
             </div>
-            <form id="login" v-on:submit.prevent class="w-full lg:w-1/2 flex justify-center bg-white dark:bg-gray-900">
+            <form v-on:submit.prevent="submit" class="w-full lg:w-1/2 flex justify-center bg-white dark:bg-gray-900">
                 <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/3 text-gray-800 dark:text-gray-100 flex flex-col justify-center px-2 sm:px-0 py-16">
                     <div class="px-2 sm:px-6">
                         <h3 class="text-2xl sm:text-3xl md:text-2xl font-bold leading-tight">Login To Your Account</h3>
@@ -161,17 +161,17 @@
                     <div class="mt-8 w-full px-2 sm:px-6">
                         <div class="flex flex-col mt-8">
                             <label for="email" class="text-lg font-semibold leading-tight">Email</label>
-                            <input id="email" required aria-required="true" name="email" class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" type="email" />
+                            <input v-model="userInfo.email" id="email" required aria-required="true" name="email" class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" type="email" />
                         </div>
                         <div class="flex flex-col mt-5">
                             <label for="password" class="text-lg font-semibold fleading-tight">Password</label>
-                            <input id="password" required aria-required="true" name="password" type="password" class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" />
+                            <input v-model="userInfo.password" id="password" required aria-required="true" name="password" type="password" class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" />
                         </div>
                     </div>
                     <div class="pt-6 w-full flex justify-between px-2 sm:px-6">
                         <div class="flex items-center">
                             <input id="rememberme" name="rememberme" class="w-3 h-3 mr-2" type="checkbox" />
-                            <label for="rememberme" class="text-xs">Remember Me</label>
+                            <label for="rememberme" class="text-xs">Remember Me </label>
                         </div>
                         <a class="text-xs text-indigo-600" href="javascript: void(0)">Forgot Password?</a>
                     </div>
@@ -186,38 +186,30 @@
 </template>
 
 <script>
+
+
 export default {
     name: "Login",
+    data () {
+        return {
+            userInfo: {
+                email: 'ben@trems.ng',
+                password: 'password'
+            }
+        }
+    },
     mounted: function () {
-        this.submit();
     },
     methods: {
-        submit() {
-            let form = document.getElementById("login");
-            form.addEventListener(
-                "submit",
-                function (event) {
-                    event.preventDefault();
-                    let elements = form.elements;
-                    let payload = {};
-                    for (let i = 0; i < elements.length; i++) {
-                        let item = elements.item(i);
-                        switch (item.type) {
-                            case "checkbox":
-                                payload[item.name] = item.checked;
-                                break;
-                            case "submit":
-                                break;
-                            default:
-                                payload[item.name] = item.value;
-                                break;
-                        }
-                    }
-                    // Place your API call here to submit your payload.
-                    // console.log("payload", payload);
-                },
-                true
-            );
+       async submit() {
+           try {
+               let response = await this.$auth.loginWith('laravelSanctum', { data: this.userInfo })
+               console.log(response)
+           }
+           catch (err) {
+                console.log(err)
+            }
+            
         },
     },
 };

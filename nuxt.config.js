@@ -35,6 +35,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
+    'nuxt-route-meta',
   ],
 
   // proxy: {

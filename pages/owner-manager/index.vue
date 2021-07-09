@@ -18,7 +18,7 @@
                     <td class="text-left py-4 px-5">{{ item.category }}</td>
                     <td class="text-left py-4 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
                     <td class="text-left py-4 px-5">
-                        <Status :status="item.verification_status" />
+                        <Status classes="w-24 h-8 text-xs" :status="item.verification_status" />
                     </td>
                 </tr>
             </Table>

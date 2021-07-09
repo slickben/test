@@ -32,16 +32,16 @@
           <img class="mx-auto" src="~/assets/images/Payment.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Business intelligence">
-          <img class="mx-auto" src="~/assets/images/Business intelligence.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/Businessintelligence.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Tax net">
-          <img class="mx-auto" src="~/assets/images/Tax net.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/Taxnet.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Document Manager">
-          <img class="mx-auto" src="~/assets/images/Document Manager.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/DocumentManager.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="User manager">
-          <img class="mx-auto" src="~/assets/images/User Manager.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/UserManager.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Settings">
           <img class="mx-auto" src="~/assets/images/Settings.svg" alt="" srcset="">

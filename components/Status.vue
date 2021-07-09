@@ -1,5 +1,5 @@
 <template>
-    <div :class="color(status)" class="w-24 h-8 flex items-center justify-center text-xs font-normal rounded-md ">
+    <div :class="[color(status), classes]" class="flex items-center justify-center font-normal rounded-md ">
         {{ status }}
     </div>
 </template>
@@ -7,7 +7,8 @@
 <script>
 export default {
     props: {
-        status: String
+        status: String,
+        classes: String
     },
     computed: {
         

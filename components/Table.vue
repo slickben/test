@@ -1,6 +1,6 @@
 <template>
     <div class="w-full">
-        <div class="overflow-hidden rounded-3xl ">
+        <div :class="classes" class="overflow-hidden">
             <div class="py-4 px-4 bg-white text-sm text-tertiary-600">
                 <slot name="head"></slot>
             </div>
@@ -21,7 +21,8 @@
 <script>
 export default {
     props: {
-        head_data: Array
+        head_data: Array,
+        classes: String
     }
 }
 </script>

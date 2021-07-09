@@ -7,7 +7,7 @@
             <AnalysisCard heading="Denied" title="Owner Denied" total_count="25" week_count="2" color="text-action-danger" />
         </div>
         <div>
-            <Table :head_data="table_head_data"> 
+            <Table classes="rounded-3xl" :head_data="table_head_data"> 
                 <template v-slot:head>
                     Recently Added
                 </template>

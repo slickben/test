@@ -20,31 +20,31 @@
           <img class="rounded " src="~/assets/images/Owner.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Vehicle operations">
-          <img class="mx-auto" src="~/assets/images/Vehicle.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/vehicle.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Housing Operations">
-          <img class="mx-auto" src="~/assets/images/Housing.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/housing.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Plate Manager">
-          <img class="mx-auto" src="~/assets/images/Plate.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/plate.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Payment">
-          <img class="mx-auto" src="~/assets/images/Payment.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/payment.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Business intelligence">
-          <img class="mx-auto" src="~/assets/images/Businessintelligence.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/business_intelligence.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Tax net">
-          <img class="mx-auto" src="~/assets/images/Taxnet.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/tax_net.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Document Manager">
-          <img class="mx-auto" src="~/assets/images/DocumentManager.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/document_manager.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="User manager">
-          <img class="mx-auto" src="~/assets/images/UserManager.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/user_manager.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Settings">
-          <img class="mx-auto" src="~/assets/images/Settings.svg" alt="" srcset="">
+          <img class="mx-auto" src="~/assets/images/settings.svg" alt="" srcset="">
         </NavBox>
       </div>
     </div>

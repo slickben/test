@@ -21,10 +21,24 @@ module.exports = {
       },
       height: {
         'lg-screen': '1280px',
+        '98': '24.5rem',
+        '100': '25rem'
        },
        width: {
         'lg-screen': '1280px',
+        '98': '24.5rem',
+        '100': '25rem'
       },
+      maxWidth: {
+        '98': '24.5rem',
+        '100': '25rem',
+        'lg-screen': '1280px',
+       },
+       maxHeight: {
+        '98': '24.5rem',
+        '100': '25rem',
+        'lg-screen': '1280px',
+       },
       colors: {
         primary: {
           '100': '#E6ECFE',

@@ -4,7 +4,7 @@
 
         <div class="grid grid-cols-3 gap-x-6">
             <ActivitiesLog />
-            <div class="grid grid-rows-2 gap-4 max-h-96">
+            <div class="grid grid-rows-2 gap-4 max-h-100">
                 <AssetsCard />
                 <DocumentStatusCard />
             </div>

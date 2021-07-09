@@ -22,19 +22,23 @@ module.exports = {
       height: {
         'lg-screen': '1280px',
         '98': '24.5rem',
-        '100': '25rem'
+        '100': '25rem',
+        '50':'12.5rem',
        },
        width: {
         'lg-screen': '1280px',
         '98': '24.5rem',
-        '100': '25rem'
+        '100': '25rem',
+        '50':'12.5rem',
       },
       maxWidth: {
+        '50':'12.5rem',
         '98': '24.5rem',
         '100': '25rem',
         'lg-screen': '1280px',
        },
        maxHeight: {
+        '50':'12.5rem',
         '98': '24.5rem',
         '100': '25rem',
         'lg-screen': '1280px',

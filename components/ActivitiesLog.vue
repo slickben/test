@@ -1,5 +1,5 @@
 <template>
-    <div class="col-span-2 bg-white rounded-xl h-full max-h-96">
+    <div class="col-span-2 bg-white rounded-xl h-full max-h-100">
         <h3 class="text-xs font-normal text-tertiary-500 capitalize p-5 pb-4 border-b">activity log</h3>
         <div class="relative overflow-y-auto h-4/5 p-5 pb-4">
             <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 23px"></div>

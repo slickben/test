@@ -17,7 +17,7 @@
     <div class="grid grid-cols-4">
       <div class="col-start-2 col-span-2 grid grid-cols-5 gap-12  grid-rows-2">
         <NavBox css="bg-purple-900" link="/owner-manager" name="Owner manager">
-          <img class="rounded " src="~/assets/images/Owner.svg" alt="" srcset="">
+          <img class="rounded " src="~/assets/images/owner.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Vehicle operations">
           <img class="mx-auto" src="~/assets/images/vehicle.svg" alt="" srcset="">

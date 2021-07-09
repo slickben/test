@@ -3,9 +3,9 @@
         <!-- Sidebar Start -->
         <Sidebar />
         <!-- Sidebar Ends -->
-        <div class="w-full">
+        <div class="w-full h-full flex flex-col">
             <!-- Navigation starts -->
-            <Navigation  css="bg-white pl-8 pr-24 shadow-2xl z-10 border-b">
+            <Navigation  css="bg-white pl-8 pr-24 shadow z-10 flex-none">
                 <template v-slot:right>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 4H8V8H4V4Z" fill="#707070"/>
@@ -24,14 +24,15 @@
                 </template>
             </Navigation>
             <!-- Navigation ends -->
-            <div>
+            <div class="flex-grow h-full overflow-y-auto relative shadow">
                 <BreadCrumb />
-                <div class="w-lg-screen mx-auto px-20 py-10 2xl:px-0">
+                <div class="w-lg-screen mx-auto px-20 py-10 2xl:px-0 h-full overflow-y-auto">
                     <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
                     
                     <nuxt-child />
                 </div>
             </div>
+            <Footer />
         </div>
     </div>
 </template>
@@ -41,6 +42,7 @@ import Sidebar from "~/components/SideBar.vue"
 import Navigation from "~/components/Navigation.vue"
 import ToggleSideBarBtn from "~/components/ToggleSideBarBtn.vue"
 import BreadCrumb from "~/components/BreadCrumb.vue"
+import Footer from "~/components/Footer.vue"
 
 export default {
     name: "OwnerManager",
@@ -49,7 +51,8 @@ export default {
         Sidebar,
         Navigation,
         ToggleSideBarBtn,
-        BreadCrumb
+        BreadCrumb,
+        Footer
     },
 };
 </script>

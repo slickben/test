@@ -1,20 +1,23 @@
 <template>
     <div class="pb-8">
-        <Table classes="rounded-md" :head_data="table_head_data"> 
-            <template v-slot:head>
-                <TableFilter />
-            </template>
+        <BreadCrumb title="Vehicle Manager"/>
+        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+            <Table classes="rounded-md" :head_data="table_head_data"> 
+                <template v-slot:head>
+                    <TableFilter />
+                </template>
 
-            <tr v-for="item in demo">
-                <td class="text-left py-4 px-5">{{ item.unique_Id }}</td>
-                <td class="text-left py-4 px-5">{{ item.name }}</td>
-                <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                <td class="text-left py-4 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
-                <td class="text-left py-4 px-5">
-                    <Status classes="w-24 h-8 text-xs" :status="item.verification_status" />
-                </td>
-            </tr>
-        </Table>
+                <tr v-for="item in demo">
+                    <td class="text-left py-4 px-5">{{ item.unique_Id }}</td>
+                    <td class="text-left py-4 px-5">{{ item.name }}</td>
+                    <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
+                    <td class="text-left py-4 px-5">
+                        <Status classes="w-24 h-8 text-xs" :status="item.verification_status" />
+                    </td>
+                </tr>
+            </Table>
+        </div>
     </div>
 </template>
 
@@ -22,12 +25,14 @@
     import Table from '~/components/Table.vue';
     import Status from '~/components/Status.vue';
     import TableFilter from '~/components/TableFilter.vue';
+    import BreadCrumb from "~/components/BreadCrumb.vue"
     import { mapState } from 'vuex'
     export default {
         components: {
             Table,
             Status,
-            TableFilter
+            TableFilter,
+            BreadCrumb
         },
         computed: {
         ...mapState({

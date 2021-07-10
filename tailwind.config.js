@@ -38,6 +38,7 @@ module.exports = {
       height: {
         'lg-screen': '1280px',
         '98': '24.5rem',
+        '75': '18.75rem',
         '100': '25rem',
         '50':'12.5rem',
        },
@@ -98,5 +99,7 @@ module.exports = {
       margin: ['hover', 'focus'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }

@@ -42,9 +42,8 @@
                 </template>
             </Navigation>
             <!-- Navigation ends -->
-            <div class="flex-grow h-full overflow-y-auto relative shadow">
-                <BreadCrumb title="Vehicle Manager"/>
-                <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+            <div class="flex-grow h-full overflow-y-auto relative shadow scrollbar-thin scrollbar-thumb-tertiary-200 scrollbar-track-tertiary-100">
+                <div class="">
                     <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
                     
                     <nuxt-child />

@@ -75,5 +75,18 @@
     .stripe > tr:nth-child(even) {
         background-color: #E6ECFE;
     }
+    th {
+        height: 0;
+        line-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        white-space: nowrap;
+    }
+    th div{
+        position: absolute;
+        top: 0;
+        line-height: normal;
+    }
 }
 

@@ -3,10 +3,11 @@
         <BioData />
 
         <div class="grid grid-cols-3 gap-x-6">
-            <ActivitiesLog />
-            <div class="grid grid-rows-2 gap-4 max-h-100">
-                <AssetsCard />
+            <div class="col-span-2">
                 <DocumentStatusCard />
+            </div>
+            <div class="grid grid-rows-2 gap-4 max-h-100">
+                <ActivitiesLog />
             </div>
         </div>
         <Sliding :status="status" classes="">

@@ -19,7 +19,7 @@
         <NavBox css="bg-purple-900" link="/owner-manager" name="Owner manager">
           <img class="rounded " src="~/assets/images/owner.svg" alt="" srcset="">
         </NavBox>
-        <NavBox css="bg-purple-900" link="/" name="Vehicle operations">
+        <NavBox css="bg-purple-900" link="/vehicle-manager" name="Vehicle operations">
           <img class="mx-auto" src="~/assets/images/vehicle.svg" alt="" srcset="">
         </NavBox>
         <NavBox css="bg-purple-900" link="/" name="Housing Operations">

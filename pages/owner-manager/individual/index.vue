@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pb-8">
         <Table classes="rounded-md" :head_data="table_head_data"> 
             <template v-slot:head>
                 <TableFilter />

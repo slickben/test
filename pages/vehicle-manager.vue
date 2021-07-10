@@ -3,16 +3,19 @@
         <!-- Sidebar Start -->
         <Sidebar>
             <ul class="pt-3">
-                <Nav :toggleNav="toggleNav" name="Overview" link="/owner-manager">
+                <Nav :toggleNav="toggleNav" name="Overview" link="/vehicle-manager">
                     <img src="~assets/icons/dashboard.svg" alt="" srcset="">
                 </Nav>
-                <Nav :toggleNav="toggleNav" name="Individual" link="/owner-manager/individual">
+                <Nav :toggleNav="toggleNav" name="Vehicle" link="/vehicle-manager/vehicles">
                     <img src="~assets/icons/user.svg" alt="" srcset="">
                 </Nav>
-                <Nav :toggleNav="toggleNav" name="Business" link="/owner-manager/business">
+                <Nav :toggleNav="toggleNav" name="Change Of Ownership" link="/vehicle-manager/change-of-ownership">
                     <img src="~assets/icons/officebuilding.svg" alt="" srcset="">
                 </Nav>
-                <Nav :toggleNav="toggleNav" name="Government" link="/owner-manager/government">
+                <Nav :toggleNav="toggleNav" name="Revalidation" link="/vehicle-manager/revalidation">
+                    <img src="~assets/icons/bank.svg" alt="" srcset="">
+                </Nav>
+                <Nav :toggleNav="toggleNav" name="Renewal" link="/vehicle-manager/renewal">
                     <img src="~assets/icons/bank.svg" alt="" srcset="">
                 </Nav>
             </ul>
@@ -40,7 +43,7 @@
             </Navigation>
             <!-- Navigation ends -->
             <div class="flex-grow h-full overflow-y-auto relative shadow">
-                <BreadCrumb title="Owner Manager"/>
+                <BreadCrumb title="Vehicle Manager"/>
                 <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
                     <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
                     

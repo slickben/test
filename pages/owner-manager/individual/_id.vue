@@ -1,5 +1,5 @@
 <template>
-    <div class="grid gap-y-8">
+    <div class="grid gap-y-8 pb-8">
         <BioData />
 
         <div class="grid grid-cols-3 gap-x-6">

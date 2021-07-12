@@ -43,7 +43,7 @@
         <NavBox css="bg-purple-900" link="/" name="User manager">
           <img class="mx-auto" src="~/assets/images/user_manager.svg" alt="" srcset="">
         </NavBox>
-        <NavBox css="bg-purple-900" link="/" name="Settings">
+        <NavBox css="bg-purple-900" link="/settings" name="Settings">
           <img class="mx-auto" src="~/assets/images/settings.svg" alt="" srcset="">
         </NavBox>
       </div>

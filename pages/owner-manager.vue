@@ -20,7 +20,7 @@
         <!-- Sidebar Ends -->
         <div class="w-full h-full flex flex-col">
             <!-- Navigation starts -->
-            <Navigation  css="bg-white px-8 2xl:pr-24 shadow z-10 flex-none">
+            <Navigation  css="bg-white px-8 2xl:pr-24 shadow z-30 flex-none">
                 <template v-slot:right>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 4H8V8H4V4Z" fill="#707070"/>

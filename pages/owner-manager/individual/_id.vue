@@ -1,6 +1,8 @@
 <template>
     <div>
-        <BreadCrumb title="Owner Manager"/>
+        <BreadCrumb title="Owner Manager">
+            <Button :onClick="toggleSlide" type="solid" title="Update" />
+        </BreadCrumb>
         <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full">
             <BioData />
 
@@ -12,6 +14,18 @@
                 </div>
             </div>
         </div>
+        <Sliding :status="status">
+            <template slot="head">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-2xl text-primary-900 font-semibold">Update Data</h4>
+                        <p class="text-base text-tertiary-600 font-normal py-2">#0123</p>
+                    </div>
+                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
+                </div>
+            </template>
+            <Tabs />
+        </Sliding>
     </div>
 </template>
 
@@ -21,6 +35,9 @@ import BioData from '~/components/BioData.vue';AssetsCard
 import ActivitiesLog from '~/components/ActivitiesLog.vue';
 import AssetsCard from '~/components/AssetsCard.vue';
 import BreadCrumb from '~/components/BreadCrumb.vue';
+import Sliding from '~/components/Sliding.vue';
+import Tabs from '~/components/Tabs.vue';
+import Button from '~/components/Button.vue';
 export default {
     name: 'Show',
     components: {
@@ -28,9 +45,22 @@ export default {
         BioData,
         ActivitiesLog,
         AssetsCard,
-        BreadCrumb
+        BreadCrumb,
+        Sliding,
+        Tabs,
+        Button
     },
-    meta: { breadCrumb: 'benson' },
+    data () {
+        return {
+            status: true
+        }
+    },
+    methods: {
+        toggleSlide () {
+            this.status = !this.status
+        }
+    },
+
     asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
         
     },

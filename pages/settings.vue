@@ -3,36 +3,64 @@
     <!-- Sidebar Start -->
     <Sidebar>
       <ul class="pt-3">
-        <Nav :toggleNav="toggleNav" name="Overview" link="/vehicle-manager">
-          <img src="~assets/icons/dashboard.svg" alt="" srcset="" />
+        <Nav :toggleNav="toggleNav" name="Owner Manager" link="/settings/owner-manager">
+          <img src="~assets/icons/owner-icon.svg" alt="" srcset="" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
-          name="Vehicle"
-          link="/vehicle-manager/vehicles"
+          name="Vehicle Operations"
+          link="/"
         >
-          <img src="~assets/icons/car.svg" alt="" srcset="" />
+          <img src="~assets/icons/vehicle-icon.svg" alt="" srcset="" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
-          name="Change Of Ownership"
-          link="/vehicle-manager/change-of-ownership"
+          name="Housing Operations"
+          link="/"
         >
-          <img src="~assets/icons/interaction.svg" alt="" srcset="" />
+          <img src="~assets/icons/house-icon.svg" alt="" srcset="" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
-          name="Revalidation"
-          link="/vehicle-manager/revalidation"
+          name="Plate Manager"
+          link="/"
         >
-          <img src="~assets/icons/validate.svg" alt="" srcset="" />
+          <img src="~assets/icons/plate-icon.svg" alt="" srcset="" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
-          name="Renewal"
-          link="/vehicle-manager/renewal"
+          name="Payment"
+          link="/"
         >
-          <img src="~assets/icons/renewable.svg" alt="" srcset="" />
+          <img src="~assets/icons/payment-icon.svg" alt="" srcset="" />
+        </Nav>
+        <Nav
+          :toggleNav="toggleNav"
+          name="Business Intelligence"
+          link="/"
+        >
+          <img src="~assets/icons/BI-icon.svg" alt="" srcset="" />
+        </Nav>
+        <Nav
+          :toggleNav="toggleNav"
+          name="Tax Net"
+          link="/"
+        >
+          <img src="~assets/icons/tax-icon.svg" alt="" srcset="" />
+        </Nav>
+        <Nav
+          :toggleNav="toggleNav"
+          name="Document Manager"
+          link="/"
+        >
+          <img src="~assets/icons/document-icon.svg" alt="" srcset="" />
+        </Nav>
+        <Nav
+          :toggleNav="toggleNav"
+          name="User manager"
+          link="/"
+        >
+          <img src="~assets/icons/user-icon.svg" alt="" srcset="" />
         </Nav>
       </ul>
     </Sidebar>
@@ -76,7 +104,7 @@
           scrollbar-track-tertiary-100
         "
       >
-        <div class="">
+        <div class="h-full">
           <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
 
           <nuxt-child />

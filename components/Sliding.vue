@@ -1,5 +1,5 @@
 <template>
-  <div v-show="status" class="fixed inset-y-0 right-0 flex justify-end items-center z-20">
+  <div class="fixed inset-y-0 right-0 flex justify-end items-center z-20">
     <div class="flex flex-col h-full">
       <div class="flex-none h-20"></div>
       <div :class="classes" class="bg-white flex-grow h-full overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-200 scrollbar-track-tertiary-100">
@@ -19,7 +19,6 @@
 export default {
   props: {
     classes: String,
-    status: Boolean,
   },
 }
 </script>

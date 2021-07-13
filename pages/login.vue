@@ -187,14 +187,15 @@
 
 <script>
 
-
+// ben@trems.ng
+// password
 export default {
     name: "Login",
     data () {
         return {
             userInfo: {
-                email: 'ben@trems.ng',
-                password: 'password'
+                email: '',
+                password: ''
             }
         }
     },

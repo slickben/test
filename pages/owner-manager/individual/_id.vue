@@ -38,6 +38,9 @@ import BreadCrumb from '~/components/BreadCrumb.vue';
 import Sliding from '~/components/Sliding.vue';
 import Tabs from '~/components/Tabs.vue';
 import Button from '~/components/Button.vue';
+
+import {mapState } from 'vuex';
+
 export default {
     name: 'Show',
     components: {
@@ -60,9 +63,11 @@ export default {
             this.status = !this.status
         }
     },
-
-    asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
-        
-    },
+    // computed: mapState({
+    //     owners:  state => state.owner.owners
+    // }),
+    // fetch () {
+    //     this.$store.dispatch('owner/getAllOwners')
+    // }
 }
 </script>

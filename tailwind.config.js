@@ -55,6 +55,9 @@ module.exports = {
         '249': '62.25rem',
         'lg-screen': '1280px',
        },
+       minWidth: {
+        '105': '26.25rem',
+       },
        maxHeight: {
         '50':'12.5rem',
         '98': '24.5rem',
@@ -99,6 +102,7 @@ module.exports = {
     extend: {
       margin: ['hover', 'focus'],
       borderWidth: ['hover', 'focus'],
+      flex: ['hover', 'focus', 'group-hover']
     },
   },
   plugins: [

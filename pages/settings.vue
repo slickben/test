@@ -3,7 +3,7 @@
     <!-- Sidebar Start -->
     <Sidebar>
       <ul class="pt-3">
-        <Nav :toggleNav="toggleNav" name="Owner Manager" link="/settings/owner-manager">
+        <Nav :toggleNav="toggleNav" name="Owner Manager" link="/settings/owner-manager/state">
           <img src="~assets/icons/owner-icon.svg" alt="" srcset="" />
         </Nav>
         <Nav

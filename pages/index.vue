@@ -43,7 +43,7 @@
         <NavBox css="bg-purple-900" link="/" name="User manager">
           <img class="mx-auto" src="~/assets/images/user_manager.svg" alt="" srcset="">
         </NavBox>
-        <NavBox css="bg-purple-900" link="/settings" name="Settings">
+        <NavBox css="bg-purple-900" link="/settings/owner-manager" name="Settings">
           <img class="mx-auto" src="~/assets/images/settings.svg" alt="" srcset="">
         </NavBox>
       </div>
@@ -57,7 +57,7 @@ import Navigation from '~/components/Navigation.vue';
 import Logo from '~/components/Logo.vue';
 export default {
   name: 'Home',
-  auth: false,
+  // auth: false,
   components: {
     NavBox,
     Navigation,

@@ -59,10 +59,12 @@ import BreadCrumb from "~/components/BreadCrumb.vue"
 import Footer from "~/components/Footer.vue";
 import Nav from '~/components/Nav.vue';
 import { mapState } from 'vuex'
+import { state } from '~/store'
 
 export default {
     name: "OwnerManager",
     auth: false,
+    layout: 'owner',
     components: {
         Sidebar,
         Navigation,
@@ -72,7 +74,11 @@ export default {
         Nav
     },
     computed: mapState({
-        toggleNav: state => state.toggleNav
+        toggleNav: state => state.toggleNav,
+        owners:  state => state.owner.owners
     }),
+    // asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+    //     store.dispatch('owner/getAllOwners')
+    // }, 
 };
 </script>

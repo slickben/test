@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'itams',
+    title: 'Trems',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -49,7 +49,7 @@ export default {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: 'http://demo.trems.ng/api/v1',
+        url: 'http://trems-api.local/api/v1',
         endpoints: {
           login: {
             url: '/login', method: 'post'
@@ -68,12 +68,12 @@ export default {
   router: {
     middleware: ['auth']
   },
-  
-  
+
+
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://demo.trems.ng/api/v1',
+    baseURL: 'http://trems-api.local/api/v1',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

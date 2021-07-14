@@ -57,7 +57,7 @@ import Navigation from '~/components/Navigation.vue';
 import Logo from '~/components/Logo.vue';
 export default {
   name: 'Home',
-  // auth: false,
+  auth: false,
   components: {
     NavBox,
     Navigation,

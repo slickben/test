@@ -49,7 +49,7 @@ export default {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: 'https://demo.trems.ng/api/v1',
+        url: 'http://demo.trems.ng/api/v1',
         endpoints: {
           login: {
             url: '/login', method: 'post'
@@ -73,7 +73,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://demo.trems.ng/api/v1',
+    baseURL: 'http://demo.trems.ng/api/v1',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

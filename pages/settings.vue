@@ -9,7 +9,7 @@
         <Nav
           :toggleNav="toggleNav"
           name="Vehicle Operations"
-          link="/"
+          link="/settings/vehicle-manager/category"
         >
           <img src="~assets/icons/vehicle-icon.svg" alt="" srcset="" />
         </Nav>

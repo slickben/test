@@ -1,7 +1,9 @@
 
-
 export default () => ({
-    owners: []
+    owners: [],
+    individualOwners: [],
+    businessOwners: [],
+    governmentOwners: []
 })
 
 

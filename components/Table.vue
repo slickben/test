@@ -5,7 +5,7 @@
                 <slot name="head"></slot>
             </div>
             <div class="relative w-full pt-14 bg-primary-100 text-tertiary-800">
-                <div class="h-75 overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-200 scrollbar-track-white">
+                <div class="max-h-75 overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-200 scrollbar-track-white">
                     <table class="min-w-full bg-primary-100">
                         <thead class="text-sm text-tertiary-800">
                             <tr>

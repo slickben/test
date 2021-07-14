@@ -7,14 +7,15 @@
                     <TableFilter />
                 </template>
 
-                <tr v-for="item in demo">
-                    <td class="text-left py-4 px-5">{{ item.unique_Id }}</td>
-                    <td class="text-left py-4 px-5">{{ item.name }}</td>
+                <tr class="relative" v-for="individualOwner in individualOwners">
+                    <td class="text-left py-4 px-5">{{  }}</td>
+                    <td class="text-left py-4 px-5">{{ getFullName(individualOwner) }}</td>
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ individualOwner.city }}</a></td>
                     <td class="text-left py-4 px-5">
-                        <Status classes="w-24 h-8 text-xs" :status="item.verification_status" />
+                        <Status classes="w-24 h-8 text-xs" status="pending" />
                     </td>
+                    <nuxt-link :to="`/owner-manager/${individualOwner.type}/${individualOwner.id}`" class="absolute inset-0 "></nuxt-link>
                 </tr>
             </Table>
         </div>
@@ -33,13 +34,18 @@
             BreadCrumb
         },
         computed: {
-        ...mapState({
-            demo: state => state.demo,
-        })
+            ...mapState({
+                individualOwners: state => state.owner.individualOwners,
+            }),
+        },
+        methods: {
+            getFullName (owner) {
+                return `${owner.title ? owner.title : ''} ${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
+            }
         },
         data() {
             return {
-                table_head_data: ['Unique Id #', 'Business Name', 'City',  'Verification Status']
+                table_head_data: ['Unique Id #', 'Name', 'City',  'Verification Status']
             }
         },
     }

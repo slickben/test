@@ -44,8 +44,8 @@
                     <div class="flex items-center justify-between py-10">
                         <h3 class="text-xl font-medium text-primary-900">Local Government Area</h3>
                         <div class="flex">
-                            <PrimaryButton :onClick="toggleAddFunc" title="Add State" type="solid" />
-                            <PrimaryButton title="Import State" />
+                            <PrimaryButton :onClick="toggleAddFunc" title="Add Lga" type="solid" />
+                            <PrimaryButton title="Import Lga" />
                         </div>
                     </div>
                     <div class="flex items-center justify-between">

@@ -13,19 +13,7 @@ class Owner {
     }
 }
 
-
-export const state = () => ({
-    owners: []
-})
-
-export const mutations = {
-    ADD_OWNERS(state, owners) {
-        state.owners = owners
-    }
-}
-
-
-export const actions = {
+export default  {
     async getAllOwners({ commit, }) {
         console.log(Owner)
         try {

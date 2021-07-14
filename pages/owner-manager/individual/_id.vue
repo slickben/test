@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <Sliding :status="status">
+        <Sliding v-show="status">
             <template slot="head">
                 <div class="flex items-center justify-between">
                     <div>
@@ -55,7 +55,7 @@ export default {
     },
     data () {
         return {
-            status: true
+            status: false
         }
     },
     methods: {

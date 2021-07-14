@@ -6,72 +6,72 @@
                 <template slot="left">
                     <div class="">
                         <h5 class="text-xs font-normal text-tertiary-300">First Name</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.firstName ? owner.firstName : '-'}}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.firstName ? owner.firstName : '-'}}</p>
                     </div>
                     <div class="">
                         <h5 class="text-xs font-normal text-tertiary-300">Other Name</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.otherName ? owner.otherName : '-'}}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.otherName ? owner.otherName : '-'}}</p>
                     </div>
                     <div class="">
                         <h5 class="text-xs font-normal text-tertiary-300">Last Name</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.lastName ? owner.lastName : '-'}}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.lastName ? owner.lastName : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Gender</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.gender }}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.gender }}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">State of origin</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.state ? owner.state : '-' }}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-' }}</p>
                     </div>
                 </template>
                 <div class="col-span-3 grid grid-cols-1 gap-y-4">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">nIN/BVN</h5>
-                            <p class="">{{ owner.ninOrBvn ? owner.ninOrBvn : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.ninOrBvn ? owner.ninOrBvn : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Phone number</h5>
-                            <p class="">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Email address</h5>
-                            <p class="">{{ owner.email ? owner.email : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.email ? owner.email : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Residential Address</h5>
-                            <p class="">{{ owner.street ? owner.street : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.street ? owner.street : '-'}}</p>
                         </div>
                     </div>
                     <div class="col-span-4 grid grid-cols-2">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Marital Status</h5>
-                            <p class="">{{ owner.maritalStatus ? owner.maritalStatus : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.maritalStatus ? owner.maritalStatus : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Local Government Area</h5>
-                            <p class="">{{ owner.lga ? owner.lga : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.lga ? owner.lga : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Employment status</h5>
-                            <p class="">{{ owner.emplomentStatus ? owner.emplomentStatus : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.emplomentStatus ? owner.emplomentStatus : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">City</h5>
-                            <p class="">{{ owner.city ? owner.city : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.city ? owner.city : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Occupation</h5>
-                            <p class="">{{ owner.occupation ? owner.occupation : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.occupation ? owner.occupation : '-'}}</p>
                         </div>
                         
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                            <p class="">{{ owner.state ? owner.state : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300 capitalize">date of birth</h5>
-                            <p class="">{{ owner.dateOfBirth ? owner.dateOfBirth : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.dateOfBirth ? owner.dateOfBirth : '-'}}</p>
                         </div>
                     </div>
             </BioData>

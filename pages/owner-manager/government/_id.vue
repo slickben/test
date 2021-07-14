@@ -6,33 +6,33 @@
                 <template slot="left">
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Agency Name</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.agencyName ? owner.agencyName : '-'}}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.agencyName ? owner.agencyName : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">District</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.district ? owner.district : '-'}}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.district ? owner.district : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                        <p class="text-xl text-primary-900 font-medium">{{ owner.state ? owner.state : '-' }}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-' }}</p>
                     </div>
                 </template>
                 <div class="col-span-3 grid grid-cols-1 gap-y-4">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Ministry</h5>
-                            <p class="">{{ owner.ministry ? owner.ministry : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.ministry ? owner.ministry : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Address</h5>
-                            <p class="">{{ owner.address ? owner.address : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.address ? owner.address : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Name of Representative</h5>
-                            <p class="">{{ getFullName(owner) ? getFullName(owner) : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ getFullName(owner) ? getFullName(owner) : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Role / Position of Representative</h5>
-                            <p class="">{{ owner.roleOrPosition ? owner.roleOrPosition : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.roleOrPosition ? owner.roleOrPosition : '-'}}</p>
                         </div>
                     </div>
             </BioData>

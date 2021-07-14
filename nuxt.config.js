@@ -45,6 +45,7 @@ export default {
   //   }
   // },
   // http://demo.trems.ng
+  // http://trems-api.local/
   auth: {
     strategies: {
       'laravelSanctum': {

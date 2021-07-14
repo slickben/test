@@ -204,7 +204,7 @@ export default {
     methods: {
        async submit() {
            try {
-               let response = await this.$auth.loginWith('laravelSanctum', { data: this.userInfo })
+            //    let response = await this.$auth.loginWith('laravelSanctum', { data: this.userInfo })
                console.log(response)
            }
            catch (err) {

@@ -59,7 +59,6 @@ import BreadCrumb from "~/components/BreadCrumb.vue"
 import Footer from "~/components/Footer.vue";
 import Nav from '~/components/Nav.vue';
 import { mapState } from 'vuex'
-import { state } from '~/store'
 
 export default {
     name: "OwnerManager",

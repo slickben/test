@@ -1,6 +1,8 @@
 <template>
     <div>
-        <BreadCrumb title="Owner Manager"/>
+        <BreadCrumb title="Owner Manager">
+            <Button title="Update"  :onClick="toggleSlide" />
+        </BreadCrumb>
         <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full">
             <BioData>
                 <template slot="left">
@@ -25,25 +27,11 @@
                         <p class="text-xl text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-' }}</p>
                     </div>
                 </template>
-                <div class="col-span-3 grid grid-cols-1 gap-y-4">
+                    <div class="col-span-2 grid grid-cols-3 gap-y-4">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">nIN/BVN</h5>
                             <p class="text-tertiary-700 font-medium">{{ owner.ninOrBvn ? owner.ninOrBvn : '-'}}</p>
                         </div>
-                        <div>
-                            <h5 class="text-xs font-normal text-tertiary-300">Phone number</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
-                        </div>
-                        <div>
-                            <h5 class="text-xs font-normal text-tertiary-300">Email address</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.email ? owner.email : '-'}}</p>
-                        </div>
-                        <div>
-                            <h5 class="text-xs font-normal text-tertiary-300">Residential Address</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.street ? owner.street : '-'}}</p>
-                        </div>
-                    </div>
-                    <div class="col-span-4 grid grid-cols-2">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Marital Status</h5>
                             <p class="text-tertiary-700 font-medium">{{ owner.maritalStatus ? owner.maritalStatus : '-'}}</p>
@@ -53,25 +41,28 @@
                             <p class="text-tertiary-700 font-medium">{{ owner.lga ? owner.lga : '-'}}</p>
                         </div>
                         <div>
-                            <h5 class="text-xs font-normal text-tertiary-300">Employment status</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.emplomentStatus ? owner.emplomentStatus : '-'}}</p>
+                            <h5 class="text-xs font-normal text-tertiary-300">Phone number</h5>
+                            <p class="text-tertiary-700 font-medium">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">City</h5>
                             <p class="text-tertiary-700 font-medium">{{ owner.city ? owner.city : '-'}}</p>
                         </div>
                         <div>
-                            <h5 class="text-xs font-normal text-tertiary-300">Occupation</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.occupation ? owner.occupation : '-'}}</p>
+                            <h5 class="text-xs font-normal text-tertiary-300 capitalize">date of birth</h5>
+                            <p class="text-tertiary-700 font-medium">{{ owner.dateOfBirth ? owner.dateOfBirth : '-'}}</p>
                         </div>
-                        
+                        <div>
+                            <h5 class="text-xs font-normal text-tertiary-300">Email address</h5>
+                            <p class="text-tertiary-700 font-medium">{{ owner.email ? owner.email : '-'}}</p>
+                        </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">State</h5>
                             <p class="text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-'}}</p>
                         </div>
-                        <div>
-                            <h5 class="text-xs font-normal text-tertiary-300 capitalize">date of birth</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.dateOfBirth ? owner.dateOfBirth : '-'}}</p>
+                        <div class="col-span-3">
+                            <h5 class="text-xs font-normal text-tertiary-300">Residential Address</h5>
+                            <p class="text-tertiary-700 font-medium">{{ owner.street ? owner.street : '-'}}</p>
                         </div>
                     </div>
             </BioData>
@@ -84,6 +75,112 @@
                 </div>
             </div>
         </div>
+        <Sliding classes="min-w-150" v-show="toggle_slide"> 
+            <template slot="head">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-2xl text-primary-900 font-semibold">Update Data</h4>
+                        <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
+                    </div>
+                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
+                </div>
+            </template>
+            <Tabs>
+                <template slot="head">
+                    <li 
+                        v-for="(tab, index) in tabs" 
+                        :key="index" 
+                        class="text-xs cursor-pointer py-2 mr-10 text-tertiary-500 border-b-4 "
+                        :class="activeTab===index ? 'text-purple-600 border-purple-600' : 'border-transparent'" 
+                        @click="activeTab = index"
+                    >
+                        {{ tab }}
+                    </li>
+                </template>
+                <div class="p-5" v-show="activeTab === 0">
+                    <form class="grid grid-cols-2 gap-6 pr-16" @submit.prevent="submitUpdateOwner">
+                        <div class="flex flex-col">
+                            <label for="first_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">First Name</label>
+                            <input v-model="update_data.firstName" id="first_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="last_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Last Name</label>
+                            <input v-model="update_data.lastName" id="last_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="other_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Other Name</label>
+                            <input v-model="update_data.otherName" id="other_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="gender" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Gender</label>
+                            <input v-model="update_data.gender" id="gender" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Male" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="nin_or_bvn" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">NIN / BVN</label>
+                            <input v-model="update_data.ninOrBvn" id="nin_or_bvn" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="0123456789101" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="date_of_birth" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Date of Birth</label>
+                            <input v-model="update_data.dateOfBirth" id="date_of_birth" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="23 Jan, 1994" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="phone_number" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Phone Number</label>
+                            <input v-model="update_data.phoneNumber" id="phone_number" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="+2348012345678" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Local Government Area</label>
+                            <input v-model="update_data.address.lga" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ireposi South" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Email Address</label>
+                            <input v-model="update_data.email" id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="everything.some@nothing.com" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="city" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">City</label>
+                            <input v-model="update_data.address.city" id="city" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="residential_address" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Residential Address</label>
+                            <input v-model="update_data.address.street" id="residential_address" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Plot 134, Lorem ipsum" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="state" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
+                            <input v-model="update_data.address.state" id="state" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Lagos" />
+                        </div>
+                        <div class="col-span-2 flex items-center justify-center py-6">
+                            <FormButton title="Save Changes" type="solid" />
+                            <Button :onClick="toggleSlide" title="Cancle" />
+                        </div>
+                    </form>
+                </div>
+                <div class="p-5 grid grid-cols-2 gap-6" v-show="activeTab === 1">
+                    <div class="flex flex-col">
+                        <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">First Name</label>
+                        <input id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Other Name</label>
+                        <input id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
+                        <input id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Lagos" />
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Employement Status</label>
+                        <input id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Self-Employed" />
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Occupation</label>
+                        <input id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Graphic Artist" />
+                    </div>
+                    <div class="col-span-2 flex items-center justify-center py-6">
+                        <!-- <Button title="Save Changes" type="solid" />
+                        <Button title="Cancle" /> -->
+                    </div>
+                </div>
+            </Tabs>
+        </Sliding>
     </div>
 </template>
 
@@ -93,7 +190,11 @@ import BioData from '~/components/BioData.vue';AssetsCard
 import ActivitiesLog from '~/components/ActivitiesLog.vue';
 import AssetsCard from '~/components/AssetsCard.vue';
 import BreadCrumb from '~/components/BreadCrumb.vue';
-import {mapState} from 'vuex'
+import FormButton from '~/components/FormButton.vue';
+import Button from '~/components/Button.vue';
+import Sliding from '~/components/Sliding.vue';
+import Tabs from '~/components/Tabs.vue';
+import {mapState, mapActions} from 'vuex'
 export default {
     name: 'Show',
     components: {
@@ -101,20 +202,63 @@ export default {
         BioData,
         ActivitiesLog,
         AssetsCard,
-        BreadCrumb
+        BreadCrumb,
+        FormButton,
+        Button,
+        Sliding,
+        Tabs
+    },
+    data () {
+        return {
+            toggle_slide: false,
+            activeTab: 0,
+            tabs: [
+                "Bio Data",
+                "Documents",
+            ],
+            
+        }
     },
     methods: {
+        ...mapActions({
+            updateOwner: 'owner/updateOwner'
+        }),
         getFullName (owner) {
             return `${owner.title ? owner.title : ''} ${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
+        },
+        toggleSlide () {
+            this.toggle_slide = !this.toggle_slide
+
+            this.update_data
+        },
+        submitUpdateOwner () {
+            this.updateOwner(this.update_data)
         }
     },
     asyncData({store, params,}) {
         let individualOwners = store.state.owner.individualOwners
         let owner = individualOwners.find( individualOwner => individualOwner.id === params.id)
-        return {
-            owner
+        let update_data = {
+            id: owner.id,
+            firstName: owner.firstName,
+            lastName: owner.lastName,
+            otherName: owner.otherName,
+            gender: owner.gender,
+            ninOrBvn: owner.ninOrBvn,
+            dateOfBirth: owner.dateOfBirth,
+            phoneNumber: owner.phoneNumber,
+            email: owner.email,
+            address: {
+                lga: owner.lga,
+                state: owner.state,
+                city: owner.city,
+                street: owner.street,
+            }
         }
-        // console.log(owner)
+        return {
+            owner,
+            update_data
+        }
     },
 }
 </script>

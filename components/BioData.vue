@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="col-span-4 p-5">
-                <div class="pt-3 grid grid-cols-7 gap-y-4 capitalize text-sm text-primary-900 font-normal">
+                <div class="pt-3 grid grid-cols-2 gap-y-4 capitalize text-sm text-primary-900 font-normal">
                     <slot></slot>
                 </div>
             </div>

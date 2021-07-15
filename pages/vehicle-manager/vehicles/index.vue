@@ -7,14 +7,17 @@
                     <TableFilter />
                 </template>
 
-                <tr v-for="item in demo">
-                    <td class="text-left py-4 px-5">{{ item.unique_Id }}</td>
-                    <td class="text-left py-4 px-5">{{ item.name }}</td>
+                <tr class="relative" v-for="vehicle in vehicles">
+                    <td class="text-left py-4 px-5">{{ vehicle.attributes.plateNumber }}</td>
+                    <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.attributes.ownedBy) }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.attributes.category }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.attributes.createdAt).format('MMMM d, YYYY') }}</a></td>
                     <td class="text-left py-4 px-5">
-                        <Status classes="w-24 h-8 text-xs" :status="item.verification_status" />
+                        <Status classes="w-24 h-8 text-xs" status="approved" />
                     </td>
+                    <nuxt-link :to="`/vehicle-manager/${vehicle.type}/${vehicle.id}`" class="absolute inset-0 "></nuxt-link>
                 </tr>
             </Table>
         </div>
@@ -35,13 +38,27 @@
             BreadCrumb
         },
         computed: {
-        ...mapState({
-            demo: state => state.demo,
-        })
+            ...mapState({
+                vehicles: state => state.vehicle.vehicles,
+            }),
+        },
+        methods: {
+            getOwnerName (owner) {
+                let ownersName
+                if(owner.attributes.type === 'Business') {
+                    ownersName = owner.attributes.businessName
+                }else if (owner.attributes.type === 'Government') {
+                    ownersName = owner.attributes.agencyName
+                }else {
+                    ownersName = `${owner.attributes.firstName} ${owner.attributes.lastName} ${owner.attributes.otherName ? owner.attributes.otherName : ''}`
+                }
+
+                return ownersName
+            }
         },
         data() {
             return {
-                table_head_data: ['Unique Id #', 'Business Name', 'City',  'Verification Status']
+                table_head_data: ['Plate Number', 'Owner Name', 'Vehicle Category', 'Date Created', 'Verification Status']
             }
         },
     }

@@ -75,7 +75,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://trems-api.local/api/v1',
+    baseURL: 'http://demo.trems.ng/api/v1',
     withCredentials: false,
   },
 

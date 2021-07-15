@@ -39,5 +39,17 @@ export default {
             console.log(err)
         }
 
+    },
+    async updateOwner({ commit, }, owner ) {
+        try {
+            const { data } = await this.$axios.put(`/owners/${owner.id}`, {
+                owner
+            });
+
+            console.log(data)
+        } catch (err) {
+            console.log(err)
+        }
+
     }
 }

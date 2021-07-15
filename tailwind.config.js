@@ -57,10 +57,12 @@ module.exports = {
        },
        minWidth: {
         '105': '26.25rem',
+        '150': '37.5rem',
        },
        maxHeight: {
         '50':'12.5rem',
         '98': '24.5rem',
+        '75': '18.75rem',
         '100': '25rem',
         'lg-screen': '1280px',
        },

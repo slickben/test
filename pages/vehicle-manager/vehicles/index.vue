@@ -1,6 +1,10 @@
 <template>
     <div class="pb-8">
-        <BreadCrumb title="Vehicle Manager"/>
+        <BreadCrumb title="Vehicle Manager">
+            <nuxt-link class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" to="/vehicle-manager/vehicles/create">
+                New Registration
+            </nuxt-link>
+        </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>

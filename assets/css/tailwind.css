@@ -75,6 +75,10 @@
     .stripe > tr:nth-child(even) {
         background-color: #E6ECFE;
     }
+
+    .stripe > tr:nth-child(even):hover {
+        background-color: #CED9FD;
+    }
     th {
         height: 0;
         line-height: 0;

@@ -1,7 +1,7 @@
 <template>
     <div class="pb-8 h-full">
         <BreadCrumb title="User Manager">
-            <Button title="Update"  :onClick="toggleSlide" />
+            <Button type="solid" title="Add"  :onClick="toggleSlide" />
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
             <div class="flex items-center p-6 bg-white mb-6 rounded-lg">

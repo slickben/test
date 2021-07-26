@@ -41,6 +41,8 @@ module.exports = {
         '75': '18.75rem',
         '100': '25rem',
         '50':'12.5rem',
+        '90-vh':'90vh',
+        '70-vh':'70vh',
        },
        width: {
         'lg-screen': '1280px',

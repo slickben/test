@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-' }}</p>
+                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.address.state ? owner.address.state : '-' }}</p>
                     </div>
                 </template>
                 <div class="col-span-3 grid grid-cols-3 gap-y-4">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-span-3">
                             <h5 class="text-xs font-normal text-tertiary-300">Address</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.address ? owner.address : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ owner.address.street ? owner.address.street : '-'}}</p>
                         </div>
                         <div class="col-span-3">
                             <h5 class="text-xs font-normal text-tertiary-300">Name of Representative</h5>
@@ -75,51 +75,37 @@
                         {{ tab }}
                     </li>
                 </template>
-                <div class="p-5" v-show="activeTab === 0">
-                    <form class="grid grid-cols-2 gap-6" @submit.prevent="submitUpdateOwner">
-                        <div class="flex flex-col">
-                            <label for="first_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">First Name</label>
-                            <input v-model="update_data.firstName" id="first_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="last_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Last Name</label>
-                            <input v-model="update_data.lastName" id="last_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="agency_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Agency Name</label>
-                            <input v-model="update_data.agencyName" id="agency_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Erinjobe" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="district" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">District</label>
-                            <input v-model="update_data.district" id="district" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Male" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="role_or_permission" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Role Or Permission</label>
-                            <input v-model="update_data.roleOrPermission" id="role_or_permission" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="0123456789101" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="ministry" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Ministry</label>
-                            <input v-model="update_data.ministry" id="ministry" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="23 Jan, 1994" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="address" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Address</label>
-                            <input v-model="update_data.address.street" id="address" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="+2348012345678" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="state" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                            <input v-model="update_data.address.state" id="state" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ireposi South" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="city" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">City</label>
-                            <input v-model="update_data.address.city" id="city" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="everything.some@nothing.com" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Local Government Area</label>
-                            <input v-model="update_data.address.lga" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                        </div>
+                <div class="p-5 px-10" v-show="activeTab === 0">
+                    <form class="grid grid-cols-2 gap-6 gap-x-10" @submit.prevent="submitUpdateOwner">
+                        <Input id="agency_name" place_holder="agencyName" lable="Agency Name" v-model="update_data.agencyName" type="text" />
+
+                        <Input id="agency_type" place_holder="agencyType" lable="Agency Type" v-model="update_data.agencyType" type="text" />
+
+                        <Input id="representative_title" place_holder="representativeTitle" lable="Representative Title" v-model="update_data.representativeTitle" type="text" />
+
+                        <Input id="representative_firstname" place_holder="representativeFirstname" lable="Representative Firstname" v-model="update_data.representativeFirstname" type="text" />
+
+                        <Input id="representative_lastname" place_holder="representativeLastname" lable="Representative Lastname" v-model="update_data.representativeLastname" type="text" />
+
+                        <Input id="representative_role" place_holder="representativeRole" lable="Representative Role" v-model="update_data.representativeRole" type="text" />
+
+                        <Input id="phone_number" place_holder="+2348012345678" lable="Phone Number" v-model="update_data.phoneNumber" type="tel" />
+
+                        <Input id="email" place_holder="everything.some@nothing.com" lable="Email Address" v-model="update_data.emailAddress" type="email" />
+
+                        <Input id="residential_address" place_holder="Plot 134, Lorem ipsum" lable="Residential Address" v-model="update_data.street" type="text" />
+
+                        <Input id="city" place_holder="Plot 134, Lorem ipsum" lable="City" v-model="update_data.city" type="text" />
+
+                        <Input id="state" place_holder="Lagos" lable="Residential Address" v-model="update_data.state" type="text" />
+
+                        <Input id="lga" place_holder="lga" lable="Local Government Area" v-model="update_data.lga" type="text" />
+
+                        <Input id="landmark" place_holder="landmark" lable="landmark" v-model="update_data.landmark" type="text" />
+
                         <div class="col-span-2 flex items-center justify-center py-6">
-                            <Button title="Save Changes" type="solid" />
-                            <Button title="Cancle" />
+                            <FormButton title="Save Changes" type="solid" />
+                            <Button :onClick="toggleSlide" title="Cancle" />
                         </div>
                     </form>
                 </div>
@@ -138,6 +124,7 @@ import Button from '~/components/Button.vue';
 import FormButton from '~/components/FormButton.vue';
 import Sliding from '~/components/Sliding.vue';
 import Tabs from '~/components/Tabs.vue';
+import Input from '~/components/form/Input.vue';
 import {mapActions} from 'vuex'
 export default {
     name: 'Show',
@@ -150,7 +137,8 @@ export default {
         Button,
         FormButton,
         Sliding,
-        Tabs
+        Tabs,
+        Input
     },
     data () {
         return {
@@ -166,32 +154,33 @@ export default {
             updateOwner: 'owner/updateOwner'
         }),
         getFullName (owner) {
-            return `${owner.title ? owner.title : ''} ${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
+            return `${owner.representativeTitle ? owner.representativeTitle : ''} ${owner.representativeFirstname} ${owner.representativeLastname} `
         },
         toggleSlide () {
             this.toggle_slide = !this.toggle_slide
         },
         submitUpdateOwner () {
-            this.updateOwner(this.update_data)
+            this.updateOwner({owner: this.update_data, id: this.owner.id})
         }
     },
     asyncData({store, params,}) {
         let governmentOwners = store.state.owner.governmentOwners
         let owner = governmentOwners.find( governmentOwner => governmentOwner.id === params.id)
         let update_data = {
-            id: owner.id,
-            firstName: owner.firstName,
-            lastName: owner.lastName,
             agencyName: owner.agencyName,
-            ministry: owner.ministry,
-            roleOrPermission: owner.roleOrPermission,
-            district: owner.district,
-            address: {
-                lga: owner.lga,
-                state: owner.state,
-                city: owner.city,
-                street: owner.street,
-            }
+            agencyType: owner.agencyType,
+            representativeTitle: owner.representativeTitle,
+            representativeFirstname: owner.representativeFirstname,
+            representativeLastname: owner.representativeLastname,
+            representativeRole: owner.representativeRole,
+            phoneNumber: owner.phoneNumber,
+            emailAddress: owner.emailAddress,
+            lga: owner.address.lga,
+            state: owner.address.state,
+            city: owner.address.city,
+            street: owner.address.street,
+            "type": owner.type,
+            "landmark": owner.landmark
         }
         return {
             owner,

@@ -11,7 +11,7 @@
                     <td class="text-left py-4 px-5">{{ '23423' }}</td>
                     <td class="text-left py-4 px-5">{{ getFullName(individualOwner) }}</td>
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ individualOwner.city }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ individualOwner.address.city }}</a></td>
                     <td class="text-left py-4 px-5">
                         <Status classes="w-24 h-8 text-xs" status="pending" />
                     </td>

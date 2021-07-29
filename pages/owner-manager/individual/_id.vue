@@ -8,7 +8,7 @@
                 <template slot="left">
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Unique ID</h5>
-                        <p class="text-xl text-tertiary-900 font-medium truncate ">{{ owner.id ? owner.id : '-'}}</p>
+                        <p class="text-xl text-tertiary-900 font-medium truncate ">{{ owner.ownerId ? owner.ownerId : '-'}}</p>
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Owner Name</h5>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">State of origin</h5>
-                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.state ? owner.state : '-' }}</p>
+                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.address.state ? owner.address.state : '-' }}</p>
                     </div>
                 </template>
                     <div class="col-span-2 grid grid-cols-3 gap-y-4">
@@ -30,7 +30,7 @@
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Local Government Area</h5>
-                            <p class="text-tertiary-900 font-medium">{{ owner.lga ? owner.lga : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.address.lga ? owner.address.lga : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Phone number</h5>
@@ -38,7 +38,7 @@
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">City</h5>
-                            <p class="text-tertiary-900 font-medium">{{ owner.city ? owner.city : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.address.city ? owner.address.city : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300 capitalize">date of birth</h5>
@@ -50,11 +50,11 @@
                         </div>
                         <div class="col-start-3 xl:col-start-3">
                             <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                            <p class="text-tertiary-900 font-medium">{{ owner.state ? owner.state : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.address.state ? owner.address.state : '-'}}</p>
                         </div>
                         <div class="col-span-3">
                             <h5 class="text-xs font-normal text-tertiary-300">Residential Address</h5>
-                            <p class="text-tertiary-900 font-medium">{{ owner.street ? owner.street : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.address.street ? owner.address.street : '-'}}</p>
                         </div>
                     </div>
             </BioData>
@@ -91,56 +91,35 @@
                         {{ tab }}
                     </li>
                 </template>
-                <div class="p-5" v-show="activeTab === 0">
-                    <form class="grid grid-cols-2 gap-6" @submit.prevent="submitUpdateOwner">
-                        <div class="flex flex-col">
-                            <label for="first_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">First Name</label>
-                            <input v-model="update_data.firstName" id="first_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="last_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Last Name</label>
-                            <input v-model="update_data.lastName" id="last_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="other_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Other Name</label>
-                            <input v-model="update_data.otherName" id="other_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="gender" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Gender</label>
-                            <input v-model="update_data.gender" id="gender" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Male" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="nin_or_bvn" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">NIN / BVN</label>
-                            <input v-model="update_data.ninOrBvn" id="nin_or_bvn" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="0123456789101" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="date_of_birth" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Date of Birth</label>
-                            <input v-model="update_data.dateOfBirth" id="date_of_birth" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="23 Jan, 1994" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="phone_number" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Phone Number</label>
-                            <input v-model="update_data.phoneNumber" id="phone_number" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="+2348012345678" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Local Government Area</label>
-                            <input v-model="update_data.address.lga" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ireposi South" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Email Address</label>
-                            <input v-model="update_data.email" id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="everything.some@nothing.com" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="city" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">City</label>
-                            <input v-model="update_data.address.city" id="city" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="residential_address" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Residential Address</label>
-                            <input v-model="update_data.address.street" id="residential_address" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Plot 134, Lorem ipsum" />
-                        </div>
-                        <div class="flex flex-col">
-                            <label for="state" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                            <input v-model="update_data.address.state" id="state" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Lagos" />
-                        </div>
+                <div class="p-5 px-10" v-show="activeTab === 0">
+                    <form class="grid grid-cols-2 gap-6 gap-x-10" @submit.prevent="submitUpdateOwner">
+
+                        <Input id="first_name" place_holder="Labaika" lable="First Name" v-model="update_data.firstName" type="text" />
+
+                        <Input id="last_name" place_holder="Labaika" lable="Last Name" v-model="update_data.lastName" type="text" />
+
+                        <Input id="other_name" place_holder="Labaika" lable="Other Name" v-model="update_data.otherName" type="text" />
+
+                        <Input isDisable="true" id="gender" place_holder="Male" lable="Gender" v-model="update_data.gender" type="text" />
+
+                        <Input id="nin_or_bvn" place_holder="0123456789101" lable="NIN / BVN" v-model="update_data.bvn" type="text" />
+
+                        <Input isDisable="true" id="date_of_birth" place_holder="23 Jan, 1994" lable="Date of Birth" v-model="update_data.dateOfBirth" type="date" />
+
+                        <Input id="phone_number" place_holder="+2348012345678" lable="Phone Number" v-model="update_data.phoneNumber" type="tel" />
+
+                        <Input id="lga" place_holder="Ireposi South" lable="Local Government Area" v-model="update_data.lga" type="text" />
+
+                        <Input id="email" place_holder="everything.some@nothing.com" lable="Email Address" v-model="update_data.emailAddress" type="email" />
+                        
+                        <Input id="city" place_holder="Ikeja" lable="City" v-model="update_data.city" type="text" />
+
+                        <Input id="residential_address" place_holder="Plot 134, Lorem ipsum" lable="Residential Address" v-model="update_data.street" type="text" />
+
+                        <Input id="state" place_holder="Lagos" lable="Residential Address" v-model="update_data.state" type="text" />
+
+                        <Input id="landmark" place_holder="landmark" lable="landmark" v-model="update_data.landmark" type="text" />
+
                         <div class="col-span-2 flex items-center justify-center py-6">
                             <FormButton title="Save Changes" type="solid" />
                             <Button :onClick="toggleSlide" title="Cancle" />
@@ -187,6 +166,7 @@ import BreadCrumb from '~/components/BreadCrumb.vue';
 import FormButton from '~/components/FormButton.vue';
 import Button from '~/components/Button.vue';
 import Sliding from '~/components/Sliding.vue';
+import Input from '~/components/form/Input.vue';
 import Tabs from '~/components/Tabs.vue';
 import {mapState, mapActions} from 'vuex'
 export default {
@@ -200,7 +180,8 @@ export default {
         FormButton,
         Button,
         Sliding,
-        Tabs
+        Tabs,
+        Input
     },
     data () {
         return {
@@ -219,7 +200,7 @@ export default {
         }),
         // ${owner.title ? owner.title : ''} 
         getFullName (owner) {
-            return `${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
+            return `${owner.title ? owner.title : ''} ${owner.firstName ? owner.firstName : ''} ${owner.lastName ? owner.lastName : ''} ${owner.otherName ? owner.otherName : ''}`
         },
         toggleSlide () {
             this.toggle_slide = !this.toggle_slide
@@ -227,28 +208,29 @@ export default {
             this.update_data
         },
         submitUpdateOwner () {
-            this.updateOwner(this.update_data)
+            this.updateOwner({ owner: this.update_data, id: this.owner.id })
         }
     },
     asyncData({store, params,}) {
         let individualOwners = store.state.owner.individualOwners
         let owner = individualOwners.find( individualOwner => individualOwner.id === params.id)
         let update_data = {
-            id: owner.id,
+            title: owner.title,
             firstName: owner.firstName,
             lastName: owner.lastName,
             otherName: owner.otherName,
+            emailAddress: owner.emailAddress,
+            "phoneNumber": owner.phoneNumber,
             gender: owner.gender,
-            ninOrBvn: owner.ninOrBvn,
+            maritalStatus: owner.maritalStatus,
             dateOfBirth: owner.dateOfBirth,
-            phoneNumber: owner.phoneNumber,
-            email: owner.email,
-            address: {
-                lga: owner.lga,
-                state: owner.state,
-                city: owner.city,
-                street: owner.street,
-            }
+            bvn: owner.ninOrBvn,
+            street: owner.address.street,
+            city: owner.address.city,
+            landmark: owner.address.landmark,
+            state: owner.address.state,
+            lga: owner.address.lga,
+            "type": owner.type,
         }
         return {
             owner,

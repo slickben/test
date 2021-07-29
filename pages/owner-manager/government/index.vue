@@ -28,7 +28,7 @@
           <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
           <td class="text-left py-4 px-5">
             <a class="hover:text-blue-500" href="tel:622322662">{{
-              governmentOwner.city
+              governmentOwner.address.city
             }}</a>
           </td>
           <td class="text-left py-4 px-5">
@@ -59,9 +59,8 @@ export default {
   },
   methods: {
     getFullName(owner) {
-      return `${owner.title ? owner.title : ''} ${owner.firstName} ${
-        owner.lastName
-      } ${owner.otherName ? owner.otherName : ''}`
+      return `${owner.representativeTitle ? owner.representativeTitle : ''} ${owner.representativeFirstname} ${owner.representativeLastname} ${owner.representativeOtherName ? owner.representativeOtherName : ''}`
+
     },
   },
   data() {

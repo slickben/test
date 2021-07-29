@@ -27,9 +27,9 @@ export default {
     async getAllOwners({ commit, }) {
         try {
             const { data } = await this.$axios.get('/owners');
-            let owners = data.data.map( owner => {
-                return new Owner(owner.attributes.firstName, owner.attributes.lastName, owner.attributes.otherName, owner.attributes.phoneNumber, owner.attributes.email, owner.attributes.gender, owner.attributes.title, owner.attributes.maritalStatus, owner.attributes.dateOfBirth, owner.attributes.type, owner.relationships.address.city, owner.relationships.address.landmark, owner.relationships.address.lga, owner.relationships.address.state, owner.relationships.address.street, owner.attributes.createdAt, owner.id)
-            })
+            
+            let owners = data.data
+
             commit('ADD_OWNERS', owners);
             commit('ADD_INDIVIDUAL_OWNERS', owners);
             commit('ADD_BUSINESS_OWNERS', owners);
@@ -40,15 +40,26 @@ export default {
         }
 
     },
-    async updateOwner({ commit, }, owner ) {
+    async updateOwner({ commit, }, {owner, id} ) {
         try {
-            const { data } = await this.$axios.put(`/owners/${owner.id}`, {
-                owner
-            });
+
+            console.log(owner, id)
+
+            const { data } = await this.$axios.patch(`/owners/${id}/update`, owner );
+
+            if(data.data.type === "Individual") {
+                commit('UPDATE_INDIVIDUAL_OWNERS', data.data);
+            }else if(data.data.type === "Business") {
+                commit('UPDATE_BUSINESS_OWNERS', data.data);
+            }else {
+                commit('UPDATE_GOVERNMENT_OWNERS', data.data);
+            }
+            
+            
 
             console.log(data)
         } catch (err) {
-            console.log(err)
+            console.log('error', err.response.data)
         }
 
     }

@@ -53,9 +53,11 @@
             <td class="text-left py-4 px-5">{{ getFullName(owner) }}</td>
             <td class="text-left py-4 px-5">{{ owner.type }}</td>
             <td class="text-left py-4 px-5">
-              <a class="hover:text-blue-500" href="tel:622322662">{{
-                $moment(owner.dateCreated).format('MMMM d, YYYY')
-              }}</a>
+              <a class="hover:text-blue-500" href="tel:622322662">
+                {{
+                $moment(owner.createdAt).format('MMMM d, YYYY')
+              }}
+              </a>
             </td>
             <td class="text-left py-4 px-5">
               <Status classes="w-24 h-8 text-xs" status="pending" />
@@ -88,7 +90,11 @@ export default {
   },
   methods: {
       getFullName (owner) {
-          return `${owner.title ? owner.title : ''} ${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
+          if(owner.type === 'Government') {
+            return `${owner.representativeTitle ? owner.representativeTitle : ''} ${owner.representativeFirstname} ${owner.representativeLastname} ${owner.representativeOtherName ? owner.representativeOtherName : ''}`
+          }else {
+            return `${owner.title ? owner.title : ''} ${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
+          }
       }
   },
   data() {

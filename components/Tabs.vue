@@ -2,7 +2,7 @@
     <div class="">
 	<!--actual component start-->
         <div>
-            <ul class="flex justify-start items-center border-b px-5">
+            <ul class="flex justify-start items-center border-b px-10">
                 <slot name="head"></slot>
             </ul>
 

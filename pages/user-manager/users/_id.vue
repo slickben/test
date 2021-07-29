@@ -5,15 +5,18 @@
                 Update User
             </button>
         </BreadCrumb>
-        <div class="max-w-lg-screen mx-auto px-32 py-6 2xl:py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-6 2xl:py-10 2xl:px-0  h-full w-full">
             <div class="bg-white rounded-xl flex flex-col h-full overflow-y-auto scrollbar-thin
             scrollbar-thumb-tertiary-200
             scrollbar-track-tertiary-100">
                 <div class="flex-none border-b px-10 flex items-center py-6">
-                    <img class="rounded-full w-28 h-28" src="https://via.placeholder.com/150" alt="" srcset="">
+                    <div class="relative">
+                        <img class="rounded-full w-28 h-28 bg-primary-500" src="https://via.placeholder.com/150" alt="" srcset="">
+                        <div class=" absolute inset-0 bg-primary-400 rounded-full"></div>
+                    </div>
                     <div class="pl-5">
                         <h3 class="text-2xl text-tertiary-800">Afolabi Davies</h3>
-                        <p class=" text-tertiary-300">afo.davies@outlook.com <span class=" text-tertiary-500">(Super Admin)</span></p>
+                        <p class=" text-primary-500 text-sm xl:text-base">afo.davies@outlook.com <span class=" text-tertiary-500">(Super Admin)</span></p>
                     </div>
                 </div>
                 <div class="flex-grow flex">
@@ -53,8 +56,8 @@
                     <li 
                         v-for="(tab, index) in tabs" 
                         :key="index" 
-                        class="text-xs cursor-pointer py-2 mr-10 text-tertiary-500 border-b-4 "
-                        :class="activeTab===index ? 'text-purple-600 border-purple-600' : 'border-transparent'" 
+                        class="text-xs cursor-pointer py-2 mr-10 border-b-4 "
+                        :class="activeTab===index ? 'text-primary-400 border-primary-400' : 'text-tertiary-500 border-transparent'" 
                         @click="activeTab = index"
                     >
                         {{ tab }}
@@ -64,7 +67,10 @@
                     <form class="grid grid-cols-2 gap-6" @submit.prevent="submitUpdateOwner">
                         <div>
                             <div class="shadow-sm px-8 py-3 pb-6 mx-4 mr-8 mb-5">
-                                <img class="rounded-full mx-auto w-28 h-28" src="https://via.placeholder.com/150" alt="" srcset="">
+                                <div class="relative w-28 mx-auto ">
+                                    <img class="rounded-full w-28 h-28 bg-primary-500 mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
+                                    <div class=" absolute inset-0 bg-primary-400 rounded-full"></div>
+                                </div>
                                 <div class="py-5 2xl:px-6">
                                     <div class=" relative px-6 w-36 min-h-10 mx-auto text-primary-500 text-xs flex items-center justify-center rounded-xl  focus:outline-none border border-primary-300 hover:bg-primary-200 hover:text-primary-600">
                                         <input class="opacity-0 absolute inset-0" type="file" name="" id="">

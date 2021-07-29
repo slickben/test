@@ -5,7 +5,7 @@
                 New Registration
             </nuxt-link>
         </BreadCrumb>
-        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>
                     <TableFilter />
@@ -36,7 +36,7 @@
                     </button>
                 </div>
                 <div class=" bg-tertiary-100 flex-grow pb-8 pt-2 px-10">
-                    <div class="grid grid-cols-2">
+                    <div class="grid xl:grid-cols-2">
                         <div class="h-full">
                             <div class="flex items-center relative">
                                 <div class="h-full pl-1">
@@ -190,7 +190,7 @@
                                 </div>
                             </fieldset>
                             <!-- form fieldset 2 -->
-                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Personal Information</h3>
@@ -223,7 +223,7 @@
                                 </div>
                             </fieldset>
                             <!-- form fieldset 3 -->
-                            <fieldset v-show="step === 3" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 3" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Demographic Information</h3>
@@ -260,7 +260,7 @@
                             </fieldset>
 
                             <!-- form fieldset 3 -->
-                            <fieldset v-show="step === 4" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 4" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                 <div class="col-span-2">
                                     <div class="py-8">
                                         <h3 class=" text-xl font-medium text-tertiary-600">Means of Identification</h3>
@@ -323,7 +323,7 @@
                                 </div>
                             </div>
                             <!-- form fieldset 1 -->
-                            <fieldset v-show="step === 1" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 1" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Vehicle Details</h3>
@@ -366,7 +366,7 @@
                                 </div>
                             </fieldset>
                             <!-- form fieldset 3 -->
-                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Vehicle Engine Details</h3>
@@ -399,7 +399,7 @@
                                     <div class="py-8">
                                         <h3 class=" text-xl font-medium text-tertiary-600">Vehicle License Review</h3>
                                     </div>
-                                    <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
+                                    <div class=" grid grid-cols-2 xl:grid-cols-3 gap-y-8 gap-x-10">
                                         <div>
                                             <div class="flex-grow py-6 border-b text-sm text-tertiary-500 font-normal">
                                                 <div class="flex justify-between items-center py-3">

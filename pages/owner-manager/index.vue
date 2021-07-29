@@ -7,13 +7,14 @@
         gap-y-10
         max-w-lg-screen
         mx-auto
-        px-32
+        xl:px-32
+        px-10
         py-10
         2xl:px-0
         h-full
       "
     >
-      <div class="grid grid-cols-4 gap-x-12">
+      <div class="grid grid-cols-4 xk:gap-x-12 gap-x-8">
         <AnalysisCard
           heading="Summary"
           title="Owner Created"
@@ -48,7 +49,7 @@
           <template v-slot:head> Recently Added </template>
 
           <tr class="relative" v-for="owner in owners.owners">
-            <td class="text-left py-4 px-5">{{ '' }}</td>
+            <td class="text-left py-4 px-5">{{ '12321' }}</td>
             <td class="text-left py-4 px-5">{{ getFullName(owner) }}</td>
             <td class="text-left py-4 px-5">{{ owner.type }}</td>
             <td class="text-left py-4 px-5">

@@ -1,11 +1,11 @@
 <template>
-    <div :class="color" class="h-48 bg-white p-5 rounded-xl font-normal">
-        <h4 class="text-sm ">{{ heading }}</h4>
+    <div :class="color" class="xl:h-48 h-40 bg-white p-5 rounded-xl font-normal">
+        <h4 class="xl:text-sm  text-xs">{{ heading }}</h4>
         <div class="flex items-center h-full justify-center">
-            <div class="text-4xl text-center">
+            <div class="xl:text-4xl text-2xl text-center">
                 <span class="font-medium ">{{ total_count }}</span>
-                <p class="text-base">{{ title }}</p>
-                <span class="pt-5 text-xs text-tertiary-300">This Week :  {{ week_count }}</span>
+                <p class="xl:text-base text-xs">{{ title }}</p>
+                <span class="pt-5 xl:text-xs text-thin text-tertiary-300">This Week :  {{ week_count }}</span>
             </div>
         </div>
     </div>

@@ -1,56 +1,58 @@
 <template>
     <div>
         <BreadCrumb title="Owner Manager">
-            <Button title="Update"  :onClick="toggleSlide" />
+            <Button type="secondary" title="Update"  :onClick="toggleSlide" />
         </BreadCrumb>
-        <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full">
+        <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full">
             <BioData>
                 <template slot="left">
-                    <div class="col-span-2">
-                        <h5 class="text-xs font-normal text-tertiary-300">Business Name</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.businessName ? owner.businessName : '-'}}</p>
+                    <div>
+                        <h5 class="text-xs font-normal text-tertiary-300">Unique ID</h5>
+                        <p class="text-xl text-tertiary-900 font-medium truncate">{{ owner.id ? owner.id : '-' }}</p>
                     </div>
                     <div class="col-span-2">
-                        <h5 class="text-xs font-normal text-tertiary-300">Business Type</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.businessType ? owner.businessType : '-'}}</p>
+                        <h5 class="text-xs font-normal text-tertiary-300">Business Name</h5>
+                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.businessName ? owner.businessName : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.state }}</p>
-                    </div>
-                    <div>
-                        <h5 class="text-xs font-normal text-tertiary-300">Tax Identification Number</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.taxIdNumber ? owner.taxIdNumber : '-' }}</p>
+                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.state }}</p>
                     </div>
                 </template>
+                <div class="col-span-2 grid grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-6">
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Company Registration Number</h5>
-                        <p class="text-tertiary-700 font-medium">{{ owner.registrationNumber ? owner.registrationNumber : '-'}}</p>
+                        <p class="text-tertiary-900 font-medium">{{ owner.registrationNumber ? owner.registrationNumber : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Business Sector</h5>
-                        <p class="text-tertiary-700 font-medium">{{ owner.businessSector ? owner.businessSector : '-'}}</p>
+                        <p class="text-tertiary-900 font-medium">{{ owner.businessSector ? owner.businessSector : '-'}}</p>
+                    </div>
+                    <div class="">
+                        <h5 class="text-xs font-normal text-tertiary-300">Business Type</h5>
+                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.businessType ? owner.businessType : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Phone number</h5>
-                        <p class="text-tertiary-700 font-medium">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
+                        <p class="text-tertiary-900 font-medium">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Address</h5>
-                        <p class="text-tertiary-700 font-medium">{{ owner.address.street ? owner.address.street : '-'}}</p>
+                        <p class="text-tertiary-900 font-medium truncate">{{ owner.address.street ? owner.address.street : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Email address</h5>
-                        <p class="text-tertiary-700 font-medium">{{ owner.email ? owner.email : '-'}}</p>
+                        <p class="text-tertiary-900 font-medium truncate">{{ owner.email ? owner.email : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Local Government Area</h5>
-                        <p class="text-tertiary-700 font-medium">{{ owner.lga ? owner.lga : '-'}}</p>
+                        <p class="text-tertiary-900 font-medium">{{ owner.lga ? owner.lga : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">City</h5>
-                        <p class="text-tertiary-700 font-medium">{{ owner.city ? owner.city : '-'}}</p>
+                        <p class="text-tertiary-900 font-medium">{{ owner.city ? owner.city : '-'}}</p>
                     </div>
+                </div>
             </BioData>
 
             <div class="grid grid-cols-3 gap-x-6">
@@ -66,9 +68,11 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h4 class="text-2xl text-primary-900 font-semibold">Update Data</h4>
-                        <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
+                        <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/>
                     </div>
-                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
+                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">
+                        <img src="~assets/icons/cancle.svg" alt="" srcset="">
+                    </button>
                 </div>
             </template>
             <Tabs>
@@ -76,8 +80,8 @@
                     <li 
                         v-for="(tab, index) in tabs" 
                         :key="index" 
-                        class="text-xs cursor-pointer py-2 mr-10 text-tertiary-500 border-b-4 "
-                        :class="activeTab===index ? 'text-purple-600 border-purple-600' : 'border-transparent'" 
+                        class="text-xs cursor-pointer py-2 mr-10  border-b-4 "
+                        :class="activeTab===index ? 'text-primary-500 border-primary-500' : 'text-tertiary-500 border-transparent'" 
                         @click="activeTab = index"
                     >
                         {{ tab }}
@@ -87,7 +91,7 @@
                     <form @submit.prevent="" class="grid grid-cols-2 gap-6">
                         <div class="flex flex-col">
                             <label for="business_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Businesst Name</label>
-                            <input v-model="owner.businessName" id="business_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
+                            <input v-model="owner.businessName" id="business_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-900 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
                         </div>
                         <div class="flex flex-col">
                             <label for="business_type" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Business Type</label>

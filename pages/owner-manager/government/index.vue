@@ -8,7 +8,8 @@
         gap-y-10
         max-w-lg-screen
         mx-auto
-        px-32
+        xl:px-32
+        px-10
         py-10
         2xl:px-0
         h-full

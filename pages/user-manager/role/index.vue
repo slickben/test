@@ -5,13 +5,13 @@
                 New Role
             </nuxt-link>
         </BreadCrumb>
-        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>
                     <TableFilter />
                 </template>
 
-                <tr class="relative" v-for="vehicle in vehicles">
+                <tr class="relative text-xs xl:text-sm" v-for="vehicle in vehicles">
                     <td class="text-left py-4 px-5">{{ vehicle.attributes.plateNumber }}</td>
                     <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
@@ -21,7 +21,7 @@
                     <td class="text-left py-4 px-5">
                         <Status classes="w-24 h-8 text-xs" status="approved" />
                     </td>
-                    <nuxt-link :to="`/vehicle-manager/${vehicle.type}/${vehicle.id}`" class="absolute inset-0 "></nuxt-link>
+                    <nuxt-link :to="`/user-manager/role/${vehicle.id}`" class="absolute inset-0 "></nuxt-link>
                 </tr>
             </Table>
         </div>

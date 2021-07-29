@@ -3,7 +3,7 @@
     <!-- Sidebar Start -->
     <Sidebar>
       <ul class="pt-3">
-        <Nav :toggleNav="toggleNav" name="Plate Number" link="/">
+        <Nav :toggleNav="toggleNav" name="Plate Number" link="/plate-manager">
           <img src="~assets/icons/dashboard.svg" alt="" srcset="" />
         </Nav>
       </ul>

@@ -1,34 +1,26 @@
 <template>
     <div class="pb-8">
         <BreadCrumb title="Vehicle Manager">
-            <Button title="Update"  :onClick="toggleSlide" />
+            <!-- <Button title="Update"  :onClick="toggleSlide" /> -->
         </BreadCrumb>
-        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <div class="grid gap-y-8">
                 <BioData>
                     <template slot="left">
                         <div class="col-span-2">
-                            <h5 class="text-xs font-normal text-tertiary-300">Owner's Name</h5>
-                            <p class="text-xl text-tertiary-700 font-medium">{{ getOwnerName(vehicle.attributes.ownedBy) ? getOwnerName(vehicle.attributes.ownedBy) : '-'}}</p>
-                        </div>
-                        <div class="">
-                            <h5 class="text-xs font-normal text-tertiary-300">Unique Id</h5>
-                            <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.attributes.uniqueId ? vehicle.attributes.uniqueId : '-'}}</p>
-                        </div>
-                        <div class="">
                             <h5 class="text-xs font-normal text-tertiary-300">Vehicle Id</h5>
                             <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.id ? vehicle.id : '-'}}</p>
                         </div>
-                        <div>
+                        <div class="col-span-2">
+                            <h5 class="text-xs font-normal text-tertiary-300">Owner's Name</h5>
+                            <p class="text-xl text-tertiary-700 font-medium">{{ getOwnerName(vehicle.attributes.ownedBy) ? getOwnerName(vehicle.attributes.ownedBy) : '-'}}</p>
+                        </div>
+                        <div class="col-span-2">
                             <h5 class="text-xs font-normal text-tertiary-300">Plate Number</h5>
                             <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.attributes.plateNumber ? vehicle.attributes.plateNumber : '-' }}</p>
                         </div>
-                        <div>
-                            <h5 class="text-xs font-normal text-tertiary-300">Vehicle Category</h5>
-                            <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.attributes.category ? vehicle.attributes.category : '-' }}</p>
-                        </div>
                     </template>
-                    <div class="col-span-2 grid grid-cols-4 gap-y-4">
+                    <div class="col-span-2 grid grid-cols-3 xl:grid-cols-4 gap-y-4">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Make</h5>
                             <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.make ? vehicle.attributes.make : '-'}}</p>
@@ -42,6 +34,10 @@
                             <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.fuelType ? vehicle.attributes.fuelType : '-'}}</p>
                         </div>
                         <div>
+                            <h5 class="text-xs font-normal text-tertiary-300">Vehicle Category</h5>
+                            <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.attributes.category ? vehicle.attributes.category : '-' }}</p>
+                        </div>
+                        <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Tank Capacity</h5>
                             <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.tankCapacity ? vehicle.attributes.tankCapacity : '-'}}</p>
                         </div>
@@ -53,11 +49,10 @@
                             <h5 class="text-xs font-normal text-tertiary-300 capitalize">Engine Capacity</h5>
                             <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.engineCapacity ? vehicle.attributes.engineCapacity : '-'}}</p>
                         </div>
-                        <div>
-                            <h5 class="text-xs font-normal text-tertiary-300">State Of Plate Number Allocation</h5>
+                        <!-- <div>
+                            <h5 class="text-xs font-normal text-tertiary-300 truncate">State Of Plate Number Allocation</h5>
                             <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.stateOfPlateNumberAllocation ? vehicle.attributes.stateOfPlateNumberAllocation : '-'}}</p>
-                        </div>
-                        <div></div>
+                        </div> -->
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Year</h5>
                             <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.year ? vehicle.attributes.year : '-'}}</p>
@@ -69,8 +64,6 @@
                         <div v-if="vehicle.attributes.seatCode" class="">
                             <h5 class="text-xs font-normal text-tertiary-300">Seat Code</h5>
                             <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.seatCode.code ? vehicle.attributes.seatCode.code : '-'}} Seat</p>
-                        </div>
-                        <div class="">
                         </div>
                         <div class="">
                             <h5 class="text-xs font-normal text-tertiary-300">Type</h5>

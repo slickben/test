@@ -1,38 +1,42 @@
 <template>
     <div>
         <BreadCrumb title="Owner Manager">
-            <Button title="Update"  :onClick="toggleSlide" />
+            <Button type="secondary" title="Update"  :onClick="toggleSlide" />
         </BreadCrumb>
-        <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full">
+        <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full">
             <BioData>
                 <template slot="left">
+                    <div class="col-span-2">
+                        <h5 class="text-xs font-normal text-tertiary-300">Unique ID</h5>
+                        <p class="text-xl text-tertiary-700 font-medium truncate">{{ owner.id ? owner.id : '-'}}</p>
+                    </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Agency Name</h5>
                         <p class="text-xl text-tertiary-700 font-medium">{{ owner.agencyName ? owner.agencyName : '-'}}</p>
                     </div>
-                    <div>
-                        <h5 class="text-xs font-normal text-tertiary-300">District</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.district ? owner.district : '-'}}</p>
-                    </div>
-                    <div>
+                    <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">State</h5>
                         <p class="text-xl text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-' }}</p>
                     </div>
                 </template>
-                <div class="col-span-3 grid grid-cols-1 gap-y-4">
-                        <div>
+                <div class="col-span-3 grid grid-cols-3 gap-y-4">
+                        <div class="col-span-2 xl:col-span-1">
                             <h5 class="text-xs font-normal text-tertiary-300">Ministry</h5>
                             <p class="text-tertiary-700 font-medium">{{ owner.ministry ? owner.ministry : '-'}}</p>
                         </div>
-                        <div>
+                        <div class="xl:col-span-2">
+                            <h5 class="text-xs font-normal text-tertiary-300">District</h5>
+                            <p class="text-xl text-tertiary-700 font-medium">{{ owner.district ? owner.district : '-'}}</p>
+                        </div>
+                        <div class="col-span-3">
                             <h5 class="text-xs font-normal text-tertiary-300">Address</h5>
                             <p class="text-tertiary-700 font-medium">{{ owner.address ? owner.address : '-'}}</p>
                         </div>
-                        <div>
+                        <div class="col-span-3">
                             <h5 class="text-xs font-normal text-tertiary-300">Name of Representative</h5>
                             <p class="text-tertiary-700 font-medium">{{ getFullName(owner) ? getFullName(owner) : '-'}}</p>
                         </div>
-                        <div>
+                        <div class="col-span-3">
                             <h5 class="text-xs font-normal text-tertiary-300">Role / Position of Representative</h5>
                             <p class="text-tertiary-700 font-medium">{{ owner.roleOrPosition ? owner.roleOrPosition : '-'}}</p>
                         </div>
@@ -54,7 +58,9 @@
                         <h4 class="text-2xl text-primary-900 font-semibold">Update Data</h4>
                         <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
                     </div>
-                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
+                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">
+                        <img src="~assets/icons/cancle.svg" alt="" srcset="">
+                    </button>
                 </div>
             </template>
             <Tabs>
@@ -62,8 +68,8 @@
                     <li 
                         v-for="(tab, index) in tabs" 
                         :key="index" 
-                        class="text-xs cursor-pointer py-2 mr-10 text-tertiary-500 border-b-4 "
-                        :class="activeTab===index ? 'text-purple-600 border-purple-600' : 'border-transparent'" 
+                        class="text-xs cursor-pointer py-2 mr-10  border-b-4 "
+                        :class="activeTab===index ? 'text-primary-500 border-primary-500' : 'text-tertiary-500 border-transparent'" 
                         @click="activeTab = index"
                     >
                         {{ tab }}
@@ -152,7 +158,6 @@ export default {
             activeTab: 0,
             tabs: [
                 "Bio Data",
-                "Documents",
             ],
         }
     },

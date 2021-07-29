@@ -66,6 +66,7 @@ module.exports = {
        minHeight: {
         '105': '26.25rem',
         '150': '37.5rem',
+        '64': '16rem',
         '10': '2.5rem',
         '28': '7rem',
        },
@@ -106,7 +107,22 @@ module.exports = {
           'warning-light': '#FFF8D6',
           danger: '#9E0505',
           'danger-light': '#FED7D7',
-        }
+        },
+        dashboard: {
+          icons: {
+            one: '#E60404',
+            two: '#22AA58',
+            three: '#D1A302',
+            four: '#30B800',
+            five: '#00B5AA',
+            six: '#7BAB14',
+            seven: '#A90C86',
+            eight: '#428B9B',
+            nine: '#B65903',
+            ten: '#E40C74',
+          },
+          
+        },
       }
     },
   },
@@ -114,7 +130,8 @@ module.exports = {
     extend: {
       margin: ['hover', 'focus'],
       borderWidth: ['hover', 'focus'],
-      flex: ['hover', 'focus', 'group-hover']
+      flex: ['hover', 'focus', 'group-hover'],
+      scale: ['active', 'group-hover'],
     },
   },
   plugins: [

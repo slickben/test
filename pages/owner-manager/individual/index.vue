@@ -1,14 +1,14 @@
 <template>
     <div>
         <BreadCrumb title="Owner Manager"/>
-        <div class="pb-8 grid grid-cols-1 gap-y-10 max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full">
+        <div class="pb-8 grid grid-cols-1 gap-y-10 max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>
                     <TableFilter />
                 </template>
 
                 <tr class="relative" v-for="individualOwner in individualOwners">
-                    <td class="text-left py-4 px-5">{{  }}</td>
+                    <td class="text-left py-4 px-5">{{ '23423' }}</td>
                     <td class="text-left py-4 px-5">{{ getFullName(individualOwner) }}</td>
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
                     <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ individualOwner.city }}</a></td>

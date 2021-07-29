@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-6 bg-white rounded-lg gap-x-2 max-h-64">
+    <div class="grid grid-cols-6 bg-white rounded-lg gap-x-2 min-h-64">
             <div class="col-span-2 p-5 border-r-4">
                 <h3 class="text-xs font-normal text-tertiary-500">Bio Data</h3>
                 <div class="pt-6 grid grid-cols-2 gap-y-4 capitalize">

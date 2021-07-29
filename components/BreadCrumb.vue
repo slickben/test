@@ -1,6 +1,6 @@
 <template>
     <div class="h-24 bg-white">
-        <div class="max-w-lg-screen mx-auto px-32 2xl:px-0 h-full flex items-center justify-between w-full">
+        <div class="max-w-lg-screen mx-auto xl:px-32 px-10 2xl:px-0 h-full flex items-center justify-between w-full">
             <div class=" text-tertiary-300">
                 <h1 class="text-2xl text-primary-900 font-semibold"> {{ title }} </h1>
                 <p>Overview</p>

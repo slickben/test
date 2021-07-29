@@ -7,9 +7,9 @@
             <div class="relative w-full pt-14 bg-primary-100 text-tertiary-800">
                 <div class="max-h-75 overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-200 scrollbar-track-white">
                     <table class="min-w-full bg-primary-100">
-                        <thead class="text-sm text-tertiary-800">
+                        <thead class="xl:text-sm text-xs text-tertiary-800">
                             <tr>
-                                <th v-for="val in head_data" class="text-left px-5 text-sm font-normal h-0 py-0 border-0">   
+                                <th v-for="val in head_data" class="text-left px-5 text-xs xl:text-sm font-normal h-0 py-0 border-0">   
                                     <div class="py-4 text-tertiary-500"> {{ val }}  </div>
                                 </th>
                             </tr>

@@ -1,47 +1,47 @@
 <template>
-    <div class="flex h-full mr-24">
-        <div class="flex-none w-72 bg-white h-full sidebar-shadow">
+    <div class="flex h-full xl:mr-24">
+        <div class="flex-none xl:w-72 bg-white h-full sidebar-shadow">
             <SubSideBar title="Owner Manager"> 
                 <nav class="pt-3">
                     <ul class=" text-tertiary-500">
                         <li
                         class="w-full border-b hover:border-transparent"
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/owner-manager/state">State</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/owner-manager/state">State</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/owner-manager/lga">Local Government Area</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/owner-manager/lga">Local Government Area</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/owner-manager/prefix">Prefix</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/owner-manager/prefix">Prefix</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/owner-manager/marital-status">Marital Status</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/owner-manager/marital-status">Marital Status</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/owner-manager/agency-category">Agency Ministry</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/owner-manager/agency-category">Agency Ministry</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/owner-manager/means-of-identity">Means of Identification</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/owner-manager/means-of-identity">Means of Identification</nuxt-link>
                         </li>
                     </ul>
                 </nav>
             </SubSideBar>
         </div>
-        <div class="flex-grow">
+        <div class="flex-grow px-10 xl:px-0">
             <SettingsTable :head_data="table_head_data">
                 <template slot="head">
-                    <div class="flex items-center justify-between py-10">
+                    <div class="flex items-center justify-between pb-6 xl:py-10">
                         <h3 class="text-xl font-medium text-primary-900">State</h3>
                         <div class="flex">
                             <PrimaryButton :onClick="toggleAddStateFunc" title="Add State" type="solid" />

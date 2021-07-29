@@ -3,7 +3,7 @@
         <BreadCrumb title="User Manager">
             <Button title="Update"  :onClick="toggleSlide" />
         </BreadCrumb>
-        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <div class="flex items-center p-6 bg-white mb-6 rounded-lg">
                 <div class="flex-none">
                     <div class="flex flex-col w-80">
@@ -24,8 +24,8 @@
                         <li 
                             v-for="(tab, index) in tabs" 
                             :key="index" 
-                            class="text-xs cursor-pointer py-2 mr-10 text-tertiary-500 border-b-4 "
-                            :class="activeTab===index ? 'text-purple-600 border-purple-600' : 'border-transparent'" 
+                            class="text-xs cursor-pointer py-2 mr-10  border-b-4 "
+                            :class="activeTab===index ? 'text-primary-400 border-primary-400' : 'text-tertiary-500 border-transparent'" 
                             @click="activeTab = index"
                         >
                             {{ tab }}
@@ -37,52 +37,52 @@
                                 <li
                                 class="w-full  hover:border-transparent"
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent text-primary-500 bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/category">Registration Category</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent text-primary-500 bg-primary-100 w-full text-left block font-normal text-xs xl:text-base block" to="">Owner Manager</button>
+                                </li>
+                                <li 
+                                class="w-full  hover:border-transparent "
+                                >
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Vehicle Manager</button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/type">Vehicle Type</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Houseing Operations</button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/make">Vehicle Makes</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Plate Manager</button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/model">Models</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Payment </button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/year">Year of Manufacture</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Business Intelligence </button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/engine">Engine Capacity</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Tax Net </button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/fuel">Fuel Type</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Document Manager</button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/hackney-codes">Hackney Codes</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">User Manager</button>
                                 </li>
                                 <li
                                 class="w-full  hover:border-transparent "
                                 >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/commercial-seat-code">Commercial Seat Code</nuxt-link>
-                                </li>
-                                <li
-                                class="w-full  hover:border-transparent "
-                                >
-                                <nuxt-link class="py-3 px-6  border-transparent hover:text-primary-500 hover:bg-primary-100 w-full text-left block" to="/settings/vehicle-manager/license">Vehicle License</nuxt-link>
+                                    <button class="py-3 px-6 focus:outline-none  border-transparent  w-full text-left block font-normal text-xs xl:text-base block" to="">Settings</button>
                                 </li>
                             </ul>
                         </nav>
@@ -95,7 +95,7 @@
                                     </div>
                                     <label class="flex items-center">
                                         <input type="checkbox" class="form-checkbox ">
-                                        <span class="ml-2 text-sm text-tertiary-600">View Owner</span>
+                                        <span class="ml-2 text-xs xl:text-sm text-tertiary-600">View Owner</span>
                                     </label>
                                 </div>
                                 <!-- in parent -->
@@ -109,7 +109,7 @@
                                         <div class="flex">
                                             <label class="flex items-center">
                                                 <input type="checkbox" class="form-checkbox ">
-                                                <span class="ml-2 text-sm text-tertiary-600">Update </span>
+                                                <span class="ml-2 text-xs xl:text-sm text-tertiary-600">Update </span>
                                             </label>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                             <div class="flex">
                                                 <label class="flex items-center">
                                                     <input type="checkbox" class="form-checkbox ">
-                                                    <span class="ml-2 text-sm text-tertiary-600">Edit Information</span>
+                                                    <span class="ml-2 text-xs xl:text-sm text-tertiary-600">Edit Information</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -133,7 +133,7 @@
                                             <div class="flex">
                                                 <label class="flex items-center">
                                                     <input type="checkbox" class="form-checkbox ">
-                                                    <span class="ml-2 text-sm text-tertiary-600">Upload Document</span>
+                                                    <span class="ml-2 text-xs xl:text-sm text-tertiary-600">Upload Document</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -146,7 +146,7 @@
                                         <div class="flex">
                                             <label class="flex items-center">
                                                 <input type="checkbox" class="form-checkbox ">
-                                                <span class="ml-2 text-sm text-tertiary-600">Delete</span>
+                                                <span class="ml-2 text-xs xl:text-sm text-tertiary-600">Delete</span>
                                             </label>
                                         </div>
                                     </div>

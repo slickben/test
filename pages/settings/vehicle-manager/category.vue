@@ -1,67 +1,67 @@
 <template>
-    <div class="flex h-full mr-24">
-        <div class="flex-none w-72 bg-white h-full sidebar-shadow">
+    <div class="flex h-full xl:mr-24">
+        <div class="flex-none xl:w-72 bg-white h-full sidebar-shadow">
             <SubSideBar title="Vehicle Manager"> 
                 <nav class="pt-3">
                     <ul class=" text-tertiary-500">
                         <li
                         class="w-full border-b hover:border-transparent"
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/category">Registration Category</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/category">Registration Category</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/type">Vehicle Type</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/type">Vehicle Type</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/make">Vehicle Makes</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/make">Vehicle Makes</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/model">Models</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/model">Models</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/year">Year of Manufacture</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/year">Year of Manufacture</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/engine">Engine Capacity</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/engine">Engine Capacity</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/fuel">Fuel Type</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/fuel">Fuel Type</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/hackney-codes">Hackney Codes</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/hackney-codes">Hackney Codes</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/commercial-seat-code">Commercial Seat Code</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/commercial-seat-code">Commercial Seat Code</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block" to="/settings/vehicle-manager/license">Vehicle License</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/license">Vehicle License</nuxt-link>
                         </li>
                     </ul>
                 </nav>
             </SubSideBar>
         </div>
-        <div class="flex-grow">
+        <div class="flex-grow px-10 xl:px-0">
             <SettingsTable :head_data="table_head_data">
                 <template slot="head">
-                    <div class="flex items-center justify-between py-10">
+                    <div class="flex items-center justify-between pb-6 xl:py-10">
                         <h3 class="text-xl font-medium text-primary-900">Registration Category</h3>
                         <div class="flex">
                             <PrimaryButton :onClick="toggleAddFunc" title="Add Category" type="solid" />

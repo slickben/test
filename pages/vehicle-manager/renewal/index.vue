@@ -1,7 +1,7 @@
 <template>
     <div class="pb-8">
         <BreadCrumb title="Vehicle Manager"/>
-        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>
                     <TableFilter />
@@ -45,7 +45,7 @@
                             <!-- form fieldset 1 -->
                             <fieldset v-show="step === 1" class="flex-grow px-16">
                                 <h3 class="py-6 px-8 text-xl font-medium text-tertiary-600">Vehicle ID</h3>
-                                <div class="pt-24">
+                                <div class=" pt-10 xl:pt-24">
                                     <h2 class="text-center text-tertiary-600">Enter Vehicle ID</h2>
                                 </div>
                                 <div class="flex justify-center">
@@ -60,7 +60,7 @@
                                 </div>
                             </fieldset>
                             <!-- form fieldset 1 -->
-                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Vehicle Details</h3>
@@ -108,7 +108,7 @@
                                     <div class="py-8">
                                         <h3 class=" text-xl font-medium text-tertiary-600">Vehicle License Review</h3>
                                     </div>
-                                    <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
+                                    <div class=" grid grid-cols-2 xl:grid-cols-3 gap-y-8 gap-x-10">
                                         <div>
                                             <div class="flex-grow py-6 border-b text-sm text-tertiary-500 font-normal">
                                                 <div class="flex justify-between items-center py-3">

@@ -1,13 +1,20 @@
 <template>
     <!--  -->
     <div :class="{ 'w-64': toggleNav }" class="sidebar-shadow absolute sm:relative bg-white shadow md:h-full pb-12">
-        <div class="">
-            <div class="h-24 w-full flex items-center pb-3 px-5">
+        <div class="flex flex-col">
+            <div class="h-24 w-full flex items-center pb-3 px-5 flex-none">
                 <Logo v-show="toggleNav" size="big" />
                 <Logo v-show="!toggleNav" size="small" />
             </div>
-            <h3 v-show="toggleNav" class="text-xs text-primary-800 uppercase font-bold mt-5 pl-5">Menu</h3>
-            <slot></slot>
+            <div class="flex-grow">
+                <h3 v-show="toggleNav" class="text-xs text-primary-800 uppercase font-bold mt-5 pl-5">Menu</h3>
+                <div class="">
+                    <slot></slot>
+                </div>
+            </div>
+            <div class="flex-none">
+
+            </div>
         </div>
     </div>
 </template>

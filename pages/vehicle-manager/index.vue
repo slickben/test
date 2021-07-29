@@ -5,9 +5,9 @@
                 New Registration
             </nuxt-link>
         </BreadCrumb>
-        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <div class="grid grid-cols-1 gap-y-10">
-                <div class="grid grid-cols-4 gap-x-12">
+                <div class="grid grid-cols-4 xl:gap-x-12 gap-x-8">
                     <AnalysisCard heading="Summary" title="Owner Created" total_count="150" week_count="12" color="text-tertiary-600" />
                     <AnalysisCard heading="Approved" title="Owner Approved" total_count="75" week_count="6" color="text-action-success" />
                     <AnalysisCard heading="Pending" title="Owner Pending" total_count="50" week_count="4" color="text-action-warning" />

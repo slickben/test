@@ -1,7 +1,7 @@
 <template>
     <div class="pb-8">
         <BreadCrumb title="Vehicle Manager"/>
-        <div class="max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>
                     <TableFilter />
@@ -19,7 +19,7 @@
             </Table>
         </div>
 
-        <div class="fixed inset-0 bg-black z-40 bg-opacity-50 px-24 2xl:px-48 pt-12">
+        <div class="fixed inset-0 bg-black z-40 bg-opacity-50 px-24 2xl:px-48 pt-12 hidden">
             <!--new owner form modal -->
             <div v-show="personalInfoModal" class=" absolute inset-0 bg-opacity-50 px-24 2xl:px-48 pt-12">
                 <div class="container mx-auto flex flex-col bg-white 2xl:pt-12 py-6 rounded-lg h-90-vh overflow-y-auto my-auto">
@@ -219,7 +219,7 @@
                             <!-- form fieldset 1 -->
                             <fieldset v-show="step === 1" class="flex-grow px-16">
                                 <h3 class="py-6 px-8 text-xl font-medium text-tertiary-600">Vehicle ID</h3>
-                                <div class="pt-24">
+                                <div class=" pt-12 xl:pt-24">
                                     <h2 class="text-center text-tertiary-600">Enter Vehicle ID</h2>
                                 </div>
                                 <div class="flex justify-center">
@@ -234,7 +234,7 @@
                                 </div>
                             </fieldset>
                             <!-- form fieldset 1 -->
-                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Vehicle Details</h3>
@@ -276,7 +276,7 @@
                                 </div>
                             </fieldset>
                             <!-- form fieldset 3 -->
-                            <fieldset v-show="step === 3" class="flex-grow px-16 pb-10 grid grid-cols-4">
+                            <fieldset v-show="step === 3" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">New Owner</h3>

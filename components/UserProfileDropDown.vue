@@ -13,6 +13,7 @@
             px-2
             w-full
             left-0
+            z-50
         "
         >
         <div class="flex items-center py-4 border-b">

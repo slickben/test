@@ -1,68 +1,60 @@
 <template>
     <div>
         <BreadCrumb title="Owner Manager">
-            <Button title="Update"  :onClick="toggleSlide" />
+            <Button type="secondary" title="Update"  :onClick="toggleSlide" />
         </BreadCrumb>
-        <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-32 py-10 2xl:px-0  h-full">
+        <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full">
             <BioData>
                 <template slot="left">
-                    <div class="">
-                        <h5 class="text-xs font-normal text-tertiary-300">First Name</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.firstName ? owner.firstName : '-'}}</p>
+                    <div class="col-span-2">
+                        <h5 class="text-xs font-normal text-tertiary-300">Unique ID</h5>
+                        <p class="text-xl text-tertiary-900 font-medium truncate ">{{ owner.id ? owner.id : '-'}}</p>
                     </div>
-                    <div class="">
-                        <h5 class="text-xs font-normal text-tertiary-300">Other Name</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.otherName ? owner.otherName : '-'}}</p>
+                    <div class="col-span-2">
+                        <h5 class="text-xs font-normal text-tertiary-300">Owner Name</h5>
+                        <p class="text-xl text-tertiary-900 font-medium">{{ getFullName(owner) }}</p>
                     </div>
-                    <div class="">
-                        <h5 class="text-xs font-normal text-tertiary-300">Last Name</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.lastName ? owner.lastName : '-'}}</p>
-                    </div>
-                    <div>
-                        <h5 class="text-xs font-normal text-tertiary-300">Gender</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.gender }}</p>
-                    </div>
-                    <div>
+                    <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">State of origin</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-' }}</p>
+                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.state ? owner.state : '-' }}</p>
                     </div>
                 </template>
                     <div class="col-span-2 grid grid-cols-3 gap-y-4">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">nIN/BVN</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.ninOrBvn ? owner.ninOrBvn : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.ninOrBvn ? owner.ninOrBvn : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Marital Status</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.maritalStatus ? owner.maritalStatus : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.maritalStatus ? owner.maritalStatus : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Local Government Area</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.lga ? owner.lga : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.lga ? owner.lga : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Phone number</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.phoneNumber ? owner.phoneNumber : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">City</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.city ? owner.city : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.city ? owner.city : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300 capitalize">date of birth</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.dateOfBirth ? owner.dateOfBirth : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.dateOfBirth ? owner.dateOfBirth : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Email address</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.email ? owner.email : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.email ? owner.email : '-'}}</p>
                         </div>
-                        <div>
+                        <div class="col-start-3 xl:col-start-3">
                             <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.state ? owner.state : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.state ? owner.state : '-'}}</p>
                         </div>
                         <div class="col-span-3">
                             <h5 class="text-xs font-normal text-tertiary-300">Residential Address</h5>
-                            <p class="text-tertiary-700 font-medium">{{ owner.street ? owner.street : '-'}}</p>
+                            <p class="text-tertiary-900 font-medium">{{ owner.street ? owner.street : '-'}}</p>
                         </div>
                     </div>
             </BioData>
@@ -80,25 +72,27 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h4 class="text-2xl text-primary-900 font-semibold">Update Data</h4>
-                        <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
+                        <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/>
                     </div>
-                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
+                    <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">
+                        <img src="~assets/icons/cancle.svg" alt="" srcset="">
+                    </button>
                 </div>
             </template>
             <Tabs>
                 <template slot="head">
                     <li 
                         v-for="(tab, index) in tabs" 
-                        :key="index" 
-                        class="text-xs cursor-pointer py-2 mr-10 text-tertiary-500 border-b-4 "
-                        :class="activeTab===index ? 'text-purple-600 border-purple-600' : 'border-transparent'" 
+                        :key="index"
+                        class="text-xs cursor-pointer py-2 mr-10  border-b-4 "
+                        :class="activeTab===index ? ' text-primary-500 border-primary-500' : 'border-transparent text-tertiary-500'" 
                         @click="activeTab = index"
                     >
                         {{ tab }}
                     </li>
                 </template>
                 <div class="p-5" v-show="activeTab === 0">
-                    <form class="grid grid-cols-2 gap-6 pr-16" @submit.prevent="submitUpdateOwner">
+                    <form class="grid grid-cols-2 gap-6" @submit.prevent="submitUpdateOwner">
                         <div class="flex flex-col">
                             <label for="first_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">First Name</label>
                             <input v-model="update_data.firstName" id="first_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
@@ -223,8 +217,9 @@ export default {
         ...mapActions({
             updateOwner: 'owner/updateOwner'
         }),
+        // ${owner.title ? owner.title : ''} 
         getFullName (owner) {
-            return `${owner.title ? owner.title : ''} ${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
+            return `${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
         },
         toggleSlide () {
             this.toggle_slide = !this.toggle_slide

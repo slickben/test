@@ -45,7 +45,6 @@
                         <h3 class="text-xl font-medium text-primary-900">State</h3>
                         <div class="flex">
                             <PrimaryButton :onClick="toggleAddStateFunc" title="Add State" type="solid" />
-                            <PrimaryButton title="Import State" />
                         </div>
                     </div>
                     <div class="flex items-center justify-between">
@@ -76,7 +75,7 @@
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button @click="deleteState(state.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -87,7 +86,7 @@
         </div>
         <Sliding classes="min-w-105 w-full" v-show="toggle_add_state">
             <template slot="head">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between px-2">
                     <div>
                         <h4 class="text-2xl text-primary-900 font-semibold">Add State</h4>
                         <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
@@ -96,19 +95,24 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
+                <form class="p-6 px-8" @submit.prevent="submitAddState">
+                    <div class="flex flex-col pb-6 pt-10">
                         <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                        <input v-model="State" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
+                        <input v-model="C_state.name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col pb-6">
                         <label for="status_code" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State Code</label>
-                        <input v-model="status_code" id="status_code" class="text-tertiary-300 focus:outline-none  bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter Status Code" />
+                        <input v-model="C_state.code" id="status_code" class="text-tertiary-300 focus:outline-none  bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter Status Code" />
                     </div>
-
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <div class="flex">
+                        <label class="flex items-center">
+                            <input v-model="C_state.default" type="checkbox" class="form-checkbox ">
+                            <span class="ml-2 text-xs xl:text-sm text-tertiary-600">Set To Default </span>
+                        </label>
+                    </div>
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-16">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleAddStateFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -116,7 +120,7 @@
 
         <Sliding classes="min-w-105 w-full" v-show="toggle_edit_state">
             <template slot="head">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between px-2">
                     <div>
                         <h4 class="text-2xl text-primary-900 font-semibold">Edit State</h4>
                         <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
@@ -125,8 +129,8 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
+                <form class="p-6 px-8" @submit.prevent="submitEditState">
+                    <div class="flex flex-col pb-6 pt-10">
                         <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
                         <input v-model="edit_state.name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
                     </div>
@@ -135,9 +139,9 @@
                         <input v-model="edit_state.code" id="status_code" class="text-tertiary-300 focus:outline-none  bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter Status Code" />
                     </div>
 
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <div class="col-span-2 flex items-center justify-end py-6">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleEditStateFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -150,15 +154,19 @@ import SubSideBar from "~/components/SubSideBar.vue"
 import SettingsTable from "~/components/SettingsTable.vue"
 import TableFilter from "~/components/TableFilter.vue"
 import PrimaryButton from "~/components/PrimaryButton.vue"
+import Button from "~/components/Button.vue"
+import FormButton from "~/components/FormButton.vue"
 import Sliding from "~/components/Sliding.vue"
 import Tabs from "~/components/Tabs.vue"
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 export default {
     components: {
         SubSideBar,
         SettingsTable,
         TableFilter,
         PrimaryButton,
+        Button,
+        FormButton,
         Sliding,
         Tabs
     },
@@ -167,12 +175,23 @@ export default {
             table_head_data: ['Name', 'State Code', '', ],
             toggle_add_state: false,
             toggle_edit_state: false,
-            state: '',
-            status_code: '',
+            C_state: {
+                name: '',
+                code: '',
+                default: false
+            },
             edit_state: {}
         }
     },
+    computed: mapState({
+        states:  state => state.settings.owner_manager.states
+    }),
     methods: {
+        ...mapActions({
+            addState: 'settings/owner_manager/addState',
+            deleteState: 'settings/owner_manager/deleteState',
+            editState: 'settings/owner_manager/editState',
+        }),
         toggleAddStateFunc () {
             this.toggle_add_state = !this.toggle_add_state
         },
@@ -180,20 +199,23 @@ export default {
             this.toggle_edit_state = !this.toggle_edit_state
             this.states.map( state => {
                 if(state.name === name) {
-                    this.edit_state = state
+                    this.edit_state.name = state.name
+                    this.edit_state.code = state.code
+                    this.edit_state.id = state.id
+                    this.edit_state.default = state.default
                 }
             })
         },
         submitAddState () {
+            this.addState(this.C_state)
 
+            this.C_state.name = ""
+            this.C_state.code = ""
         },
         submitEditState () {
-            
-        }
+            this.editState(this.edit_state)
+        },
     },
-    computed: mapState({
-        states:  state => state.settings.owner_manager.states
-    }),
     async fetch ({ store }) {
         await store.dispatch('settings/owner_manager/getStates')
     }

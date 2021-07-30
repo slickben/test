@@ -45,7 +45,7 @@
                         <h3 class="text-xl font-medium text-primary-900">Local Government Area</h3>
                         <div class="flex">
                             <PrimaryButton :onClick="toggleAddFunc" title="Add Lga" type="solid" />
-                            <PrimaryButton title="Import Lga" />
+                            <!-- <PrimaryButton title="Import Lga" /> -->
                         </div>
                     </div>
                     <div class="flex items-center justify-between">
@@ -76,7 +76,7 @@
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button @click="deleteLga(lga.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -96,19 +96,16 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Name</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter Name" />
-                    </div>
-                    <div class="flex flex-col">
-                        <label for="status_code" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                        <input v-model="state" id="status_code" class="text-tertiary-300 focus:outline-none  bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
-                    </div>
+                <form class="p-8 px-10 pt-16" @submit.prevent="submitAddLga">
+                    <Input class="pb-6" v-model="lga.name" id="name" type="text" lable="Name" place_holder="enter name" />
+
+                    <SelectInput v-model="lga.state_id" lable="State" id="status_code">
+                        <option v-for="state in states" :value="state.id">{{state.name}}</option>
+                    </SelectInput>
 
                     <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleAddFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -125,19 +122,17 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Name</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter Name" />
-                    </div>
-                    <div class="flex flex-col">
-                        <label for="status_code" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                        <input v-model="state" id="status_code" class="text-tertiary-300 focus:outline-none  bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
-                    </div>
+                <form class="p-8 px-10 pt-16" @submit.prevent="submitEditLga">
+                    <Input class="pb-6" v-model="lga.name" id="name" type="text" lable="Name" place_holder="enter name" />
+
+                    <SelectInput v-model="lga.state_id" lable="State" id="status_code">
+                        <option :value="C_state.id">{{ C_state.name }}</option>
+                        <option v-for="state in states" :value="state.id">{{state.name}}</option>
+                    </SelectInput>
 
                     <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleEditFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -152,7 +147,11 @@ import TableFilter from "~/components/TableFilter.vue"
 import PrimaryButton from "~/components/PrimaryButton.vue"
 import Sliding from "~/components/Sliding.vue"
 import Tabs from "~/components/Tabs.vue"
-import {mapState} from 'vuex'
+import Button from "~/components/Button.vue"
+import FormButton from "~/components/FormButton.vue"
+import Input from "~/components/form/Input.vue"
+import SelectInput from "~/components/form/InputSelect.vue"
+import {mapState, mapActions} from 'vuex'
 export default {
     components: {
         SubSideBar,
@@ -160,42 +159,60 @@ export default {
         TableFilter,
         PrimaryButton,
         Sliding,
-        Tabs
+        Tabs,
+        Input,
+        SelectInput,
+        Button,
+        FormButton
     },
     data() {
         return {
             table_head_data: ['Name', 'State', '', ],
             toggle_add: false,
             toggle_edit: false,
-            name: '',
-            state: '',
+            lga:{
+                name: '',
+                state_id: '',
+            },
+            lga_id: '',
+            C_state: ''
         }
     },
     methods: {
+        ...mapActions({
+            addLga: 'settings/owner_manager/addLga',
+            deleteLga: 'settings/owner_manager/deleteLga',
+            editLga: 'settings/owner_manager/editLga',
+        }),
         toggleAddFunc () {
             this.toggle_add = !this.toggle_add
         },
         toggleEditFunc (name) {
             this.toggle_edit = !this.toggle_edit
+            
             this.lgas.map( lga => {
                 if(lga.name === name) {
-                    this.name = lga.name
-                    this.state = lga.state
+                    this.C_state = this.states.find(state => state.name === lga.state)
+                    this.lga.name = lga.name
+                    this.lga.state_id = this.C_state.id
+                    this.lga_id = lga.id
                 }
             })
         },
-        submitAddState () {
-
+        submitAddLga () {
+            this.addLga(this.lga)
         },
-        submitEditState () {
-            
+        submitEditLga () {
+            this.editLga({lga: this.lga, id: this.lga_id})
         }
     },
     computed: mapState({
-        lgas:  state => state.settings.owner_manager.lgas
+        lgas:  state => state.settings.owner_manager.lgas,
+        states:  state => state.settings.owner_manager.states
     }),
     async fetch ({ store }) {
         await store.dispatch('settings/owner_manager/getLgas')
+        await store.dispatch('settings/owner_manager/getStates')
     }
 }
 </script>

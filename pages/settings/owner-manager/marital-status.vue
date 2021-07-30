@@ -45,7 +45,7 @@
                         <h3 class="text-xl font-medium text-primary-900">Marital Status</h3>
                         <div class="flex">
                             <PrimaryButton :onClick="toggleAddFunc" title="Add Marital Status" type="solid" />
-                            <PrimaryButton title="Import Marital Status" />
+                            <!-- <PrimaryButton title="Import Marital Status/" /> -->
                         </div>
                     </div>
                     <div class="flex items-center justify-between">
@@ -70,7 +70,7 @@
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button @click="deleteMaritalStatus(marital_status.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -90,15 +90,13 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
-                    </div>
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
 
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <Input v-model="marital_status.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleAddFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -115,15 +113,13 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
-                    </div>
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitEdit">
 
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <Input v-model="marital_status.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleEditFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -138,7 +134,10 @@ import TableFilter from "~/components/TableFilter.vue"
 import PrimaryButton from "~/components/PrimaryButton.vue"
 import Sliding from "~/components/Sliding.vue"
 import Tabs from "~/components/Tabs.vue"
-import {mapState} from 'vuex'
+import Button from "~/components/Button.vue"
+import FormButton from "~/components/FormButton.vue"
+import Input from "~/components/form/Input.vue"
+import {mapState, mapActions} from 'vuex'
 export default {
     components: {
         SubSideBar,
@@ -146,17 +145,28 @@ export default {
         TableFilter,
         PrimaryButton,
         Sliding,
-        Tabs
+        Tabs,
+        Button,
+        FormButton,
+        Input
     },
     data() {
         return {
             table_head_data: ['Name', '', ],
-            toggle_add_state: false,
-            toggle_edit_state: false,
-            name: '',
+            toggle_add: false,
+            toggle_edit: false,
+            marital_status: {
+                name: '',
+            }
+            
         }
     },
     methods: {
+        ...mapActions({
+            addMaritalStatus: 'settings/owner_manager/addMaritalStatus',
+            deleteMaritalStatus: 'settings/owner_manager/deleteMaritalStatus',
+            editMaritalStatus: 'settings/owner_manager/editMaritalStatus',
+        }),
         toggleAddFunc () {
             this.toggle_add = !this.toggle_add
         },
@@ -165,14 +175,15 @@ export default {
             this.marital_statuses.map( marital_status => {
                 if(marital_status.name === name) {
                     this.name = marital_status.name
+                    this.selected_id = marital_status.id
                 }
             })
         },
         submitAdd () {
-
+            this.addMaritalStatus(this.marital_status)
         },
         submitEdit () {
-            
+            this.editMaritalStatus({marital_status: this.marital_status, id: this.selected_id})
         }
     },
     computed: mapState({

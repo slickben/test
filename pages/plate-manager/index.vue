@@ -1,10 +1,10 @@
-                                                                                                                                                <template>
+                                                                                                                    <template>
     <div class="pb-8">
         <BreadCrumb title="Plate Manager">
             <!-- <nuxt-link class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" to="/vehicle-manager/vehicles/create">
                 New Registration
             </nuxt-link> -->
-            <Button type="solid" title="New" />
+            <!-- <Button type="solid" title="New" /> -->
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <div class="grid grid-cols-1 gap-y-10">
@@ -20,17 +20,17 @@
                             <TableFilter />
                         </template>
 
-                        <tr class="relative" v-for="vehicle in vehicles">
-                            <td class="text-left py-4 px-5">{{ vehicle.attributes.plateNumber }}</td>
+                        <tr class="relative" v-for="plate in plates">
+                            <td class="text-left py-4 px-5">{{ plate.number }}</td>
                             <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
                             <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                            <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.attributes.ownedBy) }}</a></td>
-                            <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.attributes.category }}</a></td>
-                            <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.attributes.createdAt).format('MMMM d, YYYY') }}</a></td>
+                            <!-- <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.attributes.ownedBy) }}</a></td> -->
+                            <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ plate.type}}</a></td>
+                            <!-- /<td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(plate).format('MMMM d, YYYY') }}</a></td> -->
                             <td class="text-left py-4 px-5">
-                                <Status classes="w-24 h-8 text-xs" status="approved" />
+                                <PlateStatus classes="w-24 h-8 text-xs" :status="plate.status" />
                             </td>
-                            <div @click="getSelectedPLateId(vehicle.id)" class="absolute inset-0 block"></div>
+                            <div @click="getSelectedPlate(plate.number)" class="absolute inset-0 block"></div>
                         </tr>
                     </Table>
                 </div>
@@ -40,7 +40,7 @@
             <template slot="head">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h4 class="text-2xl text-primary-900 font-semibold">KRD 765 AY</h4>
+                        <h4 class="text-2xl text-primary-900 font-semibold">{{ selected_plate.number }}</h4>
                         <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
                     </div>
                     <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
@@ -58,8 +58,62 @@
                         {{ tab }}
                     </li>
                 </template>
-                <div class="p-5" v-show="activeTab === 0">
-                    
+                <div class="p-5 px-10" v-show="activeTab === 0">
+                    <div class="flex-grow flex">
+                        <div class="flex-none w-50 border-r pr-8 py-3">
+                            <p class=" text-tertiary-300 py-3 text-left">Plate Number</p>
+                            <p class=" text-tertiary-300 py-3 text-left">Plate Type</p>
+                            <!-- <p class=" text-tertiary-300 py-3 text-left">Email Address</p> -->
+                            <p class=" text-tertiary-300 py-3 text-left">Issued Date</p>
+                            <p class=" text-tertiary-300 py-3 text-left">State Of Allocation</p>
+                            <p class=" text-tertiary-300 py-3 text-left">Status</p>
+                        </div>
+                        <div class="px-10 py-3 text-left">
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.number }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.type }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.createdAt ?  selected_plate.createdAt : ''}}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.state_of_allocation ? selected_plate.state_of_allocation : '' }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.status }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 px-10" v-show="activeTab === 1">
+                    <div class="flex-grow flex" v-if="selected_plate.owner !== null">
+                        <div class="flex-none w-50 border-r pr-8 py-3">
+                            <p class=" text-tertiary-300 py-3 text-left">{{ selected_plate.owner !== null }}</p>
+                            <p class=" text-tertiary-300 py-3 text-left">Plate Type</p>
+                            <!-- <p class=" text-tertiary-300 py-3 text-left">Email Address</p> -->
+                            <p class=" text-tertiary-300 py-3 text-left">Issued Date</p>
+                            <p class=" text-tertiary-300 py-3 text-left">State Of Allocation</p>
+                            <p class=" text-tertiary-300 py-3 text-left">Status</p>
+                        </div>
+                        <div class="px-10 py-3 text-left">
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.number }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.type }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.createdAt ?  selected_plate.createdAt : ''}}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.state_of_allocation ? selected_plate.state_of_allocation : '' }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.status }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 px-10" v-show="activeTab === 2" >
+                    <div class="flex-grow flex " v-if="selected_plate.owner !== null">
+                        <div class="flex-none w-50 border-r pr-8 py-3">
+                            <p class=" text-tertiary-300 py-3 text-left">{{ selected_plate.owner !== null }}</p>
+                            <p class=" text-tertiary-300 py-3 text-left">Plate Type</p>
+                            <!-- <p class=" text-tertiary-300 py-3 text-left">Email Address</p> -->
+                            <p class=" text-tertiary-300 py-3 text-left">Issued Date</p>
+                            <p class=" text-tertiary-300 py-3 text-left">State Of Allocation</p>
+                            <p class=" text-tertiary-300 py-3 text-left">Status</p>
+                        </div>
+                        <div class="px-10 py-3 text-left">
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.number }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.type }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.createdAt ?  selected_plate.createdAt : ''}}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.state_of_allocation ? selected_plate.state_of_allocation : '' }}</p>
+                            <p class=" text-tertiary-600 py-3">{{ selected_plate.status }}</p>
+                        </div>
+                    </div>
                 </div>
             </Tabs>
         </Sliding>
@@ -69,7 +123,7 @@
 <script>
 import AnalysisCard from '~/components/AnalysisCard.vue';
 import Table from '~/components/Table.vue';
-import Status from '~/components/Status.vue';
+import PlateStatus from '~/components/PlateStatus.vue';
 import BreadCrumb from '~/components/BreadCrumb.vue';
 import TableFilter from '~/components/TableFilter.vue';
 import Button from '~/components/Button.vue';
@@ -78,14 +132,14 @@ export default {
     components: {
         AnalysisCard,
         Table,
-        Status,
+        PlateStatus,
         BreadCrumb,
         TableFilter,
         Button
     },
     data() {
         return {
-            table_head_data: ['Vehicle id#', 'Owner Name', 'Vehicle Category', 'Plate Number', 'Verification Status'],
+            table_head_data: ['Plate Number', 'Plate Type', 'Status'],
             toggle_slide: false,
             activeTab: 0,
             tabs: [
@@ -93,33 +147,27 @@ export default {
                 "Owner Information",
                 "Vehicle Information",
             ],
+            selected_plate: ''
         }
     },
     computed: {
         ...mapState({
-            vehicles: state => state.vehicle.vehicles,
+            plates: state => state.plate.plates,
         })
     },
     methods: {
-        getSelectedPLateId(id) {
-            console.log(id)
-            this.toggle_slide = !this.toggle_slide
-        },
-        toggleSlide () {
-            this.toggle_slide = !this.toggle_slide
-        },
-        getOwnerName (owner) {
-            let ownersName
-            if(owner.attributes.type === 'Business') {
-                ownersName = owner.attributes.businessName
-            }else if (owner.attributes.type === 'Government') {
-                ownersName = owner.attributes.agencyName
-            }else {
-                ownersName = `${owner.attributes.firstName} ${owner.attributes.lastName} ${owner.attributes.otherName ? owner.attributes.otherName : ''}`
-            }
+        toggleSlide() {
 
-            return ownersName
+            this.toggle_slide = !this.toggle_slide
+
+        },
+        getSelectedPlate(number) {
+            this.selected_plate = this.plates.find( plate => plate.number == number)
+            this.toggle_slide = !this.toggle_slide
         }
+    },
+    async asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+        await store.dispatch('plate/getAllPlateNumbers')
     },
 }
 </script>

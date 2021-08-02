@@ -2,7 +2,7 @@
     <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
         <!-- Sidebar Start -->
         <Sidebar>
-            <ul class="pt-3">
+            <ul class="">
                 <Nav :toggleNav="toggleNav" name="Overview" link="/owner-manager">
                     <img src="~assets/icons/dashboard.svg" alt="" srcset="">
                 </Nav>

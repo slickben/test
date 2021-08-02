@@ -1,17 +1,10 @@
 <template>
   <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
-    <!-- Sidebar Start -->
-    <Sidebar>
-      <ul class="pt-3">
-        <Nav :toggleNav="toggleNav" name="Plate Number" link="/plate-manager">
-          <img src="~assets/icons/dashboard.svg" alt="" srcset="" />
-        </Nav>
-      </ul>
-    </Sidebar>
+    
     <!-- Sidebar Ends -->
     <div class="w-full h-full flex flex-col">
       <!-- Navigation starts -->
-      <Navigation css="bg-white px-8 2xl:pr-24 shadow z-10 flex-none">
+      <Navigation css="bg-white px-8 2xl:px-24 shadow z-10 flex-none">
         <template v-slot:right>
           <svg
             width="24"
@@ -32,12 +25,11 @@
           </svg>
         </template>
         <template v-slot:lift>
-          <ToggleSideBarBtn />
+          <Logo size="big" />
         </template>
       </Navigation>
       <!-- Navigation ends -->
       <div
-        :class="{'relative' : !isCreate }"
         class="
           flex-grow
           h-full
@@ -64,13 +56,13 @@ import Navigation from '~/components/Navigation.vue'
 import ToggleSideBarBtn from '~/components/ToggleSideBarBtn.vue'
 import BreadCrumb from '~/components/BreadCrumb.vue'
 import Footer from '~/components/Footer.vue'
+import Logo from '~/components/Logo.vue'
 import Nav from '~/components/Nav.vue'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'OwnerManager',
+  name: 'plateManager',
   auth: false,
-  layout: 'vehicle',
   components: {
     Sidebar,
     Navigation,
@@ -78,19 +70,10 @@ export default {
     BreadCrumb,
     Footer,
     Nav,
+    Logo
   },
   computed: mapState({
     toggleNav: (state) => state.toggleNav,
   }),
-  asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
-    let path = route.path.split('/')
-    let isCreate;
-    if(path.pop() == 'create') {
-      isCreate = true
-    }
-    return {
-      isCreate
-    }
-  },
 }
 </script>

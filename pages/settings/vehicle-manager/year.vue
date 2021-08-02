@@ -90,7 +90,7 @@
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button @click="deleteYear(year.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -110,15 +110,13 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Name</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter Name" />
-                    </div>
+                 <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
 
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <date-picker lang="en" type="date" v-model="year.name" format="yyyy"/> 
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleAddFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -135,15 +133,14 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Name</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter Name" />
-                    </div>
+                 <form class="p-6 px-10 pt-16" @submit.prevent="submitEdit">
 
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <date-picker lang="en" type="date" v-model="year.name" format="yyyy"/> 
+                    <!-- <Input v-model="year.name" type="number" id="name" lable="Name" place_holder="Enter Name" /> -->
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleEditFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -158,7 +155,11 @@ import TableFilter from "~/components/TableFilter.vue"
 import PrimaryButton from "~/components/PrimaryButton.vue"
 import Sliding from "~/components/Sliding.vue"
 import Tabs from "~/components/Tabs.vue"
-import {mapState} from 'vuex'
+import Button from "~/components/Button.vue"
+import FormButton from "~/components/FormButton.vue"
+import Input from "~/components/form/Input.vue"
+import Datepicker from 'vuejs-datepicker'
+import {mapState, mapActions} from 'vuex'
 export default {
     components: {
         SubSideBar,
@@ -166,33 +167,48 @@ export default {
         TableFilter,
         PrimaryButton,
         Sliding,
-        Tabs
+        Tabs,
+        Button,
+        FormButton,
+        Input,
+        Datepicker
     },
     data() {
         return {
             table_head_data: ['Name',  '', ],
             toggle_add: false,
             toggle_edit: false,
-            name: '',
+            year: {
+                name: new Date()
+            },
+            selected_year: '',
+            DatePickerFormat: 'yyyy',
         }
     },
     methods: {
+        ...mapActions({
+            addYear: 'settings/vehicle_manager/addYear',
+            deleteYear: 'settings/vehicle_manager/deleteYear',
+            editYear: 'settings/vehicle_manager/editYear',
+        }),
         toggleAddFunc () {
             this.toggle_add = !this.toggle_add
+            this.year = ''
         },
         toggleEditFunc (name) {
             this.toggle_edit = !this.toggle_edit
             this.years.map( year => {
                 if(year.name === name) {
                     this.name = year.name
+                    this.selected_year = year.id
                 }
             })
         },
-        submitAddState () {
-
+        submitAdd () {
+            this.addYear(this.year)
         },
-        submitEditState () {
-            
+        submitEdit () {
+            this.editYear({year: this.year, id: this.selected_year})
         }
     },
     computed: mapState({

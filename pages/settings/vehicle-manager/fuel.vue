@@ -90,7 +90,7 @@
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button @click="deleteFuel(fuel.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -110,15 +110,13 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
-                    </div>
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
 
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <Input v-model="fuel.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleAddFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -135,15 +133,13 @@
                 </div>
             </template>
             <div>
-                <form class="p-6" action="">
-                    <div class="flex flex-col pb-6">
-                        <label for="State" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State</label>
-                        <input v-model="name" id="State" type="text" class="text-tertiary-300 focus:outline-none f bg-white font-normal w-full h-10 flex items-center pl-3 text-xs border-tertiary-500 rounded border" placeholder="Enter State" />
-                    </div>
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitEdit">
 
-                    <div class="col-span-2 flex items-center justify-center py-6">
-                        <Button title="Done" type="solid" />
-                        <Button title="Cancle" />
+                    <Input v-model="fuel.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton title="Done" type="solid" />
+                        <Button :onClick="toggleEditFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
@@ -158,7 +154,10 @@ import TableFilter from "~/components/TableFilter.vue"
 import PrimaryButton from "~/components/PrimaryButton.vue"
 import Sliding from "~/components/Sliding.vue"
 import Tabs from "~/components/Tabs.vue"
-import {mapState} from 'vuex'
+import Button from "~/components/Button.vue"
+import FormButton from "~/components/FormButton.vue"
+import Input from "~/components/form/Input.vue"
+import {mapState, mapActions} from 'vuex'
 export default {
     components: {
         SubSideBar,
@@ -166,33 +165,46 @@ export default {
         TableFilter,
         PrimaryButton,
         Sliding,
-        Tabs
+        Tabs,
+        Button,
+        FormButton,
+        Input
     },
     data() {
         return {
             table_head_data: ['Name', '', ],
             toggle_add: false,
             toggle_edit: false,
-            name: '',
+            fuel: {
+                name: '',
+            },
+            selected_id: ''
         }
     },
     methods: {
+        ...mapActions({
+            addFuel: 'settings/vehicle_manager/addFuel',
+            deleteFuel: 'settings/vehicle_manager/deleteFuel',
+            editFuel: 'settings/vehicle_manager/editFuel',
+        }),
         toggleAddFunc () {
             this.toggle_add = !this.toggle_add
+            this.fuel.name = ''
         },
         toggleEditFunc (name) {
             this.toggle_edit = !this.toggle_edit
             this.fuels.map( fuel => {
                 if(fuel.name === name) {
-                    this.name = fuel.name
+                    this.fuel.name = fuel.name
+                    this.selected_id = fuel.id
                 }
             })
         },
         submitAdd () {
-
+            this.addFuel(this.fuel)
         },
         submitEdit () {
-            
+            this.editFuel({fuel: this.fuel, id: this.selected_id})
         }
     },
     computed: mapState({

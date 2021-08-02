@@ -87,7 +87,7 @@ export default {
     },
 
     // year
-    ADD_categories(state, years) {
+    ADD_YEARS(state, years) {
         state.years = years
     },
     ADD_YEAR (state, year) {

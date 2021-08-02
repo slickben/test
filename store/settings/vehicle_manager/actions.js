@@ -7,7 +7,7 @@ class Model {
 }
 
 const geModelMake = (makes, make_id) => {
-    return makes.find(make => make.id === make_id)
+    return makes.find(make => make.id == make_id)
 }
 
 export default {
@@ -41,7 +41,7 @@ export default {
     async deleteEngine({ commit, }, id) {
         try {
             const { data } = await this.$axios.delete(`/settings/vehicle/engine-capacity/${id}`);
-            commit('REMOVE_ENGINE', data);
+            commit('REMOVE_ENGINE', id);
         } catch (err) {
             console.log(err)
         }
@@ -78,7 +78,7 @@ export default {
     async deleteFuel({ commit, }, id) {
         try {
             const { data } = await this.$axios.delete(`/settings/vehicle/fuel-types/${id}`);
-            commit('REMOVE_FUEL', data);
+            commit('REMOVE_FUEL', id);
         } catch (err) {
             console.log(err)
         }
@@ -90,11 +90,11 @@ export default {
             const { data } = await this.$axios.get('/settings/vehicle/models');
             const makes = await this.$axios.get('/settings/vehicle/makes');
 
-            let Models = data.map(model => {
+            let models = data.map(model => {
                 return new Model(model.name, model.id, geModelMake(makes.data, model.make_id).name)
             })
 
-            commit('ADD_MODELS', Models);
+            commit('ADD_MODELS', models);
         } catch (err) {
             console.log(err)
             // commit('ADD_MODEL', err);
@@ -106,23 +106,24 @@ export default {
             const { data } = await this.$axios.post('/settings/vehicle/models', model);
             const makes = await this.$axios.get('/settings/vehicle/makes');
 
-            let model = new Model(data.name, data.id, geModelMake(makes.data, data.make_id).name)
+            let new_model = new Model(data.name, data.id, geModelMake(makes.data, data.make_id).name)
 
-            commit('ADD_MODEL', model);
+            commit('ADD_MODEL', new_model);
         } catch (err) {
             console.log(err)
             // commit('ADD_MODEL', err);
         }
 
     },
-    async editModel({ commit, }, {_model, id}) {
+    async editModel({ commit, }, {model, id }) {
         try {
-            const { data } = await this.$axios.patch(`/settings/vehicle/models/${id}`, _model);
+            console.log(id)
+            const { data } = await this.$axios.patch(`/settings/vehicle/models/${id}`, model);
             const makes = await this.$axios.get('/settings/vehicle/makes');
+            console.log(geModelMake(makes.data, data.make_id).name)
+            let vehicle_model = new Model(data.name, data.id, geModelMake(makes.data, data.make_id).name)
 
-            let model = new Model(data.name, data.id, geModelMake(makes.data, data.make_id).name)
-
-            commit('UPDATE_MODEL', model);
+            commit('UPDATE_MODEL', vehicle_model);
         } catch (err) {
             console.log(err)
             // commit('ADD_MODEL', err);
@@ -320,7 +321,7 @@ export default {
     async deleteHackneyCode({ commit, }, id) {
         try {
             const { data } = await this.$axios.delete(`/settings/vehicle/hackney-codes/${id}`);
-            commit('REMOVE_HACKNEY_CODE', data);
+            commit('REMOVE_HACKNEY_CODE', id);
         } catch (err) {
             console.log(err)
         }
@@ -357,7 +358,7 @@ export default {
     async deleteCommercialSeatCode({ commit, }, id) {
         try {
             const { data } = await this.$axios.patch(`/settings/vehicle/commercial-seat-codes/${id}`);
-            commit('REMOVE_COMMERCIAL_SEAT_CODE', data);
+            commit('REMOVE_COMMERCIAL_SEAT_CODE', id);
         } catch (err) {
             console.log(err)
         }

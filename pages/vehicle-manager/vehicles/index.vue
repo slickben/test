@@ -21,7 +21,7 @@
                     <td class="text-left py-4 px-5">
                         <Status classes="w-24 h-8 text-xs" status="approved" />
                     </td>
-                    <nuxt-link :to="`/vehicle-manager/${vehicle.type}/${vehicle.id}`" class="absolute inset-0 "></nuxt-link>
+                    <nuxt-link :to="`/vehicle-manager/vehicles/${vehicle.id}`" class="absolute inset-0 "></nuxt-link>
                 </tr>
             </Table>
         </div>

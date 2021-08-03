@@ -13,69 +13,69 @@
                         </div>
                         <div class="col-span-2">
                             <h5 class="text-xs font-normal text-tertiary-300">Owner's Name</h5>
-                            <p class="text-xl text-tertiary-700 font-medium">{{ getOwnerName(vehicle.attributes.ownedBy) ? getOwnerName(vehicle.attributes.ownedBy) : '-'}}</p>
+                            <p class="text-xl text-tertiary-700 font-medium">{{ getOwnerName(vehicle.ownedBy) ? getOwnerName(vehicle.ownedBy) : '-'}}</p>
                         </div>
                         <div class="col-span-2">
                             <h5 class="text-xs font-normal text-tertiary-300">Plate Number</h5>
-                            <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.attributes.plateNumber ? vehicle.attributes.plateNumber : '-' }}</p>
+                            <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.plateNumber ? vehicle.plateNumber : '-' }}</p>
                         </div>
                     </template>
                     <div class="col-span-2 grid grid-cols-3 xl:grid-cols-4 gap-y-4">
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Make</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.make ? vehicle.attributes.make : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.make ? vehicle.make : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Color </h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.color ? vehicle.attributes.color : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.color ? vehicle.color : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Fuel Type</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.fuelType ? vehicle.attributes.fuelType : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.fuelType ? vehicle.fuelType : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Vehicle Category</h5>
-                            <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.attributes.category ? vehicle.attributes.category : '-' }}</p>
+                            <p class="text-xl text-tertiary-700 font-medium">{{ vehicle.category ? vehicle.category : '-' }}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Tank Capacity</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.tankCapacity ? vehicle.attributes.tankCapacity : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.tankCapacity ? vehicle.tankCapacity : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Model</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.model ? vehicle.attributes.model : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.model ? vehicle.model : '-'}}</p>
                         </div>
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300 capitalize">Engine Capacity</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.engineCapacity ? vehicle.attributes.engineCapacity : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.engineCapacity ? vehicle.engineCapacity : '-'}}</p>
                         </div>
                         <!-- <div>
                             <h5 class="text-xs font-normal text-tertiary-300 truncate">State Of Plate Number Allocation</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.stateOfPlateNumberAllocation ? vehicle.attributes.stateOfPlateNumberAllocation : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.stateOfPlateNumberAllocation ? vehicle.stateOfPlateNumberAllocation : '-'}}</p>
                         </div> -->
                         <div>
                             <h5 class="text-xs font-normal text-tertiary-300">Year</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.year ? vehicle.attributes.year : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.year ? vehicle.year : '-'}}</p>
                         </div>
                         <div class="">
                             <h5 class="text-xs font-normal text-tertiary-300">Engine Number</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.engineNumber ? vehicle.attributes.engineNumber : '-'}}</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.engineNumber ? vehicle.engineNumber : '-'}}</p>
                         </div>
-                        <div v-if="vehicle.attributes.seatCode" class="">
+                        <div v-if="vehicle.seatCode" class="">
                             <h5 class="text-xs font-normal text-tertiary-300">Seat Code</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.seatCode.code ? vehicle.attributes.seatCode.code : '-'}} Seat</p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.seatCode.code ? vehicle.seatCode.code : '-'}} Seat</p>
                         </div>
                         <div class="">
                             <h5 class="text-xs font-normal text-tertiary-300">Type</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.type ? vehicle.attributes.type : '-'}} </p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.type ? vehicle.type : '-'}} </p>
                         </div>
                         <div class="">
                             <h5 class="text-xs font-normal text-tertiary-300">chansis Number</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.chansisNumber ? vehicle.attributes.chansisNumber : '-'}} </p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.chansisNumber ? vehicle.chansisNumber : '-'}} </p>
                         </div>
                         <div class="">
                             <h5 class="text-xs font-normal text-tertiary-300">Mileage</h5>
-                            <p class="text-tertiary-700 font-medium">{{ vehicle.attributes.mileage ? vehicle.attributes.mileage : '-'}} </p>
+                            <p class="text-tertiary-700 font-medium">{{ vehicle.mileage ? vehicle.mileage : '-'}} </p>
                         </div>
                     </div>
                 </BioData>
@@ -253,12 +253,15 @@ export default {
         },
         getOwnerName (owner) {
             let ownersName
-            if(owner.attributes.type === 'Business') {
-                ownersName = owner.attributes.businessName
-            }else if (owner.attributes.type === 'Government') {
-                ownersName = owner.attributes.agencyName
+            if(!owner) {
+                return
+            }
+            if(owner.type === 'Business') {
+                ownersName = owner.businessName
+            }else if (owner.type === 'Government') {
+                ownersName = owner.agencyName
             }else {
-                ownersName = `${owner.attributes.firstName} ${owner.attributes.lastName} ${owner.attributes.otherName ? owner.attributes.otherName : ''}`
+                ownersName = `${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
             }
 
             return ownersName
@@ -270,22 +273,22 @@ export default {
         let vehicle = vehicles.find( vehicle => vehicle.id == params.id)
         let update_data = {
             id: vehicle.id,
-            vehicleCategory: vehicle.attributes.category,
-            plateNumber: vehicle.attributes.plateNumber,
-            make: vehicle.attributes.make,
-            model: vehicle.attributes.model,
-            color: vehicle.attributes.color,
-            engineCapacity: vehicle.attributes.engineCapacity,
-            engineNumber: vehicle.attributes.engineNumber,
-            fuelType: vehicle.attributes.fuelType,
-            tankCapacity: vehicle.attributes.tankCapacity,
-            stateOfPlateNumberAllocation: vehicle.attributes.stateOfPlateNumberAllocation,
-            seatCode: vehicle.attributes.seatCode,
-            type: vehicle.attributes.type,
-            chansisNumber: vehicle.attributes.chansisNumber,
-            mileage: vehicle.attributes.mileage,
-            year: vehicle.attributes.year,
-            hackneyCode: vehicle.attributes.hackneyCode
+            vehicleCategory: vehicle.category,
+            plateNumber: vehicle.plateNumber,
+            make: vehicle.make,
+            model: vehicle.model,
+            color: vehicle.color,
+            engineCapacity: vehicle.engineCapacity,
+            engineNumber: vehicle.engineNumber,
+            fuelType: vehicle.fuelType,
+            tankCapacity: vehicle.tankCapacity,
+            stateOfPlateNumberAllocation: vehicle.stateOfPlateNumberAllocation,
+            seatCode: vehicle.seatCode,
+            type: vehicle.type,
+            chansisNumber: vehicle.chansisNumber,
+            mileage: vehicle.mileage,
+            year: vehicle.year,
+            hackneyCode: vehicle.hackneyCode
         }
         return {
             vehicle,

@@ -30,7 +30,7 @@
                         </button>
                     </div>
                     <div class="flex-grow">
-                        <forn class="h-full flex flex-col">
+                        <form class="h-full flex flex-col">
                             <!-- wizard form timeline -->
                             <div class="text-xs font-medium text-tertiary-300 border-b relative">
                                 <div class="py-4 text-center text-sm font-normal text-tertiary-600 ">
@@ -143,7 +143,7 @@
                                 <Button :onClick="next" v-show="step < 4" type="secondary"  title="Next"/>
                                 <Button :onClick="submitPersonaInfo" v-show="step > 3" class="" type="solid" title="Submit"/>
                             </div>
-                        </forn>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                 this.step-= 1
             },
             submitPersonaInfo() {
-                
+
             }
         }
     }

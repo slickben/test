@@ -65,7 +65,6 @@
       </Navigation>
       <!-- Navigation ends -->
       <div
-        :class="{'relative' : !isCreate }"
         class="
           flex-grow
           h-full

@@ -102,106 +102,7 @@
                         <ActivitiesLog />
                     </div>
                 </div>
-                <Sliding classes="min-w-150" v-show="toggle_slide"> 
-                    <template slot="head">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="text-2xl text-primary-900 font-semibold">Update Data</h4>
-                                <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
-                            </div>
-                            <button @click="toggleSlide" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
-                        </div>
-                    </template>
-                    <Tabs>
-                        <template slot="head">
-                            <li 
-                                v-for="(tab, index) in tabs" 
-                                :key="index" 
-                                class="text-xs cursor-pointer py-2 mr-10 text-tertiary-500 border-b-4 "
-                                :class="activeTab===index ? 'text-purple-600 border-purple-600' : 'border-transparent'" 
-                                @click="activeTab = index"
-                            >
-                                {{ tab }}
-                            </li>
-                        </template>
-                        <div class="p-5" v-show="activeTab === 0">
-                            <form class="grid grid-cols-2 gap-6" @submit.prevent="submitUpdateOwner">
-                                <div class="flex flex-col">
-                                    <label for="first_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Vehicle Category</label>
-                                    <input v-model="update_data.vehicleCategory" id="first_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="last_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Vehicle Make</label>
-                                    <input v-model="update_data.make" id="last_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="agency_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Plate Number</label>
-                                    <input v-model="update_data.plateNumber" id="agency_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Erinjobe" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="district" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Vehicle Model</label>
-                                    <input v-model="update_data.model" id="district" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Male" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="role_or_permission" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Type</label>
-                                    <input v-model="update_data.type" id="role_or_permission" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="0123456789101" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="ministry" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Year Of Manufacture</label>
-                                    <input v-model="update_data.year" id="ministry" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="23 Jan, 1994" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="address" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Engine Capacity</label>
-                                    <input v-model="update_data.engineCapacity" id="address" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="+2348012345678" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="state" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Engine Number</label>
-                                    <input v-model="update_data.engineNumber" id="state" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ireposi South" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="city" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Fuel Type</label>
-                                    <input v-model="update_data.fuelType" id="city" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="everything.some@nothing.com" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Chansis Number</label>
-                                    <input v-model="update_data.chansisNumber" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">State Of Plate Number Allocation</label>
-                                    <input v-model="update_data.stateOfPlateNumberAllocation" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Vehicle Color</label>
-                                    <input v-model="update_data.color" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Engine Capacity</label>
-                                    <input v-model="update_data.engineCapacity" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Hackney Code</label>
-                                    <input v-model="update_data.hackneyCode" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Mileage</label>
-                                    <input v-model="update_data.mileage" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div v-if="update_data.seatCode" class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Seet Code</label>
-                                    <input v-model="update_data.seatCode.code" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="lga" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Seet Code</label>
-                                    <input v-model="update_data.tankCapacity" id="lga" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Ikeja" />
-                                </div>
-                                <div class="col-span-2 flex items-center justify-center py-6">
-                                    <Button title="Save Changes" type="solid" />
-                                    <Button title="Cancle" />
-                                </div>
-                            </form>
-                        </div>
-                    </Tabs>
-                </Sliding>
+                
             </div>
         </div>
     </div>
@@ -213,6 +114,8 @@ import BioData from '~/components/BioData.vue';AssetsCard
 import ActivitiesLog from '~/components/ActivitiesLog.vue';
 import AssetsCard from '~/components/AssetsCard.vue';
 import Sliding from '~/components/Sliding.vue';
+import Button from '~/components/Button.vue';
+import FormButton from '~/components/FormButton.vue';
 import Tabs from '~/components/Tabs.vue';
 import BreadCrumb from '~/components/BreadCrumb.vue';
 import { mapState, mapActions } from 'vuex'
@@ -238,6 +141,8 @@ export default {
         Sliding,
         Tabs,
         BreadCrumb,
+        FormButton,
+        Button
     },
     computed: {
         ...mapState({

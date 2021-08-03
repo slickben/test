@@ -92,5 +92,27 @@
         top: 0;
         line-height: normal;
     }
+    .checkbox:checked {
+        /* Apply class right-0*/
+        right: 0;
+    }
+    .checkbox:checked + .toggle-label {
+        /* Apply class bg-indigo-700 */
+        background-color: #3968F9;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 15px;
+        -webkit-appearance: none;
+          appearance: none;
+        height: 30px;
+        cursor: ew-resize;
+        background: #FFF;
+        box-shadow: 0px 0px 5px rgba(112, 112, 112, 0.5);
+        z-index: 30;
+        border-radius: 50%;
+        
+    }
+
 }
 

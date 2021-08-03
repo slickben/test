@@ -60,6 +60,7 @@ module.exports = {
        minWidth: {
         '105': '26.25rem',
         '150': '37.5rem',
+        '139': '34.75rem',
         '10': '2.5rem',
         '28': '7rem',
        },
@@ -75,6 +76,7 @@ module.exports = {
         '98': '24.5rem',
         '75': '18.75rem',
         '100': '25rem',
+        '139': '34.75rem',
         'lg-screen': '1280px',
        },
       colors: {

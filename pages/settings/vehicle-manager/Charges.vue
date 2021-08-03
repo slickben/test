@@ -54,6 +54,13 @@
                         >
                         <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/license">Vehicle License</nuxt-link>
                         </li>
+                        <li
+                        class="w-full border-b hover:border-transparent "
+                        >
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/document">Vehicle Document</nuxt-link>
+                        </li>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/Charges"> Charges</nuxt-link>
+                        </li>
                     </ul>
                 </nav>
             </SubSideBar>
@@ -62,9 +69,9 @@
             <SettingsTable :head_data="table_head_data">
                 <template slot="head">
                     <div class="flex items-center justify-between pb-6 xl:py-10">
-                        <h3 class="text-xl font-medium text-primary-900">Year Of Manufacture</h3>
+                        <h3 class="text-xl font-medium text-primary-900">Registration Category</h3>
                         <div class="flex">
-                            <PrimaryButton :onClick="toggleAddFunc" title="Add Year" type="solid" />
+                            <PrimaryButton :onClick="toggleAddFunc" title="Add Category" type="solid" />
                             <!-- <PrimaryButton title="Import State" /> -->
                         </div>
                     </div>
@@ -82,15 +89,15 @@
                         </div>
                     </div>
                 </template>
-                <tr v-for="year in years" class="hover:bg-primary-100 group ">
-                    <td class="py-5 px-4"> {{ year.name }} </td>
+                <tr v-for="category in categories" class="hover:bg-primary-100 group ">
+                    <td class="py-5 px-4"> {{ category.name }} </td>
                     <td class="py-5 px-4 group-hover:text-tertiary-400 text-transparent flex justify-end">
                         <div class="flex items-center">
-                            <button @click="toggleEditFunc(year.name)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button @click="toggleEditFunc(category.name)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button @click="deleteYear(year.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button @click="deleteCategory(category.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -103,16 +110,16 @@
             <template slot="head">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h4 class="text-2xl text-primary-900 font-semibold">Add  Year</h4>
+                        <h4 class="text-2xl text-primary-900 font-semibold">Add Category</h4>
                         <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
                     </div>
                     <button @click="toggleAddFunc" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
                 </div>
             </template>
             <div>
-                 <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
 
-                    <!-- <date-picker lang="en" type="date" v-model="year.name" format="yyyy"/>  -->
+                    <Input v-model="category.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
 
                     <div class="col-span-2 flex items-center justify-end py-6 pt-10">
                         <FormButton title="Done" type="solid" />
@@ -126,17 +133,16 @@
             <template slot="head">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h4 class="text-2xl text-primary-900 font-semibold">Edit Year</h4>
+                        <h4 class="text-2xl text-primary-900 font-semibold">Edit Category</h4>
                         <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
                     </div>
                     <button @click="toggleEditFunc" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
                 </div>
             </template>
             <div>
-                 <form class="p-6 px-10 pt-16" @submit.prevent="submitEdit">
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitEdit">
 
-                    <!-- <date-picker lang="en" type="date" v-model="year.name" format="yyyy"/>  -->
-                    <!-- <Input v-model="year.name" type="number" id="name" lable="Name" place_holder="Enter Name" /> -->
+                    <Input v-model="category.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
 
                     <div class="col-span-2 flex items-center justify-end py-6 pt-10">
                         <FormButton title="Done" type="solid" />
@@ -153,12 +159,11 @@ import SubSideBar from "~/components/SubSideBar.vue"
 import SettingsTable from "~/components/SettingsTable.vue"
 import TableFilter from "~/components/TableFilter.vue"
 import PrimaryButton from "~/components/PrimaryButton.vue"
-import Sliding from "~/components/Sliding.vue"
-import Tabs from "~/components/Tabs.vue"
 import Button from "~/components/Button.vue"
 import FormButton from "~/components/FormButton.vue"
 import Input from "~/components/form/Input.vue"
-// import Datepicker from 'vuejs-datepicker'
+import Sliding from "~/components/Sliding.vue"
+import Tabs from "~/components/Tabs.vue"
 import {mapState, mapActions} from 'vuex'
 export default {
     components: {
@@ -168,54 +173,53 @@ export default {
         PrimaryButton,
         Sliding,
         Tabs,
-        Button,
-        FormButton,
         Input,
-        // Datepicker
+        Button,
+        FormButton
     },
     data() {
         return {
-            table_head_data: ['Name',  '', ],
+            table_head_data: ['Name', '', ],
             toggle_add: false,
             toggle_edit: false,
-            year: {
-                name: new Date()
+            category: {
+                name: '',
             },
-            selected_year: '',
-            // DatePickerFormat: 'yyyy',
+            selected_id: ''
+            
         }
     },
     methods: {
         ...mapActions({
-            addYear: 'settings/vehicle_manager/addYear',
-            deleteYear: 'settings/vehicle_manager/deleteYear',
-            editYear: 'settings/vehicle_manager/editYear',
+            addCategory: 'settings/vehicle_manager/addCategory',
+            deleteCategory: 'settings/vehicle_manager/deleteCategory',
+            editCategory: 'settings/vehicle_manager/editCategory',
         }),
         toggleAddFunc () {
             this.toggle_add = !this.toggle_add
-            this.year = ''
+            this.category.name = ''
         },
         toggleEditFunc (name) {
             this.toggle_edit = !this.toggle_edit
-            this.years.map( year => {
-                if(year.name === name) {
-                    this.name = year.name
-                    this.selected_year = year.id
+            this.categories.map( category => {
+                if(category.name === name) {
+                    this.category.name = category.name
+                    this.selected_id = category.id
                 }
             })
         },
         submitAdd () {
-            this.addYear(this.year)
+            this.addCategory(this.category)
         },
         submitEdit () {
-            this.editYear({year: this.year, id: this.selected_year})
+            this.editCategory({category: this.category, id: this.selected_id})
         }
     },
     computed: mapState({
-        years:  state => state.settings.vehicle_manager.years
+        categories:  state => state.settings.vehicle_manager.categories
     }),
     async fetch ({ store }) {
-        await store.dispatch('settings/vehicle_manager/getYears')
+        await store.dispatch('settings/vehicle_manager/getCategories')
     }
 }
 </script>

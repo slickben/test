@@ -19,7 +19,7 @@
             </Table>
         </div>
 
-        <div class="fixed inset-0 bg-black z-40 bg-opacity-50 px-24 2xl:px-48 pt-12">
+        <div class="fixed inset-0 bg-black z-40 bg-opacity-50 px-24 2xl:px-48 pt-12 hidden">
             <!--new owner form modal -->
             <div  class=" absolute inset-0 bg-opacity-50 px-24 2xl:px-48 pt-12">
                 <div class="container mx-auto flex flex-col bg-white 2xl:pt-12 py-6 rounded-lg h-90-vh overflow-y-auto my-auto">
@@ -193,6 +193,9 @@
                 }
                 this.step-= 1
             },
+            submitPersonaInfo() {
+                
+            }
         }
     }
 </script>

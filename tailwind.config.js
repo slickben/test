@@ -53,6 +53,7 @@ module.exports = {
       maxWidth: {
         '50':'12.5rem',
         '98': '24.5rem',
+        '162': '40.625rem',
         '100': '25rem',
         '249': '62.25rem',
         'lg-screen': '1280px',

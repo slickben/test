@@ -68,7 +68,7 @@
             srcset=""
           />
         </NavBox>
-        <NavBox css="bg-purple-900" link="/" name="Tax net">
+        <NavBox css="bg-purple-900" link="/tax-net" name="Tax net">
           <img
             class="mx-auto"
             src="~/assets/images/tax_net.svg"
@@ -84,7 +84,7 @@
             srcset=""
           />
         </NavBox>
-        <NavBox css="bg-purple-900" link="/" name="User manager">
+        <NavBox css="bg-purple-900" link="/user-manager" name="User manager">
           <img
             class="mx-auto"
             src="~/assets/images/user_manager.svg"

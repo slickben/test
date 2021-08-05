@@ -52,13 +52,11 @@
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/license">Vehicle License</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/document">Vehicle Document</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/document">Vehicle Document</nuxt-link>
-                        </li>
                         <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/Charges"> Charges</nuxt-link>
                         </li>
                     </ul>
@@ -89,15 +87,21 @@
                         </div>
                     </div>
                 </template>
-                <tr v-for="category in categories" class="hover:bg-primary-100 group ">
-                    <td class="py-5 px-4"> {{ category.name }} </td>
+                <tr  class="hover:bg-primary-100 group ">
+                    <td class="py-5 px-4"> Road Worthiness </td>
+                    <td class="py-5 px-4"> 
+                        <button  class="flex items-center focus:outline-none pr-2 text-primary-500">
+                            <Icon type="status" />
+                            <p class="text-xs font-normal pl-1">Enable</p>
+                        </button>
+                    </td>
                     <td class="py-5 px-4 group-hover:text-tertiary-400 text-transparent flex justify-end">
                         <div class="flex items-center">
-                            <button @click="toggleEditFunc(category.name)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button  class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button @click="deleteCategory(category.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button  class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -106,7 +110,7 @@
                 </tr>
             </SettingsTable>
         </div>
-        <Modal />
+        <Modal v-show="toggle_add" />
     </div>
 </template>
 
@@ -118,7 +122,8 @@ import PrimaryButton from "~/components/PrimaryButton.vue"
 import Button from "~/components/Button.vue"
 import FormButton from "~/components/FormButton.vue"
 import Input from "~/components/form/Input.vue"
-import Modal from "~/components/Document/Modal.vue"
+import DocumentModal from "~/components/Document/DocumentModal.vue"
+import Icon from "~/components/Icons.vue"
 import Tabs from "~/components/Tabs.vue"
 import {mapState, mapActions} from 'vuex'
 export default {
@@ -127,15 +132,16 @@ export default {
         SettingsTable,
         TableFilter,
         PrimaryButton,
-        Modal,
+        DocumentModal,
         Tabs,
         Input,
         Button,
-        FormButton
+        FormButton,
+        Icon
     },
     data() {
         return {
-            table_head_data: ['Name', '', ],
+            table_head_data: ['Name', 'Status', '', ],
             toggle_add: false,
             toggle_edit: false,
             category: {

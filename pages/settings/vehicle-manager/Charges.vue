@@ -52,13 +52,11 @@
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/license">Vehicle License</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/document">Vehicle Document</nuxt-link>
                         </li>
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/document">Vehicle Document</nuxt-link>
-                        </li>
                         <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/Charges"> Charges</nuxt-link>
                         </li>
                     </ul>
@@ -69,9 +67,9 @@
             <SettingsTable :head_data="table_head_data">
                 <template slot="head">
                     <div class="flex items-center justify-between pb-6 xl:py-10">
-                        <h3 class="text-xl font-medium text-primary-900">Registration Category</h3>
+                        <h3 class="text-xl font-medium text-primary-900">Charges</h3>
                         <div class="flex">
-                            <PrimaryButton :onClick="toggleAddFunc" title="Add Category" type="solid" />
+                            <PrimaryButton :onClick="toggleAddFunc" title="Add Changes" type="solid" />
                             <!-- <PrimaryButton title="Import State" /> -->
                         </div>
                     </div>
@@ -89,15 +87,21 @@
                         </div>
                     </div>
                 </template>
-                <tr v-for="category in categories" class="hover:bg-primary-100 group ">
-                    <td class="py-5 px-4"> {{ category.name }} </td>
+                <tr  class="hover:bg-primary-100 group ">
+                    <td class="py-5 px-4"> Road Worthiness </td>
+                    <td class="py-5 px-4"> 
+                        <button  class="flex items-center focus:outline-none pr-2 text-primary-500">
+                            <Icon type="status" />
+                            <p class="text-xs font-normal pl-1">Enable</p>
+                        </button>
+                    </td>
                     <td class="py-5 px-4 group-hover:text-tertiary-400 text-transparent flex justify-end">
                         <div class="flex items-center">
-                            <button @click="toggleEditFunc(category.name)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button  class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/edit.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
                             </button>
-                            <button @click="deleteCategory(category.id)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
+                            <button  class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
                                 <img src="~/assets/icons/delete.svg" alt="" srcset="">
                                 <p class="text-xs font-normal pl-1 text-action-danger">Delete</p>
                             </button>
@@ -119,7 +123,8 @@
             <div>
                 <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
 
-                    <Input v-model="category.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+                    <Input class="pb-6" v-model="category.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+                    <Input v-model="category.value" type="text" id="name" lable="Value" place_holder="Enter Name" />
 
                     <div class="col-span-2 flex items-center justify-end py-6 pt-10">
                         <FormButton title="Done" type="solid" />
@@ -128,29 +133,7 @@
                 </form>
             </div>
         </Sliding>
-
-        <Sliding classes="min-w-105 w-full" v-show="toggle_edit">
-            <template slot="head">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h4 class="text-2xl text-primary-900 font-semibold">Edit Category</h4>
-                        <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
-                    </div>
-                    <button @click="toggleEditFunc" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
-                </div>
-            </template>
-            <div>
-                <form class="p-6 px-10 pt-16" @submit.prevent="submitEdit">
-
-                    <Input v-model="category.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
-
-                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
-                        <FormButton title="Done" type="solid" />
-                        <Button :onClick="toggleEditFunc" title="Cancle" />
-                    </div>
-                </form>
-            </div>
-        </Sliding>
+        <ChargesModal />
     </div>
 </template>
 
@@ -161,6 +144,7 @@ import TableFilter from "~/components/TableFilter.vue"
 import PrimaryButton from "~/components/PrimaryButton.vue"
 import Button from "~/components/Button.vue"
 import FormButton from "~/components/FormButton.vue"
+import ChargesModal from "~/components/Document/ChargesModal.vue"
 import Input from "~/components/form/Input.vue"
 import Sliding from "~/components/Sliding.vue"
 import Tabs from "~/components/Tabs.vue"
@@ -175,11 +159,12 @@ export default {
         Tabs,
         Input,
         Button,
-        FormButton
+        FormButton,
+        ChargesModal
     },
     data() {
         return {
-            table_head_data: ['Name', '', ],
+            table_head_data: ['Name', 'Status', '', ],
             toggle_add: false,
             toggle_edit: false,
             category: {

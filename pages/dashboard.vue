@@ -74,7 +74,7 @@
             srcset=""
           />
         </NavBox>
-        <NavBox css="bg-dashboard-icons-seven" link="/" name="Tax net">
+        <NavBox css="bg-dashboard-icons-seven" link="/tax-net" name="Tax net">
           <img
             class="mx-auto"
             src="~/assets/images/tax_net.svg"

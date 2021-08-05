@@ -52,7 +52,12 @@
                         <li
                         class="w-full border-b hover:border-transparent "
                         >
-                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/license">Vehicle License</nuxt-link>
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/document">Vehicle Document</nuxt-link>
+                        </li>
+                        <li
+                        class="w-full border-b hover:border-transparent "
+                        >
+                        <nuxt-link class="py-3 px-6 border-l-8 border-transparent hover:text-primary-500 hover:bg-primary-100 w-full hover:border-primary-500 block text-xs xl:text-sm" to="/settings/vehicle-manager/Charges"> Charges</nuxt-link>
                         </li>
                     </ul>
                 </nav>

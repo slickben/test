@@ -1,7 +1,7 @@
 <template>
-    <div class="relative">
-        <img class="mx-auto" src="~/assets/images/wheel.svg" alt="" srcset="">
-        <div :class="color" class="bg-primary-600 bg-opacity-60 p-5 rounded-xl font-normal absolute inset-0">
+    <div class="relative bg-primary-300 rounded-xl">
+        <img class="mx-auto" src="~/assets/images/wheel.png" alt="" srcset="">
+        <div :class="color" class="bg-primary-500 bg-opacity-80 p-5 rounded-xl font-normal absolute inset-0">
             <div class="flex items-center h-full justify-center">
                 <div class="xl:text-4xl text-2xl text-center">
                     <span class="font-medium ">{{ total_count }}</span>

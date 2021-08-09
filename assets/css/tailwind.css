@@ -69,7 +69,12 @@
     }
     
     .nuxt-link-active {
-        color: #3968F9,
+        
+    }
+
+    .nuxt-link-exact-active {
+        color: #3968F9;
+        background-color: #E6ECFE;
     }
 
     .stripe > tr:nth-child(even) {

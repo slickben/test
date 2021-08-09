@@ -7,7 +7,7 @@
                 <Logo v-show="!toggleNav" size="small" />
             </div>
             <div class="flex-grow">
-                <h3 v-show="toggleNav" class="text-xs text-primary-800 uppercase font-bold pl-5">Menu</h3>
+                <h3 v-show="toggleNav" class="text-xs text-primary-800 uppercase font-bold pl-5 pb-2">Menu</h3>
                 <div class="">
                     <slot></slot>
                 </div>

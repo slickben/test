@@ -4,10 +4,13 @@
     <Sidebar>
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Users" link="/user-manager/users">
-          <img src="~assets/icons/dashboard.svg" alt="" srcset="" />
+          <Icons type="user" />
         </Nav>
         <Nav :toggleNav="toggleNav" name="Roles" link="/user-manager/role">
-          <img src="~assets/icons/dashboard.svg" alt="" srcset="" />
+          <Icons type="role" />
+        </Nav>
+        <Nav :toggleNav="toggleNav" name="Location" link="/user-manager/role">
+          <Icons type="location" />
         </Nav>
       </ul>
     </Sidebar>
@@ -67,6 +70,7 @@ import ToggleSideBarBtn from '~/components/ToggleSideBarBtn.vue'
 import BreadCrumb from '~/components/BreadCrumb.vue'
 import Footer from '~/components/Footer.vue'
 import Nav from '~/components/Nav.vue'
+import Icons from '~/components/Icons.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -80,6 +84,7 @@ export default {
     BreadCrumb,
     Footer,
     Nav,
+    Icons
   },
   computed: mapState({
     toggleNav: (state) => state.toggleNav,

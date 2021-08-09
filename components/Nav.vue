@@ -1,6 +1,6 @@
 <template>
-    <li class="pl-5 hover:bg-primary-100 text-tertiary-500 my-2">
-        <nuxt-link :to="link" class="inline-flex items-center py-2 pb-3 mt-2 text-sm transition duration-500 ease-in-out transform w-full" href="#">
+    <li class="text-tertiary-500 mb-2">
+        <nuxt-link :to="link" class="hover:bg-primary-100 pl-5 inline-flex items-center py-2 pb-3  text-sm transition duration-500 ease-in-out transform w-full" href="#">
             <slot></slot>
             <span v-show="toggleNav" class="ml-4">{{ name }}</span>
         </nuxt-link>

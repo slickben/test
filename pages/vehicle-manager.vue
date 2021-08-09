@@ -4,35 +4,35 @@
     <Sidebar>
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Overview" link="/vehicle-manager">
-          <img src="~assets/icons/dashboard.svg" alt="" srcset="" />
+          <Icons type="overview" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Vehicle"
           link="/vehicle-manager/vehicles"
         >
-          <img src="~assets/icons/car.svg" alt="" srcset="" />
+          <Icons type="vehicle" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Change Of Ownership"
           link="/vehicle-manager/change-of-ownership"
         >
-          <img src="~assets/icons/interaction.svg" alt="" srcset="" />
+          <Icons type="interaction" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Revalidation"
           link="/vehicle-manager/revalidation"
         >
-          <img src="~assets/icons/validate.svg" alt="" srcset="" />
+          <Icons type="validate" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Renewal"
           link="/vehicle-manager/renewal"
         >
-          <img src="~assets/icons/renewable.svg" alt="" srcset="" />
+          <Icons type="renew" />
         </Nav>
       </ul>
     </Sidebar>
@@ -92,6 +92,7 @@ import ToggleSideBarBtn from '~/components/ToggleSideBarBtn.vue'
 import BreadCrumb from '~/components/BreadCrumb.vue'
 import Footer from '~/components/Footer.vue'
 import Nav from '~/components/Nav.vue'
+import Icons from '~/components/Icons.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -105,6 +106,7 @@ export default {
     BreadCrumb,
     Footer,
     Nav,
+    Icons
   },
   computed: mapState({
     toggleNav: (state) => state.toggleNav,

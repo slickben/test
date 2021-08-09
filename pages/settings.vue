@@ -4,64 +4,64 @@
     <Sidebar>
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Owner Manager" link="/settings/owner-manager/state">
-          <img src="~assets/icons/owner-icon.svg" alt="" srcset="" />
+          <Icons type="owner" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Vehicle Operations"
           link="/settings/vehicle-manager/category"
         >
-          <img src="~assets/icons/vehicle-icon.svg" alt="" srcset="" />
+          <Icons type="vehicle" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Housing Operations"
           link="/"
         >
-          <img src="~assets/icons/house-icon.svg" alt="" srcset="" />
+          <Icons type="house" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Plate Manager"
           link="/"
         >
-          <img src="~assets/icons/plate-icon.svg" alt="" srcset="" />
+          <Icons type="file" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Payment"
           link="/"
         >
-          <img src="~assets/icons/payment-icon.svg" alt="" srcset="" />
+          <Icons type="payment" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Business Intelligence"
           link="/"
         >
-          <img src="~assets/icons/BI-icon.svg" alt="" srcset="" />
+          <Icons type="target" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Tax Net"
           link="/"
         >
-          <img src="~assets/icons/tax-icon.svg" alt="" srcset="" />
+          <Icons type="tax" />
         </Nav>
         <Nav
           :toggleNav="toggleNav"
           name="Document Manager"
           link="/"
         >
-          <img src="~assets/icons/document-icon.svg" alt="" srcset="" />
+          <Icons type="folder" />
         </Nav>
-        <Nav
+        <!-- <Nav
           :toggleNav="toggleNav"
           name="User manager"
           link="/"
         >
           <img src="~assets/icons/user-icon.svg" alt="" srcset="" />
-        </Nav>
+        </Nav> -->
       </ul>
     </Sidebar>
     <!-- Sidebar Ends -->
@@ -121,6 +121,7 @@ import ToggleSideBarBtn from '~/components/ToggleSideBarBtn.vue'
 import BreadCrumb from '~/components/BreadCrumb.vue'
 import Footer from '~/components/Footer.vue'
 import Nav from '~/components/Nav.vue'
+import Icons from '~/components/Icons.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -133,6 +134,7 @@ export default {
     BreadCrumb,
     Footer,
     Nav,
+    Icons
   },
   computed: mapState({
     toggleNav: (state) => state.toggleNav,

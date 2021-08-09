@@ -32,7 +32,7 @@
               <div class="relative">
                 <img
                   class="rounded-full h-10 w-10 object-cover"
-                  src="~assets/images/peter-idowu.png"
+                  src="~assets/images/peter_idowu.png"
                   alt="avatar"
                 />
                 <div

@@ -2,7 +2,7 @@
   <div class="mx-auto h-screen px-8 xl:px-24">
     <img
       class="w-screen h-full absolute inset-0 -z-10"
-      src="~/assets/images/home-menu-bg-overlay.png"
+      src="~/assets/images/home_menu_bg_overlay.png"
       alt=""
       srcset=""
     />

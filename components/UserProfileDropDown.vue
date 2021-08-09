@@ -19,7 +19,7 @@
         <div class="flex items-center py-4 border-b">
             <img
             class="rounded-full h-16 w-16 object-cover"
-            src="~assets/images/peter-idowu.png"
+            src="~assets/images/peter_idowu.png"
             alt="avatar"
             />
             <div class="pl-2">

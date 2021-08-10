@@ -3,7 +3,12 @@
         <div class="max-w-lg-screen mx-auto xl:px-32 px-10 2xl:px-0 h-full flex items-center justify-between w-full">
             <div class=" text-tertiary-300">
                 <h1 class="text-2xl text-primary-900 font-semibold"> {{ title }} </h1>
-                <p>Overview</p>
+                <nav class="rounded font-sans w-full">
+                    <ol class="list-reset flex">
+                        <li :class="[index !== breadCrumbs.length-1 ? 'text-primary-400' : 'text-tertiary-600']" v-for="(breadCrumb, index) in breadCrumbs"><nuxt-link :to="breadCrumb.fullPath" class="">{{ breadCrumb.title }} <span v-if="index !== breadCrumbs.length-1" class="mx-2 text-tertiary-600">/</span></nuxt-link></li>
+                        
+                    </ol>
+                </nav>
             </div>
             <div>
                 <slot></slot>
@@ -13,38 +18,38 @@
 </template>
 
 <script>
+import titleCase from 'ap-style-title-case'
 export default {
     props: {
         title: String
     },
     computed: {
-    /**
-     * @see https://medium.com/@pratheekhegde/displaying-application-breadcrumbs-in-vue-js-85456dc8a370
-     */
         breadCrumbs () {
-        let pathArray = this.$route.path.split('/')
-        pathArray.shift()
-        const breadCrumbs = []
-        // needed to handle the intermediary entries for nested vue routes
-        let breadcrumb = ''
-        let lastIndexFound = 0
-        for (let i = 0; i < pathArray.length; ++i) {
-            breadcrumb = `${breadcrumb}${'/'}${pathArray[i]}`
-            if (this.$route.matched[i] &&
-            Object.hasOwnProperty.call(this.$route.matched[i], 'meta') &&
-            Object.hasOwnProperty.call(this.$route.matched[i].meta, 'name')) {
-            breadCrumbs.push({
-                href: i !== 0 && pathArray[i - (i - lastIndexFound)]
-                ? '/' + pathArray[i - (i - lastIndexFound)] + breadcrumb
-                : breadcrumb,
-                disabled: i + 1 === pathArray.length,
-                text: this.$route.matched[i].meta.name || pathArray[i]
+            const fullPath = this.$route.fullPath
+
+            const params = fullPath.startsWith('/')
+                ? fullPath.substring(1).split('/')
+                : fullPath.split('/')
+
+            const crumbs = []
+
+            let path = ''
+
+            params.forEach((param, index) => {
+                path = `${path}/${param}`
+                const match = this.$router.match(path)
+                if (match.name !== null) {
+                crumbs.push({
+                    title: titleCase(param.replace(/-/g, ' ')),
+                    ...match,
+                })
+                }
             })
-            lastIndexFound = i
-            breadcrumb = ''
-            }
-        }
-        return breadCrumbs
+
+            crumbs.shift()
+
+            return crumbs
+
         }
     }
 }

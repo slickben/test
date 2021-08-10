@@ -12,12 +12,12 @@
                 </template>
 
                 <tr class="relative text-xs xl:text-sm" v-for="vehicle in vehicles">
-                    <td class="text-left py-4 px-5">{{ vehicle.attributes.plateNumber }}</td>
+                    <td class="text-left py-4 px-5">{{ vehicle.plateNumber }}</td>
                     <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.attributes.ownedBy) }}</a></td>
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.attributes.category }}</a></td>
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.attributes.createdAt).format('MMMM d, YYYY') }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.ownedBy) }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.category }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.createdAt).format('MMMM d, YYYY') }}</a></td>
                     <td class="text-left py-4 px-5">
                         <Status classes="w-24 h-8 text-xs" status="approved" />
                     </td>
@@ -49,12 +49,15 @@
         methods: {
             getOwnerName (owner) {
                 let ownersName
-                if(owner.attributes.type === 'Business') {
-                    ownersName = owner.attributes.businessName
-                }else if (owner.attributes.type === 'Government') {
-                    ownersName = owner.attributes.agencyName
+                if (owner === null) {
+                    return
+                }
+                if(owner.type === 'Business') {
+                    ownersName = owner.businessName
+                }else if (owner.type === 'Government') {
+                    ownersName = owner.agencyName
                 }else {
-                    ownersName = `${owner.attributes.firstName} ${owner.attributes.lastName} ${owner.attributes.otherName ? owner.attributes.otherName : ''}`
+                    ownersName = `${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
                 }
 
                 return ownersName

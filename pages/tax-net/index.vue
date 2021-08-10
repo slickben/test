@@ -14,12 +14,12 @@
         h-full
       "
     >
-      <div class="grid grid-cols-5 gap-x-10">
+      <div class="grid grid-cols-5 gap-x-6">
         <div class="col-span-3">
-          <LineGraph />
+          <LineGraph class="rounded-xl" />
         </div>
         <div class="col-span-2">
-          <Table classes="rounded-3xl" :head_data="table_head_data">
+          <Table classes="rounded-xl" :head_data="table_head_data">
           <template v-slot:head> Recently Added </template>
 
           <tr class="relative" v-for="owner in owners.owners">

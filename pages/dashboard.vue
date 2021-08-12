@@ -19,7 +19,7 @@
     </div>
     <div class="grid grid-cols-4 xl:grid-cols-5 2xl:grid-cols-4 px-24 xl:px-0">
       <div class="col-span-4 xl:col-start-2 xl:col-span-3 2xl:col-start-2 2xl:col-span-2">
-        <H1 class="2xl:px-6 px-10 pb-8 text-xs text-tertiary-500 uppercase">Dashboard</H1>
+        <H1 class="2xl:px-6 px-10 pb-8 text-xs text-tertiary-500 uppercase">Modules</H1>
       </div>
       <div class="col-span-4 xl:col-start-2 xl:col-span-3 2xl:col-start-2 2xl:col-span-2 grid grid-cols-5 2xl:gap-12 gap-y-12 grid-rows-2">
         <NavBox css="bg-dashboard-icons-one" link="/owner-manager" name="Owner manager">

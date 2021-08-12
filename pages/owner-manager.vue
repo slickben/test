@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
         <!-- Sidebar Start -->
-        <Sidebar>
+        <!-- <Sidebar>
             <ul class="">
                 <Nav :toggleNav="toggleNav" name="Overview" link="/owner-manager">
                     <Icons type="overview" />
@@ -16,29 +16,35 @@
                     <Icons type="government" />
                 </Nav>
             </ul>
-        </Sidebar>
+        </Sidebar> -->
         <!-- Sidebar Ends -->
         <div class="w-full h-full flex flex-col">
-            <!-- Navigation starts -->
-            <Navigation  css="bg-white px-8 2xl:pr-24 shadow z-30 flex-none">
-                <template v-slot:right>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 4H8V8H4V4Z" fill="#707070"/>
-                        <path d="M4 10H8V14H4V10Z" fill="#707070"/>
-                        <path d="M8 16H4V20H8V16Z" fill="#707070"/>
-                        <path d="M10 4H14V8H10V4Z" fill="#707070"/>
-                        <path d="M14 10H10V14H14V10Z" fill="#707070"/>
-                        <path d="M10 16H14V20H10V16Z" fill="#707070"/>
-                        <path d="M20 4H16V8H20V4Z" fill="#707070"/>
-                        <path d="M16 10H20V14H16V10Z" fill="#707070"/>
-                        <path d="M20 16H16V20H20V16Z" fill="#707070"/>
-                    </svg>
-                </template>
-                <template v-slot:lift>
-                    <ToggleSideBarBtn />
-                </template>
-            </Navigation>
-            <!-- Navigation ends -->
+                  <!-- Navigation starts -->
+                    <Navigation css="bg-white px-8 2xl:px-24 shadow z-10 flex-none">
+                        <template v-slot:right>
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M4 4H8V8H4V4Z" fill="#707070" />
+                            <path d="M4 10H8V14H4V10Z" fill="#707070" />
+                            <path d="M8 16H4V20H8V16Z" fill="#707070" />
+                            <path d="M10 4H14V8H10V4Z" fill="#707070" />
+                            <path d="M14 10H10V14H14V10Z" fill="#707070" />
+                            <path d="M10 16H14V20H10V16Z" fill="#707070" />
+                            <path d="M20 4H16V8H20V4Z" fill="#707070" />
+                            <path d="M16 10H20V14H16V10Z" fill="#707070" />
+                            <path d="M20 16H16V20H20V16Z" fill="#707070" />
+                        </svg>
+                        </template>
+                        <template v-slot:lift>
+                        <Logo size="big" />
+                        </template>
+                    </Navigation>
+                    <!-- Navigation ends -->
             <div class="flex-grow h-full overflow-y-auto relative shadow scrollbar-thin scrollbar-thumb-tertiary-200 scrollbar-track-tertiary-100">
                 <div class="">
                     <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
@@ -46,7 +52,7 @@
                     <nuxt-child />
                 </div>
             </div>
-            <Footer />
+            <!-- <Footer /> -->
         </div>
     </div>
 </template>

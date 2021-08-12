@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white rounded-xl max-h-50">
+    <div class="bg-white rounded-xl max-h-100">
         <h3 class="text-xs font-normal text-tertiary-500 capitalize p-5 pb-4 border-b">assets</h3>
         <div class="p-5 ">
             <h3 class="text-xs font-normal text-tertiary-500 capitalize pb-4">total asset:</h3>

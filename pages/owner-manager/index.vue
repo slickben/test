@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <BreadCrumb title="Owner Manager" />
+    <BreadCrumb :back="false" title="Owner Manager" />
     <div
       class="
         grid grid-cols-1
@@ -14,39 +14,34 @@
         h-full
       "
     >
-      <div class="grid grid-cols-4 xk:gap-x-12 gap-x-8">
-        <AnalysisCard
-          heading="Summary"
-          title="Owner Created"
-          total_count="150"
-          week_count="12"
-          color="text-tertiary-600"
-        />
-        <AnalysisCard
-          heading="Approved"
-          title="Owner Approved"
-          total_count="75"
-          week_count="6"
-          color="text-action-success"
-        />
-        <AnalysisCard
-          heading="Pending"
-          title="Owner Pending"
-          total_count="50"
-          week_count="4"
-          color="text-action-warning"
-        />
-        <AnalysisCard
-          heading="Denied"
-          title="Owner Denied"
-          total_count="25"
-          week_count="2"
-          color="text-action-danger"
-        />
-      </div>
       <div>
-        <Table classes="rounded-3xl" :head_data="table_head_data">
-          <template v-slot:head> Recently Added </template>
+        <Table classes="rounded-xl" :head_data="table_head_data">
+          <template v-slot:head>
+              <TableFilter>
+                <div class="flex items-center">
+                  <img src="~/assets/images/filter.png" alt="" srcset="">
+                  <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 ml-1" name="" id="">
+                      <option selected value="10">Category</option>
+                      <option value="10">20</option>
+                      <option value="10">30</option>
+                  </select>
+                  <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2" name="" id="">
+                      <option selected value="10">Status</option>
+                      <option value="10">20</option>
+                      <option value="10">30</option>
+                  </select>
+                  <input type="date" class="focus:outline-none w-36 h-10 border px-2 rounded-md mr-4" name="" id="" >
+                </div>
+                <div class="flex items-center">
+                  <span class="text-xs text-tertiary-500 mr-1">Show entries</span>
+                  <select class="focus:outline-none w-16 h-10 border px-2 rounded-md" name="" id="">
+                      <option selected value="10">10</option>
+                      <option value="10">20</option>
+                      <option value="10">30</option>
+                  </select>
+                </div>
+              </TableFilter>
+          </template>
 
           <tr class="relative" v-for="owner in owners.owners">
             <td class="text-left py-4 px-5">{{ '12321' }}</td>
@@ -62,7 +57,7 @@
             <td class="text-left py-4 px-5">
               <Status classes="w-24 h-8 text-xs" status="pending" />
             </td>
-            <nuxt-link :to="`/owner-manager/${owner.type}/${owner.id}`" class="absolute inset-0 "></nuxt-link>
+            <nuxt-link :to="`/owner-manager/${owner.ownerId}`" class="absolute inset-0 "></nuxt-link>
           </tr>
         </Table>
       </div>
@@ -76,12 +71,16 @@ import Table from '~/components/Table.vue'
 import Status from '~/components/Status.vue'
 import { mapState } from 'vuex'
 import BreadCrumb from '~/components/BreadCrumb.vue'
+import TableFilter from '~/components/TableFilter.vue'
+import Input from '~/components/form/Input.vue'
 export default {
   components: {
     AnalysisCard,
     Table,
     Status,
     BreadCrumb,
+    TableFilter,
+    Input
   },
   computed: {
     ...mapState({

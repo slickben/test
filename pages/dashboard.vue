@@ -6,12 +6,12 @@
       alt=""
       srcset=""
     />
-    <div class="w-screen h-full absolute inset-0 -z-10 bg-primary-900 bg-opacity-70">
+    <div class="w-screen h-full absolute inset-0 -z-10 bg-primary-900 bg-opacity-60">
 
     </div>
     <!-- <div class="absolute inset-0 bg-gray-900 -z-10 opacity-80"></div> -->
     <div class="pb-20 2xl:pb-28 text-right">
-      <Navigation>
+      <Navigation :dashboard="true">
         <template v-slot:lift>
           <Logo size="big" />
         </template>

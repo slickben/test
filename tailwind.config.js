@@ -9,7 +9,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'sans': ['Graphik'],
+      'sans': ['Graphik', 'sans-serif'],
     },
     screens: {
       'sm': '640px',

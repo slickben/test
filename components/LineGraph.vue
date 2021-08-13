@@ -1,10 +1,14 @@
 <template>
     <div class="flex flex-col justify-between h-full bg-white">
-        <div class="flex items-center">
-            <div class="flex items-center px-6 pt-4">
-                <input class="w-32" type="date" placeholder="20-12-2020" value="2017-06-01" name="" id="">
-                <p>--</p>
-                <input class="w-32" type="date" value="2017-06-01" name="" id="">
+        <div class="flex items-end justify-between px-6">
+            <div class="flex items-center px-6 pt-4 border-b">
+                <input class="w-36 text-tertiary-400" type="date" placeholder="20-12-2020" value="2017-06-01" name="" id="">
+                
+                <input class="w-36 text-tertiary-400" type="date" value="2017-06-01" name="" id="">
+            </div>
+            <div class="flex items-center text-xs text-tertiary-400">
+                <p class="pr-4">Total Tax</p>
+                <p>Vahicle Tax</p>
             </div>
         </div>
         <div class="">

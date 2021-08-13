@@ -16,8 +16,8 @@
                     <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
                     <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.ownedBy) }}</a></td>
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.category }}</a></td>
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.createdAt).format('MMMM d, YYYY') }}</a></td>
+                    <!-- <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.category }}</a></td> -->
+                    <!-- <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.createdAt).format('MMMM d, YYYY') }}</a></td> -->
                     <td class="text-left py-4 px-5">
                         <Status classes="w-24 h-8 text-xs" status="approved" />
                     </td>
@@ -65,7 +65,7 @@
         },
         data() {
             return {
-                table_head_data: ['Plate Number', 'Owner Name', 'Vehicle Category', 'Date Created', 'Verification Status']
+                table_head_data: ['Name', 'Description', 'User Count', ]
             }
         },
     }

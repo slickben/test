@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
     <!-- Sidebar Start -->
-    <Sidebar>
+    <Sidebar class=" z-20">
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Overview" link="/tax-net">
           <Icons type="overview" />

@@ -8,7 +8,24 @@
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>
-                    <TableFilter />
+                    <TableFilter> 
+                        <div class="flex items-center">
+                            Filter Category
+                            <select class="focus:outline-none w-40 h-10 border px-2 rounded-md mr-4 ml-1" name="" id="">
+                                <option selected value="10">All</option>
+                                <option value="10">20</option>
+                                <option value="10">30</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xs text-tertiary-500 mr-1">Show entries</span>
+                            <select class="focus:outline-none w-16 h-10 border px-2 rounded-md" name="" id="">
+                                <option selected value="10">10</option>
+                                <option value="10">20</option>
+                                <option value="10">30</option>
+                            </select>
+                        </div>
+                    </TableFilter>
                 </template>
 
                 <tr class="relative" v-for="vehicle in vehicles">

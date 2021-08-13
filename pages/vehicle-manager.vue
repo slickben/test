@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
     <!-- Sidebar Start -->
-    <Sidebar>
+    <Sidebar class="z-20">
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Overview" link="/vehicle-manager">
           <Icons type="overview" />
@@ -75,13 +75,13 @@
           scrollbar-track-tertiary-100
         "
       >
-        <div class="">
+        <div class="h-full">
           <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
 
           <nuxt-child />
         </div>
       </div>
-      <Footer />
+      <!-- <Footer /> -->
     </div>
   </div>
 </template>

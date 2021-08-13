@@ -7,24 +7,42 @@
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
             <div class="grid grid-cols-1 gap-y-10">
-                <div class="grid grid-cols-4 xl:gap-x-12 gap-x-8">
-                    <AnalysisCard heading="Summary" title="Owner Created" total_count="150" week_count="12" color="text-tertiary-600" />
-                    <AnalysisCard heading="Approved" title="Owner Approved" total_count="75" week_count="6" color="text-action-success" />
-                    <AnalysisCard heading="Pending" title="Owner Pending" total_count="50" week_count="4" color="text-action-warning" />
-                    <AnalysisCard heading="Denied" title="Owner Denied" total_count="25" week_count="2" color="text-action-danger" />
-                </div>
                 <div>
-                    <Table classes="rounded-3xl" :head_data="table_head_data"> 
+                    <Table classes="rounded-xl" :head_data="table_head_data"> 
                         <template v-slot:head>
                             Recently Added
+                            <TableFilter class="pt-5 pb-2">
+                                <div class="flex items-center">
+                                <img src="~/assets/images/filter.png" alt="" srcset="">
+                                <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 ml-1" name="" id="">
+                                    <option selected value="10">Category</option>
+                                    <option value="10">20</option>
+                                    <option value="10">30</option>
+                                </select>
+                                <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2" name="" id="">
+                                    <option selected value="10">Activity</option>
+                                    <option value="10">20</option>
+                                    <option value="10">30</option>
+                                </select>
+                                <input type="date" class="focus:outline-none w-36 h-10 border px-2 rounded-md mr-4" name="" id="" >
+                                </div>
+                                <div class="flex items-center">
+                                <span class="text-xs text-tertiary-500 mr-1">Show entries</span>
+                                <select class="focus:outline-none w-16 h-10 border px-2 rounded-md" name="" id="">
+                                    <option selected value="10">10</option>
+                                    <option value="10">20</option>
+                                    <option value="10">30</option>
+                                </select>
+                                </div>
+                            </TableFilter>
                         </template>
 
                         <tr class="relative" v-for="vehicle in vehicles">
+                            <td class="text-left py-4 px-5">{{ vehicle.id }}</td>
                             <td class="text-left py-4 px-5">{{ vehicle.plateNumber }}</td>
-                            <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
                             <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
                             <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >
-                                {{ getOwnerName(vehicle.ownedBy) }}</a></td>
+                                {{ vehicle.category }}</a></td>
                             <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.category }}</a></td>
                             <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.createdAt).format('MMMM d, YYYY') }}</a></td>
                             <td class="text-left py-4 px-5">
@@ -44,13 +62,15 @@ import AnalysisCard from '~/components/AnalysisCard.vue';
 import Table from '~/components/Table.vue';
 import Status from '~/components/Status.vue';
 import BreadCrumb from '~/components/BreadCrumb.vue';
+import TableFilter from '~/components/TableFilter.vue';
 import { mapState } from 'vuex'
 export default {
     components: {
         AnalysisCard,
         Table,
         Status,
-        BreadCrumb
+        BreadCrumb,
+        TableFilter
     },
     computed: {
         ...mapState({
@@ -77,7 +97,7 @@ export default {
     },
     data() {
         return {
-            table_head_data: ['Plate Number', 'Owner Name', 'Vehicle Category', 'Date Created', 'Verification Status'],
+            table_head_data: ['Vehicle ID #','Plate Number', 'Vehicle Category', 'Activity', 'Date Created', 'Status'],
             toggleSlide: false
         }
     },

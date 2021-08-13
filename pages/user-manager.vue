@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
     <!-- Sidebar Start -->
-    <Sidebar>
+    <Sidebar class="z-20">
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Users" link="/user-manager/users">
           <Icons type="user" />
@@ -9,7 +9,7 @@
         <Nav :toggleNav="toggleNav" name="Roles" link="/user-manager/role">
           <Icons type="role" />
         </Nav>
-        <Nav :toggleNav="toggleNav" name="Location" link="/user-manager/role">
+        <Nav :toggleNav="toggleNav" name="Location" link="/user-manager/location">
           <Icons type="location" />
         </Nav>
       </ul>

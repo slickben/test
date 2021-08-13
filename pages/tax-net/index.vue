@@ -14,8 +14,8 @@
         h-full
       "
     >
-      <div class="grid grid-cols-5 gap-x-6">
-        <div class="col-span-3">
+      <div class="grid grid-cols-6 gap-x-6">
+        <div class="col-span-4">
           <LineGraph class="rounded-xl" />
         </div>
         <div class="col-span-2">

@@ -2,8 +2,8 @@
     <div>
         <div class="pb-8 relative">
             <BreadCrumb title="User Manager">
-                <button @click="toggleAddUserModal" class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" >
-                    Create
+                <button class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" >
+                    Add Location
                 </button>
             </BreadCrumb>
             <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
@@ -20,29 +20,15 @@
                             </nuxt-link>
                         </td>
                         <!-- <td class="text-left py-5 px-5">{{ item.category }}</td> -->
-                        <td class="text-left py-5 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
+                        <!-- <td class="text-left py-5 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td> -->
                         <td class="text-left py-5 px-5">
                             
                             <span class="text-xs font-normal pl-1 text-action-danger flex items-center">
                                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0ZM2.42716 1.6157C2.89386 1.30755 3.44075 1.14314 4 1.14286C4.56005 1.14227 5.10777 1.30729 5.57429 1.61714L1.61714 5.57429C0.747696 4.25746 1.11034 2.48516 2.42716 1.6157ZM5.57284 6.3843C5.10614 6.69245 4.55927 6.85686 4 6.85714C3.43995 6.85773 2.89223 6.69271 2.42571 6.38286L6.38286 2.42571C7.2523 3.74252 6.88966 5.51484 5.57284 6.3843Z" fill="#9E0505"/>
                                 </svg>
-                                <span class="pl-1">blocked</span>
+                                <span class="pl-1">enabled</span>
                             </span>
-                        </td>
-                        <td class="py-5 px-4 group-hover:text-tertiary-400 text-transparent flex justify-end">
-                            <div class="flex items-center">
-                                <button @click="toggleEditUserModal(item.name)" class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
-                                    <img src="~/assets/icons/edit.svg" alt="" srcset="">
-                                    <p class="text-xs font-normal pl-1 text-primary-500">Edit</p>
-                                </button>
-                                <button class="flex items-center focus:outline-none pr-2 opacity-0 group-hover:opacity-100">
-                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0ZM2.42716 1.6157C2.89386 1.30755 3.44075 1.14314 4 1.14286C4.56005 1.14227 5.10777 1.30729 5.57429 1.61714L1.61714 5.57429C0.747696 4.25746 1.11034 2.48516 2.42716 1.6157ZM5.57284 6.3843C5.10614 6.69245 4.55927 6.85686 4 6.85714C3.43995 6.85773 2.89223 6.69271 2.42571 6.38286L6.38286 2.42571C7.2523 3.74252 6.88966 5.51484 5.57284 6.3843Z" fill="#9E0505"/>
-                                    </svg>
-                                    <p class="text-xs font-normal pl-1 text-action-danger">Block</p>
-                                </button>
-                            </div>
                         </td>
                     </tr>
                 </Table>
@@ -207,7 +193,7 @@ import Button from '~/components/Button.vue';
         },
         data() {
             return {
-                table_head_data: ['Name', 'Email', 'Department',  'Status', ''],
+                table_head_data: ['Location', 'Local Government',  'Status'],
                 addUserModal: false,
                 editUserModal: false
             }

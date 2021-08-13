@@ -14,9 +14,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '~/plugins/vue-datepicker', ssr: false }, 
-  ],
+  plugins: [{ src: '~/plugins/vue-datepicker', ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -51,34 +49,35 @@ export default {
   // http://trems-api.local/
   auth: {
     strategies: {
-      'laravelSanctum': {
+      laravelSanctum: {
         provider: 'laravel/sanctum',
-        url: 'http://demo.trems.ng/api/v1',
+        url: 'http://localhost:8000/api/v1',
         endpoints: {
           login: {
-            url: '/login', method: 'post'
+            url: '/login',
+            method: 'post',
           },
           user: {
-            url: '/user', method: 'get'
+            url: '/user',
+            method: 'get',
           },
           logout: {
-            url: '/logout', method: 'post'
-          }
-        }
+            url: '/logout',
+            method: 'post',
+          },
+        },
       },
-    }
+    },
   },
 
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
   },
-
-
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://demo.trems.ng/api/v1',
-    withCredentials: false,
+    baseURL: 'https://localhost:8000/api/v1',
+    withCredentials: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -90,10 +89,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    babel:{
-      plugins: [
-        ['@babel/plugin-proposal-private-methods', { loose: true }]
-      ]
-    }
+    babel: {
+      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
+    },
   },
 }

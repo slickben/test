@@ -9,15 +9,15 @@
                 <template slot="left">
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Unique ID</h5>
-                        <p class="text-xl text-tertiary-900 font-medium truncate ">{{ owner.ownerId ? owner.ownerId : '-'}}</p>
+                        <p class="text-xl text-tertiary-900 font-semibold truncate ">{{ owner.ownerId ? owner.ownerId : '-'}}</p>
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Owner Name</h5>
-                        <p class="text-xl text-tertiary-900 font-medium">{{ getFullName(owner) }}</p>
+                        <p class="text-xl text-tertiary-900 font-semibold">{{ getFullName(owner) }}</p>
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">State of origin</h5>
-                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.address.state ? owner.address.state : '-' }}</p>
+                        <p class="text-xl text-tertiary-900 font-semibold">{{ owner.address.state ? owner.address.state : '-' }}</p>
                     </div>
                 </template>
                 <div class="col-span-2 grid grid-cols-3 gap-y-4">
@@ -64,15 +64,15 @@
                 <template slot="left">
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">Unique ID</h5>
-                        <p class="text-xl text-tertiary-900 font-medium truncate">{{ owner.ownerId ? owner.ownerId : '-' }}</p>
+                        <p class="text-xl text-tertiary-900 font-semibold truncate">{{ owner.ownerId ? owner.ownerId : '-' }}</p>
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Business Name</h5>
-                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.businessName ? owner.businessName : '-'}}</p>
+                        <p class="text-xl text-tertiary-900 font-semibold">{{ owner.businessName ? owner.businessName : '-'}}</p>
                     </div>
                     <div>
                         <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                        <p class="text-xl text-tertiary-900 font-medium">{{ owner.address.state }}</p>
+                        <p class="text-xl text-tertiary-900 font-semibold">{{ owner.address.state }}</p>
                     </div>
                 </template>
                 <div class="col-span-2 grid grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-6">
@@ -115,15 +115,15 @@
                 <template slot="left">
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Unique ID</h5>
-                        <p class="text-xl text-tertiary-700 font-medium truncate">{{ owner.id ? owner.id : '-'}}</p>
+                        <p class="text-xl text-tertiary-700 font-semibold truncate">{{ owner.id ? owner.id : '-'}}</p>
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">Agency Name</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.agencyName ? owner.agencyName : '-'}}</p>
+                        <p class="text-xl text-tertiary-700 font-semibold">{{ owner.agencyName ? owner.agencyName : '-'}}</p>
                     </div>
                     <div class="col-span-2">
                         <h5 class="text-xs font-normal text-tertiary-300">State</h5>
-                        <p class="text-xl text-tertiary-700 font-medium">{{ owner.address.state ? owner.address.state : '-' }}</p>
+                        <p class="text-xl text-tertiary-700 font-semibold">{{ owner.address.state ? owner.address.state : '-' }}</p>
                     </div>
                 </template>
                 <div class="col-span-3 grid grid-cols-3 gap-y-4">

@@ -9,15 +9,15 @@
                     <template slot="left">
                         <div class="col-span-2">
                             <h5 class="text-xs font-normal text-tertiary-300">Vehicle Id</h5>
-                            <p class="text-xl text-tertiary-900 font-medium">{{ vehicle.id ? vehicle.id : '-'}}</p>
+                            <p class="text-xl text-tertiary-900 font-semibold">{{ vehicle.id ? vehicle.id : '-'}}</p>
                         </div>
                         <div class="col-span-2">
                             <h5 class="text-xs font-normal text-tertiary-300">Owner's Name</h5>
-                            <p class="text-xl text-tertiary-900 font-medium">{{ getOwnerName(vehicle.ownedBy) ? getOwnerName(vehicle.ownedBy) : '-'}}</p>
+                            <p class="text-xl text-tertiary-900 font-semibold">{{ getOwnerName(vehicle.ownedBy) ? getOwnerName(vehicle.ownedBy) : '-'}}</p>
                         </div>
                         <div class="col-span-2">
                             <h5 class="text-xs font-normal text-tertiary-300">Plate Number</h5>
-                            <p class="text-xl text-tertiary-900 font-medium">{{ vehicle.plateNumber ? vehicle.plateNumber : '-' }}</p>
+                            <p class="text-xl text-tertiary-900 font-semibold">{{ vehicle.plateNumber ? vehicle.plateNumber : '-' }}</p>
                         </div>
                     </template>
                     <div class="col-span-2 grid grid-cols-3 xl:grid-cols-4 gap-y-4">

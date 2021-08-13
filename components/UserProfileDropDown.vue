@@ -18,13 +18,13 @@
         >
         <div class="flex items-center py-4 border-b">
             <img
-            class="rounded-full h-16 w-16 object-cover"
+            class="rounded-full h-10 w-10 object-cover"
             src="~assets/images/peter_idowu.png"
             alt="avatar"
             />
             <div class="pl-2">
             <h4 class="text-left">Afolabi Davies</h4>
-            <p class="text-thin text-left">afo.davies@outlook.com</p>
+            <p class="text-xs text-left">afo.davies@outlook.com</p>
             </div>
         </div>
         <ul class="border-b">
@@ -57,7 +57,7 @@
                 <circle cx="12" cy="7" r="4" />
                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                 </svg>
-                <span class="text-xs ml-2">My Profile</span>
+                <span class="text-sm ml-2">My Profile</span>
             </div>
             </li>
             <li
@@ -92,7 +92,7 @@
                 />
                 <path d="M7 12h14l-3 -3m0 6l3 -3" />
                 </svg>
-                <span class="text-xs ml-2">Sign out</span>
+                <span class="text-sm ml-2">Sign out</span>
             </div>
             </li>
         </ul>
@@ -127,7 +127,7 @@
                     <circle cx="12" cy="7" r="4" />
                     <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                 </svg>
-                <span class="text-xs ml-2">Log out</span>
+                <span class="text-sm ml-2">Log out</span>
                 </div>
             </button>
         </div>

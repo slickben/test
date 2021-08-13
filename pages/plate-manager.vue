@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
+  <div class="flex flex-no-wrap bg-tertiary-200 h-screen">
     
     <!-- Sidebar Ends -->
     <div class="w-full h-full flex flex-col">
@@ -46,7 +46,7 @@
           <nuxt-child />
         </div>
       </div>
-      <Footer />
+      <!-- <Footer /> -->
     </div>
   </div>
 </template>

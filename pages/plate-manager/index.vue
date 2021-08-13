@@ -21,13 +21,13 @@
                         </template>
 
                         <tr class="relative" v-for="plate in plates">
-                            <td class="text-left py-4 px-5">{{ plate.number }}</td>
-                            <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
-                            <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                            <!-- <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.attributes.ownedBy) }}</a></td> -->
-                            <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ plate.type}}</a></td>
-                            <!-- /<td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(plate).format('MMMM d, YYYY') }}</a></td> -->
-                            <td class="text-left py-4 px-5">
+                            <td class="text-left py-5 px-6">{{ plate.number }}</td>
+                            <!-- <td class="text-left py-5 px-6">{{ vehicle }}</td> -->
+                            <!-- <td class="text-left py-5 px-6">{{ item.category }}</td> -->
+                            <!-- <td class="text-left py-5 px-6"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.attributes.ownedBy) }}</a></td> -->
+                            <td class="text-left py-5 px-6"><a class="hover:text-blue-500" >{{ plate.type}}</a></td>
+                            <!-- /<td class="text-left py-5 px-6"><a class="hover:text-blue-500" >{{ $moment(plate).format('MMMM d, YYYY') }}</a></td> -->
+                            <td class="text-left py-5 px-6">
                                 <PlateStatus classes="w-24 h-8 text-xs" :status="plate.status" />
                             </td>
                             <div @click="getSelectedPlate(plate.number)" class="absolute inset-0 block"></div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
+    <div class="flex flex-no-wrap bg-tertiary-200 h-screen">
         <!-- Sidebar Start -->
         <!-- <Sidebar>
             <ul class="">

@@ -5,7 +5,7 @@
                 New Registration
             </nuxt-link>
         </BreadCrumb>
-        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 xl:py-16 py-10 2xl:px-0  h-full w-full">
             <div class="grid grid-cols-1 gap-y-10">
                 <div>
                     <Table classes="rounded-xl" :head_data="table_head_data"> 
@@ -14,17 +14,17 @@
                             <TableFilter class="pt-5 pb-2">
                                 <div class="flex items-center">
                                 <img src="~/assets/images/filter.png" alt="" srcset="">
-                                <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 ml-1" name="" id="">
+                                <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 ml-1 text-tertiary-300" name="" id="">
                                     <option selected value="10">Category</option>
                                     <option value="10">20</option>
                                     <option value="10">30</option>
                                 </select>
-                                <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2" name="" id="">
+                                <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 text-tertiary-300" name="" id="">
                                     <option selected value="10">Activity</option>
                                     <option value="10">20</option>
                                     <option value="10">30</option>
                                 </select>
-                                <input type="date" class="focus:outline-none w-36 h-10 border px-2 rounded-md mr-4" name="" id="" >
+                                <!-- <input type="date" class="focus:outline-none w-36 h-10 border px-2 rounded-md mr-4 text-tertiary-300" name="" id="" > -->
                                 </div>
                                 <div class="flex items-center">
                                 <span class="text-xs text-tertiary-500 mr-1">Show entries</span>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
+  <div class="flex flex-no-wrap bg-tertiary-200 h-screen">
     <!-- Sidebar Start -->
     <Sidebar class=" z-20">
       <ul class="pt-3">
@@ -60,7 +60,7 @@
           <nuxt-child />
         </div>
       </div>
-      <Footer />
+      <!-- <Footer /> -->
     </div>
   </div>
 </template>

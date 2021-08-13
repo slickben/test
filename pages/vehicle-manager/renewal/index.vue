@@ -1,7 +1,7 @@
 <template>
     <div class="pb-8">
         <BreadCrumb title="Vehicle Manager"/>
-        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
+        <div class="max-w-lg-screen mx-auto px-10 xl:px-32 xl:py-16 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>
                     <TableFilter />

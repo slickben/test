@@ -84,8 +84,8 @@ export default {
         toggleNav: state => state.toggleNav,
         owners:  state => state.owner.owners
     }),
-    // asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
-    //     store.dispatch('owner/getAllOwners')
-    // }, 
+    asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+        store.dispatch('owner/getAllOwners')
+    }, 
 };
 </script>

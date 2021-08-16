@@ -9,7 +9,7 @@
         mx-auto
         xl:px-32
         px-10
-        py-10
+        xl:py-16 py-10
         2xl:px-0
         h-full
       "
@@ -17,23 +17,23 @@
       <div>
         <Table classes="rounded-xl" :head_data="table_head_data">
           <template v-slot:head>
-              <TableFilter>
-                <div class="flex items-center">
+              <TableFilter class="pt-5 pb-2">
+                <div class="flex items-center ">
                   <img src="~/assets/images/filter.png" alt="" srcset="">
-                  <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 ml-1" name="" id="">
+                  <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 ml-1 text-tertiary-300" name="" id="">
                       <option selected value="10">Category</option>
                       <option value="10">20</option>
                       <option value="10">30</option>
                   </select>
-                  <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2" name="" id="">
+                  <select class="focus:outline-none w-24 h-10 border px-2 rounded-md mr-2 text-tertiary-300" name="" id="">
                       <option selected value="10">Status</option>
                       <option value="10">20</option>
                       <option value="10">30</option>
                   </select>
-                  <input type="date" class="focus:outline-none w-36 h-10 border px-2 rounded-md mr-4" name="" id="" >
+                  <!-- <input type="date" class="focus:outline-none w-36 h-10 border px-2 rounded-md mr-4 text-tertiary-300" name="" id="" > -->
                 </div>
                 <div class="flex items-center">
-                  <span class="text-xs text-tertiary-500 mr-1">Show entries</span>
+                  <span class="text-xs text-tertiary-300 mr-1">Show entries</span>
                   <select class="focus:outline-none w-16 h-10 border px-2 rounded-md" name="" id="">
                       <option selected value="10">10</option>
                       <option value="10">20</option>
@@ -44,17 +44,17 @@
           </template>
 
           <tr class="relative" v-for="owner in owners.owners">
-            <td class="text-left py-4 px-5">{{ '12321' }}</td>
-            <td class="text-left py-4 px-5">{{ getFullName(owner) }}</td>
-            <td class="text-left py-4 px-5">{{ owner.type }}</td>
-            <td class="text-left py-4 px-5">
+            <td class="text-left py-5 px-6">{{ '12321' }}</td>
+            <td class="text-left py-5 px-6">{{ getFullName(owner) }}</td>
+            <td class="text-left py-5 px-6">{{ owner.type }}</td>
+            <td class="text-left py-5 px-6">
               <a class="hover:text-blue-500" href="tel:622322662">
                 {{
                 $moment(owner.createdAt).format('MMMM d, YYYY')
               }}
               </a>
             </td>
-            <td class="text-left py-4 px-5">
+            <td class="text-left py-5 px-6">
               <Status classes="w-24 h-8 text-xs" status="pending" />
             </td>
             <nuxt-link :to="`/owner-manager/${owner.ownerId}`" class="absolute inset-0 "></nuxt-link>

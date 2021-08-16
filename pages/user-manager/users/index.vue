@@ -9,19 +9,19 @@
             <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
                 <Table classes="rounded-md" :head_data="table_head_data"> 
                     <template v-slot:head>
-                        <TableFilter />
+                        <TableFilter  />
                     </template>
 
                     <tr class="group hover:bg-primary-200 text-xs xl:text-sm" v-for="item in demo">
-                        <td class="text-left py-5 px-5">{{ item.unique_Id }}</td>
-                        <td class="text-left py-5 px-5">
+                        <td class="text-left py-5 px-6">{{ item.unique_Id }}</td>
+                        <td class="text-left py-5 px-6">
                             <nuxt-link :to="`/user-manager/users/${ item.name }`">
                                 {{item.name }}
                             </nuxt-link>
                         </td>
-                        <!-- <td class="text-left py-5 px-5">{{ item.category }}</td> -->
-                        <td class="text-left py-5 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
-                        <td class="text-left py-5 px-5">
+                        <!-- <td class="text-left py-5 px-6">{{ item.category }}</td> -->
+                        <td class="text-left py-5 px-6"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
+                        <td class="text-left py-5 px-6">
                             
                             <span class="text-xs font-normal pl-1 text-action-danger flex items-center">
                                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">

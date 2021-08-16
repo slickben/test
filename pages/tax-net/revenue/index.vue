@@ -8,11 +8,11 @@
                 </template>
 
                 <tr class="relative" v-for="individualOwner in individualOwners">
-                    <td class="text-left py-4 px-5">{{ '23423' }}</td>
-                    <td class="text-left py-4 px-5">{{ getFullName(individualOwner) }}</td>
-                    <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ individualOwner.address.city }}</a></td>
-                    <td class="text-left py-4 px-5">
+                    <td class="text-left py-5 px-6">{{ '23423' }}</td>
+                    <td class="text-left py-5 px-6">{{ getFullName(individualOwner) }}</td>
+                    <!-- <td class="text-left py-5 px-6">{{ item.category }}</td> -->
+                    <td class="text-left py-5 px-6"><a class="hover:text-blue-500" >{{ individualOwner.address.city }}</a></td>
+                    <td class="text-left py-5 px-6">
                         <Status classes="w-24 h-8 text-xs" status="pending" />
                     </td>
                     <nuxt-link :to="`/owner-manager/${individualOwner.type}/${individualOwner.id}`" class="absolute inset-0 "></nuxt-link>

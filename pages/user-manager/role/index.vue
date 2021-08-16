@@ -12,13 +12,13 @@
                 </template>
 
                 <tr class="relative text-xs xl:text-sm" v-for="vehicle in vehicles">
-                    <td class="text-left py-4 px-5">{{ vehicle.plateNumber }}</td>
-                    <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
-                    <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.ownedBy) }}</a></td>
-                    <!-- <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.category }}</a></td> -->
-                    <!-- <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ $moment(vehicle.createdAt).format('MMMM d, YYYY') }}</a></td> -->
-                    <td class="text-left py-4 px-5">
+                    <td class="text-left py-5 px-6">{{ vehicle.plateNumber }}</td>
+                    <!-- <td class="text-left py-5 px-6">{{ vehicle }}</td> -->
+                    <!-- <td class="text-left py-5 px-6">{{ item.category }}</td> -->
+                    <td class="text-left py-5 px-6"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.ownedBy) }}</a></td>
+                    <!-- <td class="text-left py-5 px-6"><a class="hover:text-blue-500" >{{ vehicle.category }}</a></td> -->
+                    <!-- <td class="text-left py-5 px-6"><a class="hover:text-blue-500" >{{ $moment(vehicle.createdAt).format('MMMM d, YYYY') }}</a></td> -->
+                    <td class="text-left py-5 px-6">
                         <Status classes="w-24 h-8 text-xs" status="approved" />
                     </td>
                     <nuxt-link :to="`/user-manager/role/${vehicle.id}`" class="absolute inset-0 "></nuxt-link>

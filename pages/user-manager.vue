@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-no-wrap bg-tertiary-100 h-screen">
+  <div class="flex flex-no-wrap bg-tertiary-200 h-screen">
     <!-- Sidebar Start -->
     <Sidebar class="z-20">
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Users" link="/user-manager/users">
-          <Icons type="user" />
+          <Icons type="users" />
         </Nav>
         <Nav :toggleNav="toggleNav" name="Roles" link="/user-manager/role">
           <Icons type="role" />
@@ -59,7 +59,7 @@
           <nuxt-child />
         </div>
       </div>
-      <Footer />
+      <!-- <Footer /> -->
     </div>
   </div>
 </template>

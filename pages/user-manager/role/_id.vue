@@ -1,6 +1,6 @@
 <template>
     <div class="pb-8 h-full">
-        <BreadCrumb title="User Manager">
+        <BreadCrumb title="Super Admin">
             <Button title="Update"  :onClick="toggleSlide" />
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">

@@ -30,10 +30,12 @@ module.exports = {
     extend: {
       zIndex: {
         '-10': '-10',
+        '70': '70',
         '-9': '-9',
       },
       fontSize: {
         thin: '0.5rem',
+        '1thin': '10px',
       },
       height: {
         'lg-screen': '1280px',

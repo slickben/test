@@ -1,6 +1,6 @@
 <template>
     <div class="pb-8">
-        <BreadCrumb title="Vehicle Manager">
+        <BreadCrumb title="Overview">
             <nuxt-link class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" to="/vehicle-manager/vehicles/create">
                 New Registration
             </nuxt-link>

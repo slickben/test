@@ -124,46 +124,48 @@
                         <div class="grid grid-cols-2 p-10 shadow-sm gap-6 2xl:gap-10 pr-20 2xl:pr-36">
                             <div class="flex flex-col w-full">
                                 <label for="first_name" class="pb-1 text-xs font-normal  text-tertiary-500 dark:text-gray-100">First Name</label>
-                                <input type="text" id="first_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3  rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter First Name" />
+                                <input v-model="form.firstName" type="text" id="first_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3  rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter First Name" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="last_name" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Last Name</label>
-                                <input type="text" id="last_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
+                                <input v-model="form.lastName" type="text" id="last_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="plate_number" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Phone Number</label>
-                                <input type="text" id="plate_number"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
+                                <input v-model="form.phoneNumber" type="text" id="plate_number"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="email" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Email Addresss</label>
-                                <input type="text" id="email"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresss" />
+                                <input v-model="form.email" type="text" id="email"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresss" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="location" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Location</label>
-                                <select type="text" id="location"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
+                                <select v-model="form.location" type="text" id="location"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
                                     <option value="">Select Location</option>
                                 </select>
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="role" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Assign Role</label>
-                                <select type="text" id="role"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
+                                <select v-model="form.role" type="text" id="role"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
                                     <option value="">Select Assign Role</option>
                                 </select>
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="department" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Department</label>
-                                <select type="text" id="department"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
+                                <select v-model="form.department" type="text" id="department"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
                                     <option value="">Select Department</option>
                                 </select>
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="password" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Create Password</label>
-                                <input type="text" id="password"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Create Password" />
+                                <input v-model="form.password" type="text" id="password"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Create Password" />
                             </div>
                         </div>
                     </div>
                     <div class="2xl:py-5 col-span-8 flex justify-end items-center">
-                        <Button type="solid" title="Add" />
+                        <button class="px-6 min-w-28 min-h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600">
+                            Add
+                        </button>
                         <Button :onClick="toggleAddUserModal" title="cancle" />
                     </div>
                 </form>
@@ -264,7 +266,17 @@ import Button from '~/components/Button.vue';
                 table_head_data: ['Name', 'Email', 'Department',  'Status', ''],
                 addUserModal: false,
                 editUserModal: false,
-                toggle_filter: false
+                toggle_filter: false,
+                form: {
+                    firstName: '',
+                    lastName: '',
+                    phoneNumber: '',
+                    email: '',
+                    location: '',
+                    role: '',
+                    password: '',
+                    department: '',
+                }
             }
         },
         methods: {

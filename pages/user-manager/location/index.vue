@@ -2,7 +2,7 @@
     <div>
         <div class="pb-8 relative">
             <BreadCrumb title="Location">
-                <button class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" >
+                <button @click="toggleAddFunc" class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" >
                     Add Location
                 </button>
             </BreadCrumb>
@@ -88,140 +88,64 @@
                 </Table>
             </div>
         </div>
-        <!--new owner form modal -->
-        <div v-show="addUserModal" class="2xl:px-60 xl:px-40 px-10 py-10 2xl:py-16 bg-opacity-80 absolute inset-0 bg-tertiary-600 z-40 overflow-hidden py-10">
-            <div class="container mx-auto px-12 2xl:px-24 flex flex-col bg-white 2xl:py-8 py-6 h-full rounded-lg">
-                <div class="2xl:pb-8 pb-6 flex-none">
-                    <h1 class="text-2xl font-medium text-primary-900">Add User</h1>
+        <Sliding classes="min-w-105 w-full" v-show="toggle_add">
+            <template slot="head">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-2xl text-primary-900 font-semibold">Add Location</h4>
+                        <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
+                    </div>
+                    <button @click="toggleAddFunc" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
                 </div>
-                <form class="flex-grow shadow-sm p-6 px-10 grid grid-cols-8 gap-10 gap-y-4 2l:gap-y-10 mb-3">
-                    <div class="col-span-2">
-                        <div class="shadow-sm px-8 py-3">
-                            <img class="rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                            <div class="py-5 2xl:px-6">
-                                <div class=" relative xl:px-6 min-w-28 min-h-10 text-primary-500 text-xs flex items-center justify-center rounded-xl  focus:outline-none border border-primary-300 hover:bg-primary-200 hover:text-primary-600">
-                                    <input class="opacity-0 absolute inset-0" type="file" name="" id="">
-                                    Upload Photo
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-6">
-                        <div class="grid grid-cols-2 p-10 shadow-sm gap-6 2xl:gap-10 pr-20 2xl:pr-36">
-                            <div class="flex flex-col w-full">
-                                <label for="first_name" class="pb-1 text-xs font-normal  text-tertiary-500 dark:text-gray-100">First Name</label>
-                                <input type="text" id="first_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3  rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter First Name" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="last_name" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Last Name</label>
-                                <input type="text" id="last_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="plate_number" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Phone Number</label>
-                                <input type="text" id="plate_number"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="email" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Email Addresss</label>
-                                <input type="text" id="email"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresss" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="location" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Location</label>
-                                <select type="text" id="location"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
-                                    <option value="">Select Location</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="role" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Assign Role</label>
-                                <select type="text" id="role"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
-                                    <option value="">Select Assign Role</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="department" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Department</label>
-                                <select type="text" id="department"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
-                                    <option value="">Select Department</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="password" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Create Password</label>
-                                <input type="text" id="password"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Create Password" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="2xl:py-5 col-span-8 flex justify-end items-center">
-                        <Button type="solid" title="Add" />
-                        <Button :onClick="toggleAddUserModal" title="cancle" />
-                    </div>
-                </form>
-            </div>
-        </div>
+            </template>
+            <div>
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
 
-        <div v-show="editUserModal" class="2xl:px-60 xl:px-40 px-10 py-10 2xl:py-16 bg-opacity-80 absolute inset-0 bg-tertiary-600 z-40 overflow-hidden py-10">
-            <div class="container mx-auto px-12 2xl:px-24 flex flex-col bg-white 2xl:py-8 py-6 h-full rounded-lg">
-                <div class="2xl:pb-8 pb-6 flex-none">
-                    <h1 class="text-2xl font-medium text-primary-900">Add User</h1>
-                </div>
-                <form class="flex-grow shadow-sm p-6 px-10 grid grid-cols-8 gap-10 gap-y-4 2l:gap-y-10 mb-3">
-                    <div class="col-span-2">
-                        <div class="shadow-sm px-8 py-3">
-                            <img class="rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                            <div class="py-5 2xl:px-6">
-                                <div class=" relative xl:px-6 min-w-28 min-h-10 text-primary-500 text-xs flex items-center justify-center rounded-xl  focus:outline-none border border-primary-300 hover:bg-primary-200 hover:text-primary-600">
-                                    <input class="opacity-0 absolute inset-0" type="file" name="" id="">
-                                    Upload Photo
-                                </div>
-                            </div>
-                        </div>
+                    <Input class="mb-6" v-model="location.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+
+                    <InputSelect v-model="location.lga" type="text" id="lga" lable="Local Government Area" >
+                    </InputSelect>
+
+                    <div class="flex justify-start">
+                        <CustomizeCheckbox v-model="location.status" id="status" label="Status"/>
                     </div>
-                    <div class="col-span-6">
-                        <div class="grid grid-cols-2 p-10 shadow-sm gap-6 2xl:gap-10 pr-20 2xl:pr-36">
-                            <div class="flex flex-col w-full">
-                                <label for="first_name" class="pb-1 text-xs font-normal  text-tertiary-500 dark:text-gray-100">First Name</label>
-                                <input type="text" id="first_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3  rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter First Name" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="last_name" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Last Name</label>
-                                <input type="text" id="last_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="plate_number" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Phone Number</label>
-                                <input type="text" id="plate_number"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="email" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Email Addresss</label>
-                                <input type="text" id="email"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresss" />
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="location" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Location</label>
-                                <select type="text" id="location"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
-                                    <option value="">Select Location</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="role" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Assign Role</label>
-                                <select type="text" id="role"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
-                                    <option value="">Select Assign Role</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="department" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Department</label>
-                                <select type="text" id="department"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
-                                    <option value="">Select Department</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col w-full">
-                                <label for="password" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Create Password</label>
-                                <input type="text" id="password"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Create Password" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="2xl:py-5 col-span-8 flex justify-end items-center">
-                        <Button type="solid" title="Add" />
-                        <Button :onClick="toggleEditUserModal" title="cancle" />
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton class=" rounded-full" title="Done" type="solid" />
+                        <Button class=" rounded-full" :onClick="toggleAddFunc" title="Cancle" />
                     </div>
                 </form>
             </div>
-        </div>
+        </Sliding>
+        <Sliding classes="min-w-105 w-full" v-show="toggle_edit">
+            <template slot="head">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-2xl text-primary-900 font-semibold">Edit Location</h4>
+                        <!-- <p class="text-base text-tertiary-600 font-normal py-2">#0123</p/> -->
+                    </div>
+                    <button @click="toggleAddEdit" class="text-tertiary-600 font-semibold focus:outline-none border-0 text-2xl">X</button>
+                </div>
+            </template>
+            <div>
+                <form class="p-6 px-10 pt-16" @submit.prevent="submitAdd">
+
+                    <Input class="mb-6" v-model="location.name" type="text" id="name" lable="Name" place_holder="Enter Name" />
+
+                    <InputSelect v-model="location.lga" type="text" id="lga" lable="Local Government Area" >
+                    </InputSelect>
+
+                    <div class="flex justify-start">
+                        <CustomizeCheckbox v-model="location.status" id="status" label="Status"/>
+                    </div>
+
+                    <div class="col-span-2 flex items-center justify-end py-6 pt-10">
+                        <FormButton class=" rounded-full" title="Done" type="solid" />
+                        <Button class=" rounded-full" :onClick="toggleAddEdit" title="Cancle" />
+                    </div>
+                </form>
+            </div>
+        </Sliding>
     </div>
 </template>
 
@@ -230,15 +154,21 @@
     import Status from '~/components/Status.vue';
     import TableFilter from '~/components/TableFilter.vue';
     import BreadCrumb from "~/components/BreadCrumb.vue"
+    import Input from "~/components/form/Input.vue"
+    import InputSelect from "~/components/form/InputSelect.vue"
+    import CustomizeCheckbox from "~/components/Document/CustomizeCheckbox.vue"
     import { mapState } from 'vuex'
-import Button from '~/components/Button.vue';
+    import Button from '~/components/Button.vue';
     export default {
         components: {
             Table,
             Status,
             TableFilter,
             BreadCrumb,
-                Button
+            Button,
+            Input,
+            InputSelect,
+            CustomizeCheckbox
         },
         computed: {
         ...mapState({
@@ -249,10 +179,23 @@ import Button from '~/components/Button.vue';
             return {
                 table_head_data: ['Location', 'Local Government',  'Status'],
                 addUserModal: false,
-                editUserModal: false
+                editUserModal: false,
+                toggle_add: false,
+                toggle_edit: false,
+                location: {
+                    name: '',
+                    lga: '',
+                    status: false
+                }
             }
         },
         methods: {
+            toggleAddFunc() {
+                this.toggle_add = !this.toggle_add
+            },
+            toggleAddEdit() {
+                this.toggle_edit = !this.toggle_edit
+            },
             toggleAddUserModal () {
                 this.addUserModal = !this.addUserModal
             },

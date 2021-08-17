@@ -110,7 +110,7 @@
                 </tr>
             </SettingsTable>
         </div>
-        <Modal v-show="toggle_add" />
+        <DocumentModal v-show="toggle_add" />
     </div>
 </template>
 

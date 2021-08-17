@@ -33,6 +33,11 @@ module.exports = {
         '70': '70',
         '-9': '-9',
       },
+      padding: {
+        'px-2': '2px',
+        'px-3': '3px',
+        'px-4': '4px',
+      },
       fontSize: {
         thin: '0.5rem',
         '1thin': '10px',

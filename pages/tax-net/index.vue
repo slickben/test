@@ -16,7 +16,7 @@
     >
       <div class="grid grid-cols-6 gap-x-6">
         <div class="col-span-4">
-          <LineGraph class="rounded-xl" />
+          <!-- <LineGraph class="rounded-xl" /> -->
         </div>
         <div class="col-span-2">
           <Table classes="rounded-xl" :head_data="table_head_data">
@@ -78,7 +78,6 @@ import Table from '~/components/Table.vue'
 import Status from '~/components/Status.vue'
 import { mapState } from 'vuex'
 import BreadCrumb from '~/components/BreadCrumb.vue'
-import LineGraph from '~/components/LineGraph.vue'
 export default {
   components: {
     AnalysisCardWithBg,

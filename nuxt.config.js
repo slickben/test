@@ -14,7 +14,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/vue-datepicker', ssr: false }],
+  // plugins: [{ src: '~/plugins/plugins_vue-chartjs', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -40,6 +40,12 @@ export default {
   ],
 
   // after i read the nuxt auth doc this is what i find but i don't really understand is 
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    baseURL: 'https://localhost:8000/api/v1',
+    // proxy: true,
+    withCredentials: true,
+  },
   // proxy: {
   //   '/nuxt': {
   //     target: 'http://localhost:3000/',
@@ -74,13 +80,6 @@ export default {
 
   router: {
     middleware: ['auth'],
-  },
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL: 'https://localhost:8000/api/v1',
-    // proxy: true,
-    withCredentials: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

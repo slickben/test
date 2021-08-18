@@ -25,37 +25,37 @@
 </template>
 
 <script>
-import titleCase from 'ap-style-title-case'
+// import titleCase from 'ap-style-title-case'
 export default {
     props: ['title', 'back', 'item_id'],
     computed: {
-        breadCrumbs () {
-            const fullPath = this.$route.fullPath
+        // breadCrumbs () {
+        //     const fullPath = this.$route.fullPath
 
-            const params = fullPath.startsWith('/')
-                ? fullPath.substring(1).split('/')
-                : fullPath.split('/')
+        //     const params = fullPath.startsWith('/')
+        //         ? fullPath.substring(1).split('/')
+        //         : fullPath.split('/')
 
-            const crumbs = []
+        //     const crumbs = []
 
-            let path = ''
+        //     let path = ''
 
-            params.forEach((param, index) => {
-                path = `${path}/${param}`
-                const match = this.$router.match(path)
-                if (match.name !== null) {
-                crumbs.push({
-                    title: titleCase(param.replace(/-/g, ' ')),
-                    ...match,
-                })
-                }
-            })
+        //     params.forEach((param, index) => {
+        //         path = `${path}/${param}`
+        //         const match = this.$router.match(path)
+        //         if (match.name !== null) {
+        //         crumbs.push({
+        //             title: titleCase(param.replace(/-/g, ' ')),
+        //             ...match,
+        //         })
+        //         }
+        //     })
 
-            crumbs.shift()
+        //     crumbs.shift()
 
-            return crumbs
+        //     return crumbs
 
-        }
+        // }
     }
 }
 </script>

@@ -36,42 +36,42 @@
             <div>
                 <div class="rounded-full absolute top-0 pt-7 right-0 w-100 pr-6 pl-16 hidden dropdown">
                 <div class="bg-white shadow grid grid-cols-3 gap-y-4 px- py-3 px-2">
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Owner manager</p>
-                  </div>
-                  <div  class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Vehicle manager</p>
-                  </div>
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Plate manager</p>
-                  </div>
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Payment</p>
-                  </div>
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Business Intelligence</p>
-                  </div>
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Tax Net</p>
-                  </div>
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Document Manager</p>
-                  </div>
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">User manager</p>
-                  </div>
-                  <div class=" border-opacity-0 border hover:border-primary-400 hover:text-primary-400 py-3 ">
-                    <img class="w-8 h-8 rounded-full mx-auto" src="https://via.placeholder.com/150" alt="" srcset="">
-                    <p class=" text-thin text-center">Settings</p>
-                  </div>
+                  <nuxtLink to="/owner-manager" class=" border-opacity-0 border p-2 hover:border-primary-400 hover:text-primary-400 py-3 text-tertiary-500 text-center">
+                    <Icon class="mx-auto w-6 h-6" type="owner" />
+                    <p class=" text-xs truncate text-center pt-1">Owner manager</p>
+                  </nuxtLink>
+                  <nuxtLink to="/vehicle-manager"  class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="vehicle" />
+                    <p class=" text-xs truncate text-center pt-1">Vehicle manager</p>
+                  </nuxtLink>
+                  <nuxtLink to="/plate-manager" class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="plate" />
+                    <p class=" text-xs truncate text-center pt-1">Plate manager</p>
+                  </nuxtLink>
+                  <nuxtLink to="/" class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="payment" />
+                    <p class=" text-xs truncate text-center pt-1">Payment</p>
+                  </nuxtLink>
+                  <nuxtLink to="/" class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="business" />
+                    <p class=" text-xs truncate text-center">Business Intelligence</p>
+                  </nuxtLink>
+                  <nuxtLink to="/tax-net" class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="tax" />
+                    <p class=" text-xs truncate text-center">Tax Net</p>
+                  </nuxtLink>
+                  <nuxtLink to="/" class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="folder" />
+                    <p class=" text-xs truncate text-center">Document Manager</p>
+                  </nuxtLink>
+                  <nuxtLink to="/user-manager" class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="users" />
+                    <p class=" text-xs truncate text-center">User manager</p>
+                  </nuxtLink>
+                  <nuxtLink to="/settings" class=" border-opacity-0 border p-2 text-tertiary-500 hover:border-primary-400 hover:text-primary-400 py-3 ">
+                    <Icon class="mx-auto w-6 h-6" type="setting" />
+                    <p class=" text-xs truncate text-center">Settings</p>
+                  </nuxtLink>
                 </div>
                 </div>
             </div>
@@ -112,9 +112,11 @@
 <script>
 import { mapMutations, mapState, mapActions } from 'vuex'
 import UserProfileDropDown from  '~/components/UserProfileDropDown.vue'
+import Icon from  '~/components/Icons.vue'
 export default {
   components: {
-      UserProfileDropDown
+      UserProfileDropDown,
+      Icon
   },
   props: {
       css: String,

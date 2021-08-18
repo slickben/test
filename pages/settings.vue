@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-no-wrap bg-tertiary-200 h-screen">
     <!-- Sidebar Start -->
-    <Sidebar>
+    <Sidebar title="Settings">
       <ul class="pt-3">
         <Nav :toggleNav="toggleNav" name="Owner Manager" link="/settings/owner-manager/state">
           <Icons type="owner" />

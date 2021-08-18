@@ -1,6 +1,6 @@
 <template>
     <div class="pb-8">
-        <BreadCrumb title="Vehicle Manager">
+        <BreadCrumb :item_id="vehicle.id" title="Vehicle">
             <!-- <Button title="Update"  :onClick="toggleSlide" /> -->
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">

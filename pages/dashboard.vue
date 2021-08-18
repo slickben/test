@@ -15,132 +15,68 @@
 
     </div> -->
     <!-- <div class="absolute inset-0 bg-gray-900 -z-10 opacity-80"></div> -->
-    <div class="pb-20 2xl:pb-28 text-right">
+    <div class="pb-10 2xl:pb-12 text-right">
       <Navigation :dashboard="true">
         <template v-slot:lift>
           <Logo size="big" />
         </template>
       </Navigation>
     </div>
-    <div class="grid grid-cols-4 xl:grid-cols-5 2xl:grid-cols-4 px-24 xl:px-0 pb-10">
+    <div class="grid grid-cols-4 xl:grid-cols-5 2xl:grid-cols-4 px-24 pb-10 xl:px-28">
       <div class="col-span-4 xl:col-start-2 xl:col-span-3 2xl:col-start-2 2xl:col-span-2">
-        <H1 class="2xl:px-6 px-10 pb-8 text-xs text-tertiary-500 uppercase">Modules</H1>
+        <H1 class="2xl:px-4 px-10 pb-8 text-xs text-tertiary-500 uppercase">Modules</H1>
       </div>
       <div class="col-span-4 xl:col-start-2 xl:col-span-3 2xl:col-start-2 2xl:col-span-2 grid grid-cols-5 2xl:gap-12 gap-y-12 grid-rows-2">
         <NavBox css="bg-dashboard-icons-one" link="/owner-manager" name="Owner manager">
-          <img
-            class="rounded"
-            src="~/assets/images/owner.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="owner" />
         </NavBox>
         <NavBox
           css="bg-dashboard-icons-two"
           link="/vehicle-manager"
           name="Vehicle operations"
         >
-          <img
-            class="mx-auto"
-            src="~/assets/images/vehicle.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="car" />
         </NavBox>
         <NavBox css="bg-dashboard-icons-three" link="/" name="Housing Operations">
-          <img
-            class="mx-auto"
-            src="~/assets/images/housing.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="house-m" />
         </NavBox>
         <NavBox css="bg-dashboard-icons-four" link="/plate-manager" name="Plate Manager">
-          <img
-            class="mx-auto"
-            src="~/assets/images/plate.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="plate-m" />
         </NavBox>
         <NavBox css="bg-dashboard-icons-five" link="/" name="Payment">
-          <img
-            class="mx-auto"
-            src="~/assets/images/payment.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="payment-m" />
         </NavBox>
         <NavBox css="bg-dashboard-icons-six" link="/" name="Business intelligence">
-          <img
-            class="mx-auto"
-            src="~/assets/images/business_intelligence.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="target-m" />
         </NavBox>
         <NavBox css="bg-dashboard-icons-seven" link="/tax-net" name="Tax net">
-          <img
-            class="mx-auto"
-            src="~/assets/images/tax_net.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="tax" />
         </NavBox>
         <NavBox css="bg-dashboard-icons-eight" link="/" name="Document Manager">
-          <img
-            class="mx-auto"
-            src="~/assets/images/document_manager.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="folder-m" />
         </NavBox>
         <NavBox css="bg-dashboard-icons-nine" link="/user-manager" name="User manager">
-          <img
-            class="mx-auto"
-            src="~/assets/images/user_manager.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="user-m" />
         </NavBox>
         <NavBox
           css="bg-dashboard-icons-ten"
           link="/settings/owner-manager/state"
           name="Settings"
         >
-          <img
-            class="mx-auto"
-            src="~/assets/images/settings.svg"
-            alt=""
-            srcset=""
-          />
+          <Icons class="w-10 h-10" type="setting" />
         </NavBox>
       </div>
     </div>
-    <div class="grid grid-cols-4 xl:grid-cols-5 2xl:grid-cols-4 px-24 xl:px-0">
+    <div class="grid grid-cols-4 xl:grid-cols-5 2xl:grid-cols-4 px-24 xl:px-28">
       <div class="col-span-4 xl:col-start-2 xl:col-span-3 2xl:col-start-2 2xl:col-span-2">
-        <H1 class="2xl:px-6 px-10 pb-8 text-xs text-tertiary-500 uppercase">Quick Access</H1>
+        <H1 class="2xl:px-4 px-10 pb-8 text-xs text-tertiary-500 uppercase">Quick Access</H1>
       </div>
       <div class="col-span-4 xl:col-start-2 xl:col-span-3 2xl:col-start-2 2xl:col-span-2 grid grid-cols-5 2xl:gap-12 gap-y-12 grid-rows-2">
-        <NavBox css="bg-dashboard-icons-one" link="/owner-manager" name="Owner manager">
-          <img
-            class="rounded"
-            src="~/assets/images/owner.svg"
-            alt=""
-            srcset=""
-          />
+        <NavBox css="bg-dashboard-icons-eight" link="/" name="Document Manager">
+          <Icons class="w-10 h-10" type="folder-m" />
         </NavBox>
-        <NavBox
-          css="bg-dashboard-icons-two"
-          link="/vehicle-manager"
-          name="Vehicle operations"
-        >
-          <img
-            class="mx-auto"
-            src="~/assets/images/vehicle.svg"
-            alt=""
-            srcset=""
-          />
+        <NavBox css="bg-dashboard-icons-nine" link="/user-manager" name="User manager">
+          <Icons class="w-10 h-10" type="user-m" />
         </NavBox>
       </div>
     </div>
@@ -150,6 +86,7 @@
 <script>
 import NavBox from '~/components/NavBox.vue'
 import Navigation from '~/components/Navigation.vue'
+import Icons from '~/components/Icons.vue'
 import Logo from '~/components/Logo.vue'
 export default {
   name: 'Home',
@@ -158,6 +95,7 @@ export default {
     NavBox,
     Navigation,
     Logo,
+    Icons
   },
   data() {
     return {

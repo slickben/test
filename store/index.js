@@ -51,5 +51,11 @@ export const actions = {
         let single = event.currentTarget.getElementsByClassName("dropdown")[0];
         console.log(event.currentTarget.getElementsByTagName("ul")[0])
         single.classList.toggle("hidden");
+    },
+
+    menuDropdownHandler({commit}, event) {
+        let single = event.currentTarget.getElementsByClassName("dropdown")[0];
+        // console.log(single)
+        single.classList.toggle("hidden");
     }
 }

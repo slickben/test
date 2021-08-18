@@ -30,10 +30,17 @@ module.exports = {
     extend: {
       zIndex: {
         '-10': '-10',
+        '70': '70',
         '-9': '-9',
+      },
+      padding: {
+        'px-2': '2px',
+        'px-3': '3px',
+        'px-4': '4px',
       },
       fontSize: {
         thin: '0.5rem',
+        '1thin': '10px',
       },
       height: {
         'lg-screen': '1280px',
@@ -113,16 +120,16 @@ module.exports = {
         },
         dashboard: {
           icons: {
-            one: '#E60404',
-            two: '#22AA58',
-            three: '#D1A302',
-            four: '#30B800',
-            five: '#00B5AA',
-            six: '#7BAB14',
-            seven: '#A90C86',
-            eight: '#428B9B',
-            nine: '#B65903',
-            ten: '#E40C74',
+            one: '#E74C3C',
+            two: '#2ECC71',
+            three: '#F39C12',
+            four: '#27AE60',
+            five: '#1ABC9C',
+            six: '#5C800F',
+            seven: '#8E44AD',
+            eight: '#16A085',
+            nine: '#D35400',
+            ten: '#9B59B6',
           },
           
         },

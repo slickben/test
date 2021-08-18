@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <BreadCrumb title="User Manager">
+        <BreadCrumb item_id="#09873" title="Users">
             <button @click="toggleSlide" class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" >
                 Update User
             </button>
@@ -79,34 +79,34 @@
                                 </div>
                             </div>
                             <div class="flex flex-col pb-3">
-                                <label for="date_of_birth" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Date of Birth</label>
-                                <input  id="date_of_birth" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="23 Jan, 1994" />
+                                <label for="email" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left"> Email Address</label>
+                                <input v-model="form.email" id="email" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="23 Jan, 1994" />
                             </div>
                             <div class="flex flex-col pb-3">
-                                <label for="phone_number" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Phone Number</label>
-                                <input  id="phone_number" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="+2348012345678" />
+                                <label for="department" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Phone Number</label>
+                                <input v-model="form.department" id="department" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="+2348012345678" />
                             </div>
                         </div>
                         <div>
                             <div class="flex flex-col pb-5">
                                 <label for="first_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">First Name</label>
-                                <input  id="first_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
+                                <input v-model="form.firstName" id="first_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Labaika" />
                             </div>
                             <div class="flex flex-col pb-5">
                                 <label for="last_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Last Name</label>
-                                <input  id="last_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
+                                <input v-model="form.lastName" id="last_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
                             </div>
                             <div class="flex flex-col pb-5">
-                                <label for="other_name" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Other Name</label>
-                                <input  id="other_name" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
+                                <label for="phone_number" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Phone Number</label>
+                                <input v-model="form.phoneNumber" id="phone_number" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Aladeen" />
                             </div>
                             <div class="flex flex-col pb-3">
-                                <label for="gender" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Gender</label>
-                                <input  id="gender" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Male" />
+                                <label for="role" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Role</label>
+                                <input readonly v-model="form.role" id="role" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="Male" />
                             </div>
                             <div class="flex flex-col pb-3">
-                                <label for="nin_or_bvn" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">NIN / BVN</label>
-                                <input  id="nin_or_bvn" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="0123456789101" />
+                                <label for="nin_or_bvn" class="text-tertiary-500 text-xs font-normal leading-tight tracking-normal mb-2 text-left">Location</label>
+                                <input v-model="form.location" id="nin_or_bvn" class="text-tertiary-600 focus:outline-none focus:border focus:border-tertiary-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-tertiary-600 rounded border" placeholder="0123456789101" />
                             </div>
                         </div>
                         <div class="col-span-2 flex items-center justify-center py-6">
@@ -168,7 +168,16 @@ export default {
                 "Profile",
                 "Change Password",
             ],
-            
+            form: {
+                firstName: '',
+                lastName: '',
+                phoneNumber: '',
+                email: '',
+                location: '',
+                role: '',
+                password: '',
+                department: '',
+            }
         }
     },
     methods: {

@@ -3,12 +3,13 @@
         <div class="max-w-lg-screen mx-auto xl:px-32 px-10 2xl:px-0 h-full flex items-center justify-between w-full">
             <div class=" text-tertiary-300">
                 <h1 class="text-2xl text-primary-900 font-semibold"> {{ title }} </h1>
-                <nav class="rounded font-sans w-full">
+                <p class="text-tertiary-600">{{ item_id }}</p>
+                <!-- <nav class="rounded font-sans w-full">
                     <ol class="list-reset flex">
                         <li :class="[index !== breadCrumbs.length-1 ? 'text-primary-400' : 'text-tertiary-600']" v-for="(breadCrumb, index) in breadCrumbs"><nuxt-link :to="breadCrumb.fullPath" class="">{{ breadCrumb.title }} <span v-if="index !== breadCrumbs.length-1" class="mx-2 text-tertiary-600">/</span></nuxt-link></li>
                         
                     </ol>
-                </nav>
+                </nav> -->
             </div>
             <div>
                 <slot></slot>
@@ -26,7 +27,7 @@
 <script>
 import titleCase from 'ap-style-title-case'
 export default {
-    props: ['title', 'back'],
+    props: ['title', 'back', 'item_id'],
     computed: {
         breadCrumbs () {
             const fullPath = this.$route.fullPath

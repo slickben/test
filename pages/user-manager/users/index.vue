@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="pb-8 relative">
-            <BreadCrumb title="User Manager">
+            <BreadCrumb title="Users">
                 <button @click="toggleAddUserModal" class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" >
                     Create
                 </button>
@@ -9,7 +9,61 @@
             <div class="max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full w-full">
                 <Table classes="rounded-md" :head_data="table_head_data"> 
                     <template v-slot:head>
-                        <TableFilter  />
+                        <TableFilter class="pt-5 pb-2">
+                            <template v-slot:filter>
+                            <div class=" relative">
+                                <button :class="[toggle_filter ? 'bg-primary-300 text-tertiary-900 border-primary-300' : 'bg-white text-tertiary-500 border-tertiary-400']" @click="toggleFilterFunc" class=" hover:bg-primary-300 hover:text-tertiary-900 hover:border-primary-300  flex items-center focus:outline-none py-3 px-4 rounded-md border  w-60">
+                                    <img src="~/assets/images/filter.png" alt="" srcset="">
+                                    <span class="pl-4 text-xs">Filter Owner</span>
+                                </button>
+                                <div v-show="toggle_filter" class="absolute pt-2 z-70 ">
+                                    <div class="bg-white rounded-md text-tertiary-500 shadow">
+                                        <p class="text-xs text-tertiary-800 bg-tertiary-200 py-2 rounded-t-md px-6">date</p>
+                                        <div class="py-3 px-4">
+                                            <p class="text-xs">Last</p>
+                                            <div class="pt-1">
+                                                <button class=" focus:outline-none py-1 px-2 rounded text-primary-500 bg-primary-100 mr-2 text-xs">
+                                                3days
+                                                </button>
+                                                <button class=" focus:outline-none py-1 px-2 rounded text-primary-500 bg-primary-100 mr-2 text-xs">7 days</button>
+                                                <button class=" focus:outline-none py-1 px-2 rounded text-primary-500 bg-primary-100 mr-2 text-xs">30 day</button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                        <div class="py-3 px-4">
+                                            <p class="text-xs text-tertiary-500">From</p>
+                                            <input class="border py-1 px-2 rounded-md text-xs text-tertiary-500 focus:outline-none" type="date" name="" id="">
+                                        </div>
+                                        <div class="py-3 px-4 text-tertiary-500">
+                                            <p class="text-xs">From</p>
+                                            <input class="border py-1 px-2 rounded-md text-xs text-tertiary-500 focus:outline-none" type="date" name="" id="">
+                                        </div>
+                                        </div>
+                                        <p class="text-xs text-tertiary-800 bg-tertiary-200 py-2 px-6">Unigue Id</p>
+                                        <div class="py-5 px-4">
+                                        <input class="w-full border-tertiary-400 py-2 px-4 border rounded focus:outline-none placeholder-tertiary-500 text-tertiary-700 text-xs" placeholder="Enter Unique Id" type="text">
+                                        </div>
+                                        <p class="text-xs text-tertiary-800 bg-tertiary-200 py-2 px-6">Profile Name</p>
+                                        <div class="py-5 px-4">
+                                            <input class="w-full border-tertiary-400 py-2 px-4 border rounded focus:outline-none placeholder-tertiary-500 text-tertiary-700 text-xs" placeholder="Enter Profie Name" type="text">
+                                        </div>
+                                        <div class="py-5 px-4 flex justify-between items-center">
+                                            <button class="text-xs focus:outline-none text-primary-500 hover:bg-primary-100 px-4 h-6 rounded-xl">clear</button>
+                                            <button class="text-xs focus:outline-none text-white hover:bg-primary-500 bg-primary-400 px-4 h-6 rounded-xl ">Filter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </template>
+                            <div class="flex items-center">
+                                <span class="text-xs text-tertiary-300 mr-1">Show entries</span>
+                                <select class="focus:outline-none w-16 h-10 border px-2 rounded-md" name="" id="">
+                                    <option selected value="10">10</option>
+                                    <option value="10">20</option>
+                                    <option value="10">30</option>
+                                </select>
+                            </div>
+                        </TableFilter>
                     </template>
 
                     <tr class="group hover:bg-primary-200 text-xs xl:text-sm" v-for="item in demo">
@@ -70,46 +124,48 @@
                         <div class="grid grid-cols-2 p-10 shadow-sm gap-6 2xl:gap-10 pr-20 2xl:pr-36">
                             <div class="flex flex-col w-full">
                                 <label for="first_name" class="pb-1 text-xs font-normal  text-tertiary-500 dark:text-gray-100">First Name</label>
-                                <input type="text" id="first_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3  rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter First Name" />
+                                <input v-model="form.firstName" type="text" id="first_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3  rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter First Name" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="last_name" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Last Name</label>
-                                <input type="text" id="last_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
+                                <input v-model="form.lastName" type="text" id="last_name"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="plate_number" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Phone Number</label>
-                                <input type="text" id="plate_number"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
+                                <input v-model="form.phoneNumber" type="text" id="plate_number"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Plate Number" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="email" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Email Addresss</label>
-                                <input type="text" id="email"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresss" />
+                                <input v-model="form.email" type="text" id="email"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresss" />
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="location" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Location</label>
-                                <select type="text" id="location"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
+                                <select v-model="form.location" type="text" id="location"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
                                     <option value="">Select Location</option>
                                 </select>
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="role" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Assign Role</label>
-                                <select type="text" id="role"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
+                                <select v-model="form.role" type="text" id="role"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
                                     <option value="">Select Assign Role</option>
                                 </select>
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="department" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Department</label>
-                                <select type="text" id="department"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
+                                <select v-model="form.department" type="text" id="department"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Enter Email Addresssr">
                                     <option value="">Select Department</option>
                                 </select>
                             </div>
                             <div class="flex flex-col w-full">
                                 <label for="password" class="pb-1 text-xs font-normal  text-tertiary-600 dark:text-gray-100">Create Password</label>
-                                <input type="text" id="password"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Create Password" />
+                                <input v-model="form.password" type="text" id="password"  required class="border border-gray-300 dark:border-gray-700 pl-3 py-3 rounded text-xs font-normal focus:outline-none focus:border-indigo-700 bg-transparent placeholder-tertiary-300 text-tertiary-300 dark:text-gray-400" placeholder="Create Password" />
                             </div>
                         </div>
                     </div>
                     <div class="2xl:py-5 col-span-8 flex justify-end items-center">
-                        <Button type="solid" title="Add" />
+                        <button class="px-6 min-w-28 min-h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600">
+                            Add
+                        </button>
                         <Button :onClick="toggleAddUserModal" title="cancle" />
                     </div>
                 </form>
@@ -209,7 +265,18 @@ import Button from '~/components/Button.vue';
             return {
                 table_head_data: ['Name', 'Email', 'Department',  'Status', ''],
                 addUserModal: false,
-                editUserModal: false
+                editUserModal: false,
+                toggle_filter: false,
+                form: {
+                    firstName: '',
+                    lastName: '',
+                    phoneNumber: '',
+                    email: '',
+                    location: '',
+                    role: '',
+                    password: '',
+                    department: '',
+                }
             }
         },
         methods: {
@@ -219,6 +286,9 @@ import Button from '~/components/Button.vue';
             toggleEditUserModal (id) {
                 console.log(id)
                 this.editUserModal = !this.editUserModal
+            },
+            toggleFilterFunc( ) {
+                this.toggle_filter = !this.toggle_filter
             }
         }
     }

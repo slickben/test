@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BreadCrumb title="Tax Net"/>
+        <BreadCrumb title="Revenue"/>
         <div class="pb-8 grid grid-cols-1 gap-y-10 max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
                 <template v-slot:head>

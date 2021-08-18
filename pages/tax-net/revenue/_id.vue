@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BreadCrumb title="Owner Manager">
+        <BreadCrumb item_id="#489755" title="Revenue">
             <Button type="secondary" title="Update"  :onClick="toggleSlide" />
         </BreadCrumb>
         <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full">

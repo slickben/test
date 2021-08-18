@@ -39,13 +39,15 @@ export default {
     'nuxt-route-meta',
   ],
 
+  // after i read the nuxt auth doc this is what i find but i don't really understand is 
   // proxy: {
-  //   '/laravel': {
-  //     target: 'https://laravel-auth.nuxtjs.app',
-  //     pathRewrite: { '^/laravel': '/' }
+  //   '/nuxt': {
+  //     target: 'http://localhost:3000/',
+  //     pathRewrite: { '^/nuxt': '/' }
   //   }
   // },
   // http://demo.trems.ng
+  // http://localhost:8000/api/v1
   // http://trems-api.local/
   auth: {
     strategies: {
@@ -77,6 +79,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'https://localhost:8000/api/v1',
+    // proxy: true,
     withCredentials: true,
   },
 

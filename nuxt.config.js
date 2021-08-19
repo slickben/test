@@ -39,7 +39,7 @@ export default {
     'nuxt-route-meta',
   ],
 
-  // after i read the nuxt auth doc this is what i find but i don't really understand is 
+  // after i read the nuxt auth doc this is what i find but i don't really understand is
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'https://localhost:8000/api/v1',
@@ -59,18 +59,18 @@ export default {
     strategies: {
       laravelSanctum: {
         provider: 'laravel/sanctum',
-        url: 'http://localhost:8000/api/v1',
+        url: 'http://localhost:8000',
         endpoints: {
           login: {
-            url: '/login',
+            url: '/api/v1/login',
             method: 'post',
           },
           user: {
-            url: '/user',
+            url: '/api/v1/user',
             method: 'get',
           },
           logout: {
-            url: '/logout',
+            url: '/api/v1/logout',
             method: 'post',
           },
         },

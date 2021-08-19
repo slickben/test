@@ -1,7 +1,7 @@
 <template>
     <div>
         <BreadCrumb :back="true" title="Owner Manager">
-            <Button type="secondary" title="Update"  :onClick="toggleSlide" />
+            <Button class="rounded-xl" type="secondary" title="Update"  :onClick="toggleSlide" />
         </BreadCrumb>
         <div class="grid gap-y-8 pb-8 max-w-lg-screen mx-auto px-10 xl:px-32 py-10 2xl:px-0  h-full">
             <!-- Individual Owner -->
@@ -211,7 +211,7 @@
 
                         <div class="col-span-2 flex items-center justify-center py-6">
                             <FormButton title="Save Changes" type="solid" />
-                            <Button :onClick="toggleSlide" title="Cancle" />
+                            <Button class="rounded-xl" :onClick="toggleSlide" title="Cancle" />
                         </div>
                     </form>
                     <!-- Business Owner -->
@@ -243,7 +243,7 @@
 
                         <div class="col-span-2 flex items-center justify-center py-6">
                             <FormButton title="Save Changes" type="solid" />
-                            <Button :onClick="toggleSlide" title="Cancle" />
+                            <Button class="rounded-xl" :onClick="toggleSlide" title="Cancle" />
                         </div>
                     </form>
                     <!-- Government Owner -->
@@ -274,9 +274,9 @@
 
                         <Input id="landmark" place_holder="landmark" lable="landmark" v-model="update_data.landmark" type="text" />
 
-                        <div class="col-span-2 flex items-center justify-center py-6">
+                        <div  class="col-span-2 flex items-center justify-center py-6">
                             <FormButton title="Save Changes" type="solid" />
-                            <Button :onClick="toggleSlide" title="Cancle" />
+                            <Button class="rounded-xl" :onClick="toggleSlide" title="Cancle" />
                         </div>
                     </form>
                 </div>

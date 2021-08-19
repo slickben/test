@@ -2,7 +2,7 @@
     <div class="pb-8">
         <BreadCrumb title="Vehicle">
             <button @click="toggleCreateVehicleModal" class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600">
-                New Registration
+                New Vehicle
             </button>
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 xl:py-16 py-10 2xl:px-0  h-full w-full">
@@ -214,7 +214,7 @@
                             <!-- wizard form timeline -->
                             <div class="text-xs font-medium text-tertiary-300 border-b relative">
                                 <div class="py-4 text-center text-sm font-normal text-tertiary-600 ">
-                                    step 2 of 4
+                                    step {{ step }} of 4
                                 </div>
                                 <div class="w-full grid grid-cols-4 absolute -bottom-1">
                                     <div :class="[step >= 1 ? 'opacity-100' : 'opacity-0']" class="bg-primary-400 h-2"></div>
@@ -389,7 +389,7 @@
                             <!-- wizard form timeline -->
                             <div class="text-xs font-medium text-tertiary-300 border-b relative">
                                 <div class="py-4 text-center text-sm font-normal text-tertiary-600 ">
-                                    step 1 of 3
+                                    step {{ step }} of 3
                                 </div>
                                 <div class="w-full grid grid-cols-3 absolute -bottom-1">
                                     <div :class="[step >= 1 ? 'opacity-100' : 'opacity-0']" class="bg-primary-400 h-2"></div>
@@ -578,6 +578,7 @@
             return {
                 table_head_data: ['Plate Number', 'Owner Name', 'Vehicle Category', 'Date Created', 'Verification Status'],
                 step: 1,
+                parentWizardStep: 0,
                 personalInfoModal: false,
                 vehicleInfoModal: false,
                 selectedCategory: '',

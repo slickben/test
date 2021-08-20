@@ -42,7 +42,10 @@ export default {
   // after i read the nuxt auth doc this is what i find but i don't really understand is
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://demo.trems.ng/api/v1',
+    baseURL:
+      process.env.NODE_ENV === 'production'
+        ? 'https://demo.trems.ng/api/v1'
+        : 'http://localhost:8000/api/v1',
     // proxy: true,
     // withCredentials: true,
   },
@@ -59,7 +62,10 @@ export default {
     strategies: {
       laravelSanctum: {
         provider: 'laravel/sanctum',
-        url: 'http://localhost:8000',
+        url:
+          process.env.NODE_ENV === 'production'
+            ? 'https://demo.trems.ng'
+            : 'http://localhost:8000',
         endpoints: {
           login: {
             url: '/api/v1/login',

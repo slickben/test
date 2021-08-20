@@ -90,7 +90,7 @@ import Icons from '~/components/Icons.vue'
 import Logo from '~/components/Logo.vue'
 export default {
   name: 'Home',
-  auth: false,
+  auth: true,
   components: {
     NavBox,
     Navigation,

@@ -187,10 +187,13 @@ export default {
         }
     },
     computed: mapState({
-        agency_categories:  state => state.settings.owner_manager.agency_categories
+        agency_categories:  state => state.settings.owner_manager.agency_categories,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
         await store.dispatch('settings/owner_manager/getAgencyCategories')
+        store.commit('updatedLoading')
     }
 }
 </script>

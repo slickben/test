@@ -184,7 +184,8 @@ export default {
         }
     },
     computed: mapState({
-        states:  state => state.settings.owner_manager.states
+        states:  state => state.settings.owner_manager.states,
+        isloading: state => state.isloading,
     }),
     methods: {
         ...mapActions({
@@ -217,7 +218,11 @@ export default {
         },
     },
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/owner_manager/getStates')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

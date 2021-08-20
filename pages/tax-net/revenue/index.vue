@@ -36,6 +36,7 @@
         computed: {
             ...mapState({
                 individualOwners: state => state.owner.individualOwners,
+                isloading: state => state.isloading,
             }),
         },
         methods: {

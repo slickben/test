@@ -98,6 +98,7 @@
         computed: {
             ...mapState({
                 vehicles: state => state.vehicle.vehicles,
+                isloading: state => state.isloading,
             }),
         },
         methods: {

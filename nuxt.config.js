@@ -16,7 +16,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     // { src: '~/plugins/plugins_vue-chartjs', mode: 'client' }
-    '~/plugins/vuelidate'
+    // '~/plugins/vuelidate'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,7 +50,7 @@ export default {
         ? 'https://demo.trems.ng/api/v1'
         : 'http://localhost:8000/api/v1',
     // proxy: true,
-    // withCredentials: true,
+      withCredentials: true,
   },
   // proxy: {
   //   '/nuxt': {

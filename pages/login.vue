@@ -85,7 +85,6 @@
 // password
 import Logo from '~/components/Logo.vue'
 import Input from '~/components/form/Input.vue'
-import { required } from 'vuelidate/lib/validators'
 export default {
   name: 'Login',
   components: {

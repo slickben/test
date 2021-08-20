@@ -14,7 +14,7 @@
         h-full
       "
     >
-      <div>
+      <div class="relative">
         <Table classes="rounded-xl" :head_data="table_head_data">
           <template v-slot:head>
               <TableFilter class="pt-5 pb-2">
@@ -106,8 +106,14 @@
           </tr>
           
         </Table>
+        <div v-show="isloading" class="relative h-100 bg-white">
+          <div class=" absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center z-70">
+            <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
+          </div>
+        </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -119,6 +125,7 @@ import { mapState } from 'vuex'
 import BreadCrumb from '~/components/BreadCrumb.vue'
 import TableFilter from '~/components/TableFilter.vue'
 import Input from '~/components/form/Input.vue'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 export default {
   components: {
     AnalysisCard,
@@ -126,11 +133,13 @@ export default {
     Status,
     BreadCrumb,
     TableFilter,
-    Input
+    Input,
+    PulseLoader
   },
   computed: {
     ...mapState({
       owners: (state) => state.owner.owners,
+      isloading: state => state.isloading,
     }),
   },
   methods: {
@@ -153,7 +162,8 @@ export default {
         'Category',
         'Date Created',
       ],
-      toggle_filter: false
+      toggle_filter: false,
+      color: '#031A61'
     }
   },
 }

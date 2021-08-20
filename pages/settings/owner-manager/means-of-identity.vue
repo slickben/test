@@ -190,10 +190,15 @@ export default {
         }
     },
     computed: mapState({
-        means_of_identities:  state => state.settings.owner_manager.means_of_identities
+        means_of_identities:  state => state.settings.owner_manager.means_of_identities,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/owner_manager/getMeansOfIdentities')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

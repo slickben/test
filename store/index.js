@@ -37,13 +37,17 @@ export const state = () => ({
             date_created: '14 Jun 2021',
             verification_status: 'pending'
         }
-    ]
+    ],
+    isloading: false
 })
   
 export const mutations = {
     toggleNav(state) {
         state.toggleNav = !state.toggleNav
-    }
+    },
+    updatedLoading(state) {
+        state.isloading = !state.isloading
+    },
 }
 
 export const actions = {

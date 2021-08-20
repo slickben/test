@@ -214,10 +214,15 @@ export default {
         }
     },
     computed: mapState({
-        v_types:  state => state.settings.vehicle_manager.v_types
+        v_types:  state => state.settings.vehicle_manager.v_types,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getVehicleType')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

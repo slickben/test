@@ -213,10 +213,15 @@ export default {
         }
     },
     computed: mapState({
-        makes:  state => state.settings.vehicle_manager.makes
+        makes:  state => state.settings.vehicle_manager.makes,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getMakes')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

@@ -89,6 +89,7 @@ export default {
   computed: {
     ...mapState({
       owners: (state) => state.owner.owners,
+      isloading: state => state.isloading,
     }),
   },
   methods: {

@@ -178,10 +178,15 @@ export default {
         }
     },
     computed: mapState({
-        categories:  state => state.settings.vehicle_manager.categories
+        categories:  state => state.settings.vehicle_manager.categories,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getCategories')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

@@ -173,6 +173,7 @@
         computed: {
         ...mapState({
             demo: state => state.demo,
+            isloading: state => state.isloading,
         })
         },
         data() {

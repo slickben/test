@@ -217,10 +217,15 @@ export default {
         }
     },
     computed: mapState({
-        years:  state => state.settings.vehicle_manager.years
+        years:  state => state.settings.vehicle_manager.years,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getYears')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

@@ -224,6 +224,7 @@ export default {
     computed: {
         ...mapState({
             plates: state => state.plate.plates,
+            isloading: state => state.isloading,
         })
     },
     methods: {
@@ -238,7 +239,11 @@ export default {
         }
     },
     async asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+        store.commit('updatedLoading')
+        
         await store.dispatch('plate/getAllPlateNumbers')
+
+        store.commit('updatedLoading')
     },
 }
 </script>

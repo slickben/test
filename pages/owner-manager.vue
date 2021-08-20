@@ -65,7 +65,7 @@ import BreadCrumb from "~/components/BreadCrumb.vue"
 import Footer from "~/components/Footer.vue";
 import Nav from '~/components/Nav.vue';
 import Icons from '~/components/Icons.vue'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
     name: "OwnerManager",
@@ -84,8 +84,15 @@ export default {
         toggleNav: state => state.toggleNav,
         owners:  state => state.owner.owners
     }),
-    asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
-        store.dispatch('owner/getAllOwners')
+    methods: {
+        ...mapMutations(['updatedLoading'])
+    },
+    async asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+        store.commit('updatedLoading')
+
+        await store.dispatch('owner/getAllOwners')
+
+        store.commit('updatedLoading')
     }, 
 };
 </script>

@@ -102,9 +102,6 @@
               }}
               </a>
             </td>
-            <td class="text-left py-5 px-6">
-              <Status classes="w-24 h-8 text-xs" status="pending" />
-            </td>
             <nuxt-link :to="`/owner-manager/${owner.ownerId}`" class="absolute inset-0 "></nuxt-link>
           </tr>
           
@@ -155,7 +152,6 @@ export default {
         'Profile Name',
         'Category',
         'Date Created',
-        'Verification Status',
       ],
       toggle_filter: false
     }

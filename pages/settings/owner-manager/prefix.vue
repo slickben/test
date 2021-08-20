@@ -185,10 +185,15 @@ export default {
         }
     },
     computed: mapState({
-        prefixs:  state => state.settings.owner_manager.prefixs
+        prefixs:  state => state.settings.owner_manager.prefixs,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/owner_manager/getPrefixs')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

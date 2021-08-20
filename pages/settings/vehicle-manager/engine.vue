@@ -213,10 +213,15 @@ export default {
         }
     },
     computed: mapState({
-        engines:  state => state.settings.vehicle_manager.engines
+        engines:  state => state.settings.vehicle_manager.engines,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getEngines')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

@@ -187,10 +187,16 @@ export default {
         }
     },
     computed: mapState({
-        marital_statuses:  state => state.settings.owner_manager.marital_statuses
+        marital_statuses:  state => state.settings.owner_manager.marital_statuses,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/owner_manager/getMaritalStatuses')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

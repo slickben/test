@@ -213,10 +213,15 @@ export default {
         }
     },
     computed: mapState({
-        fuels:  state => state.settings.vehicle_manager.fuels
+        fuels:  state => state.settings.vehicle_manager.fuels,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getFuels')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

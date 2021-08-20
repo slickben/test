@@ -220,10 +220,15 @@ export default {
         }
     },
     computed: mapState({
-        commercial_seat_codes:  state => state.settings.vehicle_manager.commercial_seat_codes
+        commercial_seat_codes:  state => state.settings.vehicle_manager.commercial_seat_codes,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getCommercialSeatCodes')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

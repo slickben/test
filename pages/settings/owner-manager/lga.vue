@@ -208,11 +208,17 @@ export default {
     },
     computed: mapState({
         lgas:  state => state.settings.owner_manager.lgas,
-        states:  state => state.settings.owner_manager.states
+        states:  state => state.settings.owner_manager.states,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/owner_manager/getLgas')
         await store.dispatch('settings/owner_manager/getStates')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

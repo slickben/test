@@ -90,15 +90,5 @@ export default {
   computed: mapState({
     toggleNav: (state) => state.toggleNav,
   }),
-  asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
-    let path = route.path.split('/')
-    let isCreate;
-    if(path.pop() == 'create') {
-      isCreate = true
-    }
-    return {
-      isCreate
-    }
-  },
 }
 </script>

@@ -23,9 +23,9 @@
     "nuxt": "^2.15.3",
     "nuxt-route-meta": "^2.1.2",
     "vue-chartjs": "^3.5.1",
+    "vue-spinner": "^1.0.4",
     "vue-tailwind": "^2.4.2",
     "vuejs-datepicker": "^1.6.2",
-    "vuelidate": "^0.7.6",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

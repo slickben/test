@@ -220,10 +220,15 @@ export default {
         }
     },
     computed: mapState({
-        hackney_codes:  state => state.settings.vehicle_manager.hackney_codes
+        hackney_codes:  state => state.settings.vehicle_manager.hackney_codes,
+        isloading: state => state.isloading,
     }),
     async fetch ({ store }) {
+        store.commit('updatedLoading')
+
         await store.dispatch('settings/vehicle_manager/getHackneyCodes')
+
+        store.commit('updatedLoading')
     }
 }
 </script>

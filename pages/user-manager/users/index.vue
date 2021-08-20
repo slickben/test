@@ -259,6 +259,7 @@ import Button from '~/components/Button.vue';
         computed: {
         ...mapState({
             demo: state => state.demo,
+            isloading: state => state.isloading,
         })
         },
         data() {

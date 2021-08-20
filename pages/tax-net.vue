@@ -76,7 +76,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'TaxNet',
-  auth: false,
+  auth: true,
   layout: 'taxnet',
   components: {
     Sidebar,

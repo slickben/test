@@ -62,7 +62,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'plateManager',
-  auth: false,
+  auth: true,
   components: {
     Sidebar,
     Navigation,

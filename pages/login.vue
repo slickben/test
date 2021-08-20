@@ -100,14 +100,6 @@ export default {
       errors: []
     }
   },
-  validations: {
-    form: {
-      name: {
-        required,
-      },
-    },
-    errors: {},
-  },
   mounted() {},
   methods: {
     validEmail: function (email) {

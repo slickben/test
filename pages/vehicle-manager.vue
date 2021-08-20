@@ -78,7 +78,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'OwnerManager',
-  auth: false,
+  auth: true,
   layout: 'vehicle',
   components: {
     Sidebar,

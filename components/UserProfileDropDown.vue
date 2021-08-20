@@ -97,7 +97,7 @@
             </li>
         </ul>
         <div class="">
-            <button
+            <button @click="$auth.logout()"
                 class="
                 flex
                 w-full

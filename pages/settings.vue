@@ -126,7 +126,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'OwnerManager',
-  auth: false,
+  auth: true,
   components: {
     Sidebar,
     Navigation,

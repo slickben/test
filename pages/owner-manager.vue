@@ -69,7 +69,7 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
     name: "OwnerManager",
-    auth: false,
+    auth: true,
     layout: 'owner',
     components: {
         Sidebar,

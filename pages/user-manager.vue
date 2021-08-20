@@ -56,7 +56,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'UserManager',
-  auth: false,
+  auth: true,
   layout: 'vehicle',
   components: {
     Sidebar,

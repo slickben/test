@@ -42,7 +42,7 @@ export default {
   // after i read the nuxt auth doc this is what i find but i don't really understand is
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://demo.trems.ng/api/v1',
+    baseURL: 'https://demo.trems.ng/api/v1',
     // proxy: true,
     // withCredentials: true,
   },

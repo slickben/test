@@ -5,7 +5,7 @@
         <img class="w-full h-full absolute inset-0" src="~/assets/images/login_bg.jpg" alt="" srcset="">
         <div class="flex items-end absolute inset-0 p-16 pb-10">
           <div>
-            <h2 class=" text-4xl text-white pb-16 font-semibold">
+            <h2 class=" text-4xl text-white pb-8 font-semibold">
               TRANSPORT REVENUE MANAGEMENT 
               <br>  SYSTEM
             </h2>
@@ -36,12 +36,14 @@
           <div class="w-full ">
            
             <div class="pt-6" >
-              <Input v-model="form.email" id="email" lable="Your Email Address" />
+              <Input :error="errors.email" type="email" v-model="form.email" id="email" lable="Your Email Address" />
+              <p class="text-xs text-red-600" v-show="errors.email"> {{errors.email}} </p>
             </div>
 
 
             <div class="pt-8" >
-              <Input class="" v-model="form.password" id="password" lable="Password" />
+              <Input :error="errors.password" class="" v-model="form.password" id="password" lable="Password" />
+               <p class="text-xs text-red-600" v-show="errors.password"> {{errors.password}} </p>
             </div>
 
 
@@ -83,6 +85,7 @@
 // password
 import Logo from '~/components/Logo.vue'
 import Input from '~/components/form/Input.vue'
+import { required } from 'vuelidate/lib/validators'
 export default {
   name: 'Login',
   components: {
@@ -98,8 +101,20 @@ export default {
       errors: []
     }
   },
+  validations: {
+    form: {
+      name: {
+        required,
+      },
+    },
+    errors: {},
+  },
   mounted() {},
   methods: {
+    validEmail: function (email) {
+       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
     async submit() {
       try {
 
@@ -109,12 +124,29 @@ export default {
             duration : 5000
         })
 
+        this.errors = [];
+
+        if (!this.form.password) {
+          this.errors.password = "Password required.";
+        }
+        if (!this.form.email) {
+          this.errors.email = 'Email required.';
+        }
+        //  else if (!this.validEmail(this.from.email)) {
+        //   console.log(this.validEmail(this.from.email))
+        //   this.errors.email = 'Valid email required.';
+        // }
+
+        if (this.errors.email || this.errors.password) {
+          return 
+        }
+
         const response = await this.$auth.loginWith('laravelSanctum', {
           data: this.form,
         })
         console.log(response)
       } catch (error) {
-
+        console.log(error.response)
         if(error.response) {
           this.$toast.error('Error while authenticating', {
             theme: "outline", 

@@ -1,9 +1,9 @@
 <template>
     <div class="pb-8">
         <BreadCrumb title="Vehicle">
-            <nuxt-link class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600" to="/vehicle-manager/vehicles/create">
-                New Registration
-            </nuxt-link>
+            <button @click="toggleCreateVehicleModal" class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600">
+                New Vehicle
+            </button>
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 xl:py-16 py-10 2xl:px-0  h-full w-full">
             <Table classes="rounded-md" :head_data="table_head_data"> 
@@ -96,17 +96,17 @@
                 </tr>
             </Table>
         </div>
-        <div class="fixed inset-0 bg-black z-40 bg-opacity-50 px-24 2xl:px-48 pt-12 hidden">
+        <div v-show="createVehicleModal" class="fixed inset-0 bg-black z-40 bg-opacity-50 px-24 2xl:px-48 pt-12">
             <div class="container mx-auto px-16 2xl:px-24 flex flex-col py-10 bg-white rounded-lg h-90-vh overflow-y-auto my-auto scrollbar-thin
                 scrollbar-thumb-tertiary-200
                 scrollbar-track-tertiary-100">
                 <div class="pb-6 flex-none flex items-start justify-between w-full ">
-                    <h1 class="text-2xl font-medium text-primary-900">New Registration</h1>
-                    <button class="focus:outline-none">
+                    <h1 class="text-2xl font-semibold text-primary-900">New Registration</h1>
+                    <button @click="toggleCreateVehicleModal" class="focus:outline-none">
                         <img src="~/assets/icons/cancle.svg" alt="" srcset="">
                     </button>
                 </div>
-                <div class=" bg-tertiary-100 flex-grow pb-8 pt-2 px-10">
+                <div class=" bg-tertiary-100 flex-grow pb-8 pt-2 px-10 rounded-md">
                     <div class="grid xl:grid-cols-2">
                         <div class="h-full">
                             <div class="flex items-center relative">
@@ -121,7 +121,7 @@
                                 <div class="my-4 2xl:my-4">
                                     <h4 class="pb-2 text-center font-normal text-sm text-tertiary-600">Owner Details</h4>
                                     <div class="w-96 h-32 rounded-3xl flex items-center justify-center border border-tertiary-600 ml-5">
-                                        <Button :onClick="submitPersonaInfo" class="" type="solid" title="New owner"/>
+                                        <Button class="rounded-lg" :onClick="toggleOwnerModal"  type="solid" title="New owner"/>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                 <div class="my-4 2xl:my-4">
                                     <h4 class="pb-2 text-center font-normal text-sm text-tertiary-600">Vehicle Details</h4>
                                     <div class="w-96 h-32 rounded-3xl flex items-center justify-center border border-tertiary-600 ml-5 ">
-                                        <Button :onClick="togglevehicleModal" class="" type="solid" title="New Vehicle"/>
+                                        <Button class="rounded-lg" :onClick="togglevehicleModal" type="solid" title="New Vehicle"/>
                                         <!-- <Button type="secondary" title="Existing owner"/> -->
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
                                 <div class="my-4 2xl:my-4">
                                     <h4 class="pb-2 text-center font-normal text-sm text-tertiary-600">Plate Number</h4>
                                     <div class="w-96 h-32 rounded-3xl flex items-center justify-center border border-tertiary-600 ml-5">
-                                        <!-- <Button class="" type="solid" title="Plate Number"/> -->
+                                        <Button class="rounded-lg" :onClick="linkPlateModal" type="solid" title="Link Plate Number"/>
                                         <!-- <Button type="secondary" title="Existing owner"/> -->
                                     </div>
                                 </div>
@@ -192,17 +192,20 @@
                         </div> 
                     </div>
                     <div class="flex justify-end items-center pt-8">
-                        <!-- <Button class="mr-12" type="solid" title="Processed To Payment"/>
-                        <Button type="secondary"  title="Cancle"/> -->
+                        <Button class="mr-12 rounded-lg" type="solid" title="Processed To Payment"/>
+                        <Button :onClick="toggleCreateVehicleModal" class="rounded-lg" type=""  title="Cancel"/>
                     </div>
                 </div>
             </div>
             <!--new owner form modal -->
-            <div v-show="personalInfoModal" class=" absolute inset-0 bg-opacity-50 px-24 2xl:px-48 pt-12">
-                <div class="container mx-auto flex flex-col bg-white 2xl:pt-12 py-6 rounded-lg h-90-vh overflow-y-auto my-auto">
+            <div v-show="personalInfoModal" class="absolute bg-black inset-0 bg-opacity-70 px-24 2xl:px-72 pt-12 ">
+                <div class="container mx-auto flex flex-col bg-white 2xl:pt-12 py-6 rounded-lg h-90-vh overflow-y-auto my-auto w-full">
                     <div class="pb-6 flex-none flex items-start justify-between w-full px-12 border-b">
-                        <h1 class="text-2xl font-medium text-primary-900">New Registration</h1>
-                        <button class="focus:outline-none">
+                        <div>
+                            <h1 class="text-2xl font-semibold text-primary-900">New Owner Registration</h1>
+                            <h2 :class="[step > 1 ? 'opacity-100' : 'opacity-0']" class="text-left text-tertiary-800 pt-2 ">{{ selectedCategory }}</h2>
+                        </div>
+                        <button @click="toggleOwnerModal" class="focus:outline-none">
                             <img src="~/assets/icons/cancle.svg" alt="" srcset="">
                         </button>
                     </div>
@@ -211,19 +214,20 @@
                             <!-- wizard form timeline -->
                             <div class="text-xs font-medium text-tertiary-300 border-b relative">
                                 <div class="py-4 text-center text-sm font-normal text-tertiary-600 ">
-                                    step 2 of 4
+                                    step {{ step }} of 4
                                 </div>
-                                <div class="w-full grid grid-cols-3 absolute -bottom-1">
-                                    <div class="bg-primary-400 h-2"></div>
-                                    <div class="h-2 bg-primary-400"></div>
-                                    <div class="h-2"></div>
+                                <div class="w-full grid grid-cols-4 absolute -bottom-1">
+                                    <div :class="[step >= 1 ? 'opacity-100' : 'opacity-0']" class="bg-primary-400 h-2"></div>
+                                    <div :class="[step >= 2 ? 'opacity-100' : 'opacity-0']" class="h-2 bg-primary-400"></div>
+                                    <div :class="[step >= 3 ? 'opacity-100' : 'opacity-0']" class="h-2 bg-primary-400"></div>
+                                    <div :class="[step >= 4 ? 'opacity-100' : 'opacity-0']" class="h-2 bg-primary-400"></div>
                                 </div>
                             </div>
                             
                             <!-- form fieldset 1 -->
                             <fieldset v-show="step === 1" class="flex-grow px-16">
                                 <h3 class="py-6 px-8 text-xl font-medium text-tertiary-600">Select Category</h3>
-                                <div class="pt-12">
+                                <div class="pt-8">
                                     <h2 class="text-center text-tertiary-600">Select Owner's Category</h2>
                                 </div>
                                 <div class="flex justify-center pt-10">
@@ -249,12 +253,12 @@
                                             </div>
                                         </div>
                                         <div class="py-8">
-                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Individaul'" id="nin_or_bvn" BtnTitle="Submit" place_holder="Enter BVN/NIN" type="text" />
+                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Individaul'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter BVN/NIN" type="text" />
                                             <!-- error -->
                                             <p v-show="selectedCategory === 'Individaul'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
-                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Business'" id="nin_or_bvn" BtnTitle="Submit" place_holder="Enter TIN/CRN" type="text" />
+                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Business'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter TIN/CRN" type="text" />
                                             <p v-show="selectedCategory === 'Business'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
-                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Government'" id="nin_or_bvn" BtnTitle="Submit" place_holder="Enter Agency Id" type="text" />
+                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Government'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter Agency Id" type="text" />
                                             <p v-show="selectedCategory === 'Government'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
                                         </div>
                                     </div>
@@ -363,20 +367,20 @@
                             </fieldset>
                             <!-- navigatiom Button -->
                             <div class="flex justify-start items-center py-6 px-10 border-t">
-                                <Button :onClick="previus" v-show="step > 1 && step < 5" class="mr-12" type="solid" title="Previus"/>
-                                <Button :onClick="next" v-show="step > 1 && step < 4" type="secondary"  title="Next"/>
-                                <Button :onClick="submitPersonaInfo" v-show="step > 3" class="" type="solid" title="Submit"/>
+                                <Button type="secondary" :onClick="previus" v-show="step > 1 && step < 5" class="mr-12 rounded-lg"  title="Previous"/>
+                                <Button class="rounded-lg" type="solid" :onClick="next" v-show="step > 1 && step < 4"   title="Next"/>
+                                <Button class="rounded-lg" :onClick="submitPersonaInfo" v-show="step > 3"  type="solid" title="Submit"/>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <div v-show="vehicleInfoModal" class=" absolute inset-0 bg-opacity-50 px-24 2xl:px-48 pt-12">
+            <div v-show="vehicleInfoModal" class="absolute bg-black inset-0 bg-opacity-70 px-24 2xl:px-72 pt-12">
                 <div class="container mx-auto flex flex-col bg-white 2xl:pt-12 py-6 rounded-lg h-90-vh overflow-y-auto my-auto">
                     <div class="pb-6 flex-none flex items-start justify-between w-full px-12 border-b">
-                        <h1 class="text-2xl font-medium text-primary-900">New Registration</h1>
-                        <button class="focus:outline-none">
+                        <h1 class="text-2xl font-semibold text-primary-900">Vehicle Registration</h1>
+                        <button @click="togglevehicleModal" class="focus:outline-none">
                             <img src="~/assets/icons/cancle.svg" alt="" srcset="">
                         </button>
                     </div>
@@ -385,12 +389,12 @@
                             <!-- wizard form timeline -->
                             <div class="text-xs font-medium text-tertiary-300 border-b relative">
                                 <div class="py-4 text-center text-sm font-normal text-tertiary-600 ">
-                                    step 1 of 3
+                                    step {{ step }} of 3
                                 </div>
                                 <div class="w-full grid grid-cols-3 absolute -bottom-1">
-                                    <div class="bg-primary-400 h-2"></div>
-                                    <div class="h-2 bg-primary-400"></div>
-                                    <div class="h-2"></div>
+                                    <div :class="[step >= 1 ? 'opacity-100' : 'opacity-0']" class="bg-primary-400 h-2"></div>
+                                    <div :class="[step >= 2 ? 'opacity-100' : 'opacity-0']" class="h-2 bg-primary-400"></div>
+                                    <div :class="[step >= 3 ? 'opacity-100' : 'opacity-0']" class="h-2 bg-primary-400"></div>
                                 </div>
                             </div>
                             <!-- form fieldset 1 -->
@@ -500,9 +504,46 @@
                             </fieldset>
                             <!-- navigatiom Button -->
                             <div class="flex justify-start items-center py-6 px-10 border-t">
-                                <Button :onClick="previus" v-show="step > 1 && step < 4" class="mr-12" type="solid" title="Previus"/>
-                                <Button :onClick="next" v-show="step < 3" type="secondary"  title="Next"/>
-                                <Button :onClick="submitPersonaInfo" v-show="step > 2" class="" type="solid" title="Submit"/>
+                                <Button type="secondary" :onClick="previus" v-show="step > 0 && step < 5" class="mr-12 rounded-lg"  title="Previous"/>
+                                <Button class="rounded-lg" type="solid" :onClick="next" v-show="step > 0 && step < 3"   title="Next"/>
+                                <Button class="rounded-lg" :onClick="submitPersonaInfo" v-show="step > 2"  type="solid" title="Submit"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--new owner form modal -->
+            <div v-show="linkPlateNumber" class="absolute bg-black inset-0 bg-opacity-70 px-24 2xl:px-72 pt-12 ">
+                <div class="container mx-auto flex flex-col bg-white 2xl:pt-12 py-6 rounded-lg h-90-vh overflow-y-auto my-auto w-full">
+                    <div class="pb-6 flex-none flex items-start justify-between w-full px-36 ">
+                        <div>
+                            <h1 class="text-2xl font-semibold text-primary-900">Link Plate Number</h1>
+                            
+                        </div>
+                        <button @click="linkPlateModal" class="focus:outline-none">
+                            <img src="~/assets/icons/cancle.svg" alt="" srcset="">
+                        </button>
+                    </div>
+                    <div class="flex-grow px-36">
+                        <form class="h-full flex flex-col shadow">
+                            
+                            <!-- form fieldset 1 -->
+                            <fieldset  class="flex-grow px-16">
+                                <div class="flex justify-center pt-10">
+                                    <div class="max-w-162 w-full px-20">
+                                        <div class="py-8 pt-40 ">
+                                            <InputWithButtonRight :onClick="next" id="plate" BtnTitle="Verify" place_holder="Enter Plate Number" type="text" />
+                                            <!-- error -->
+                                            <p class="text-sm pt-1 text-action-danger">Owner Not Found</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!-- navigatiom Button -->
+                            <div class="flex justify-end items-center py-8 px-10 border-t">
+                                
+                                <Button class="rounded-lg" :onClick="submitPersonaInfo" type="solid" title="Submit"/>
                             </div>
                         </form>
                     </div>
@@ -537,12 +578,16 @@
             return {
                 table_head_data: ['Plate Number', 'Owner Name', 'Vehicle Category', 'Date Created', 'Verification Status'],
                 step: 1,
+                parentWizardStep: 0,
                 personalInfoModal: false,
                 vehicleInfoModal: false,
                 selectedCategory: '',
                 form: {
 
-                }
+                },
+                createVehicleModal: false,
+                toggle_filter: false,
+                linkPlateNumber: false
             }
         },
         computed: {
@@ -551,6 +596,12 @@
             }),
         },
         methods: {
+            linkPlateModal() {
+                this.linkPlateNumber = !this.linkPlateNumber
+            },
+            toggleCreateVehicleModal() {
+                this.createVehicleModal = !this.createVehicleModal
+            },
             getOwnerName (owner) {
                 let ownersName
                 if(!owner) {
@@ -574,20 +625,25 @@
                 this.step+= 1
             },
             previus() {
-                if(this.step === 0 ) {
+                if(this.step === 1 ) {
                     return this.step
                 }
                 this.step-= 1
             },
-            submitPersonaInfo() {
+            toggleOwnerModal() {
                 this.personalInfoModal = !this.personalInfoModal
                 this.step = 1
             },
             toggleExistigOwnerModal () {
                 this.existingOwnModal = !this.existingOwnModal
+                this.step = 1
             },
             togglevehicleModal () {
                 this.vehicleInfoModal = !this.vehicleInfoModal
+                this.step = 1
+            },
+            toggleFilterFunc() {
+                this.toggle_filter = !this.toggle_filter
             }
         },
     }

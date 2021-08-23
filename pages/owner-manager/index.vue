@@ -108,7 +108,7 @@
         </Table>
         <div v-show="isloading" class="relative h-100 bg-white">
           <div class=" absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center z-70">
-            <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
+            <pulse-loader :loading="isloading" :color="color"></pulse-loader>
           </div>
         </div>
       </div>

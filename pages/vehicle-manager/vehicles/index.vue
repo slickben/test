@@ -253,52 +253,131 @@
                                             </div>
                                         </div>
                                         <div class="py-8">
-                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Individaul'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter BVN/NIN" type="text" />
+                                            <InputWithButtonRight v-model="individualOwnerForm.bvn" :onClick="next" v-show="selectedCategory === 'Individaul'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter BVN/NIN" type="text" />
                                             <!-- error -->
                                             <p v-show="selectedCategory === 'Individaul'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
-                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Business'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter TIN/CRN" type="text" />
+                                            <InputWithButtonRight v-model="businessOwnerForm.tin" :onClick="next" v-show="selectedCategory === 'Business'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter TIN/CRN" type="text" />
                                             <p v-show="selectedCategory === 'Business'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
-                                            <InputWithButtonRight :onClick="next" v-show="selectedCategory === 'Government'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter Agency Id" type="text" />
+                                            <InputWithButtonRight v-model="governmentOwnerForm.agencyId" :onClick="next" v-show="selectedCategory === 'Government'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter Agency Id" type="text" />
                                             <p v-show="selectedCategory === 'Government'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
                                         </div>
                                     </div>
                                 </div>
                             </fieldset>
                             <!-- form fieldset 2 -->
-                            <fieldset v-show="step === 2" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
+                            <fieldset v-show="step === 2 && selectedCategory === 'Individual'" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Personal Information</h3>
                                             <p class="text-sm font-normal text-tertiary-300">Please fill-in all required ( <span class=" text-action-danger">*</span> ) input  field</p>
                                         </div>
                                     <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
-                                        <InputSelect isRequired="true" id="title" lable="Title"> 
+                                        <InputSelect v-model="individualOwnerForm.title" isRequired="true" id="title" lable="Title"> 
                                             <option value="">Select Title</option>
                                         </InputSelect>
 
-                                        <Input type="text" lable="First Name" place_holder="Enter First Name" id="first_name" isRequired="true" />
+                                        <Input v-model="individualOwnerForm.firstName" type="text" lable="First Name" place_holder="Enter First Name" id="first_name" isRequired="true" />
 
-                                        <Input type="text" lable="Other Name" place_holder="Enter Other Name" id="other_name" isRequired="false" />
+                                        <Input v-model="individualOwnerForm.otherName" type="text" lable="Other Name" place_holder="Enter Other Name" id="other_name" isRequired="false" />
 
-                                        <Input type="text" lable="Last Name" place_holder="Enter Last Name" id="last_name" isRequired="true" />
+                                        <Input v-model="individualOwnerForm.lastName" type="text" lable="Last Name" place_holder="Enter Last Name" id="last_name" isRequired="true" />
 
-                                        <InputSelect isRequired="true" id="city" lable="City"> 
+                                        <InputSelect v-model="individualOwnerForm.city" isRequired="true" id="city" lable="City"> 
                                             <option value="">Select City</option>
                                         </InputSelect>
 
-                                        <Input type="tel" lable="Phone Number" place_holder=" Enter Phone Number" id="phone_number" isRequired="true" />
+                                        <Input v-model="individualOwnerForm.phoneNumber" type="tel" lable="Phone Number" place_holder=" Enter Phone Number" id="phone_number" isRequired="true" />
 
-                                        <Input type="text" lable="Local Government Area" place_holder=" Enter Lga" id="lga" isRequired="true" />
+                                        <InputSelect v-model="individualOwnerForm.lga" isRequired="true" id="lga"> 
+                                            <option value="">Select Local Government Area</option>
+                                        </InputSelect>
+                                        
 
-                                        <InputSelect isRequired="true" id="state" lable="State"> 
+                                        <InputSelect v-model="individualOwnerForm.state" isRequired="true" id="state" lable="State"> 
                                             <option value="">Select State</option>
                                         </InputSelect>
                                         
                                     </div>
                                 </div>
                             </fieldset>
+
+                            <fieldset v-show="step === 2 selectedCategory === 'Business'" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
+                                    <div class="col-span-3">
+                                        <div class="py-8">
+                                            <h3 class=" text-xl font-medium text-tertiary-600">Business Information</h3>
+                                            <p class="text-sm font-normal text-tertiary-300">Please fill-in all required ( <span class=" text-action-danger">*</span> ) input  field</p>
+                                        </div>
+                                    <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
+                                        <!-- <InputSelect v-model="businessOwnerForm.businessName" isRequired="true" id="business_name" > 
+                                            <option value="">Select Title</option>
+                                        </InputSelect> -->
+
+                                        <Input v-model="businessOwnerForm.businessName" type="text" lable="Business Name" place_holder="Enter Business Name" id="business_name" isRequired="true" />
+
+                                        <Input v-model="businessOwnerForm.registrationNumber" type="number" lable="Business Registration Number" place_holder="Enter Business Registration Number" id="reg_number" isRequired="false" />
+
+                                        <Input v-model="businessOwnerForm.tin" type="text" lable="Tax Identification Number" place_holder="Enter TIN" id="tin" isRequired="true" />
+
+                                        <InputSelect v-model="businessOwnerForm.businessSector" isRequired="true" id="city" lable="City"> 
+                                            <option value="">Select Business Sector</option>
+                                        </InputSelect>
+
+                                        <Input v-model="individualOwnerForm.emailAddress" type="email" lable="Email Address" place_holder=" Enter Phone Number" id="email" isRequired="true" />
+
+                                        <Input v-model="individualOwnerForm.phoneNumber" type="tel" lable="Phone Number" place_holder=" Enter Phone Number" id="phone_number" isRequired="true" />
+
+                                        <Input v-model="individualOwnerForm.street" type="text" lable="Address" place_holder=" Enter Address" id="street" isRequired="true" />
+
+                                        <InputSelect v-model="individualOwnerForm.lga" isRequired="true" id="lga"> 
+                                            <option value="">Select Local Government Area</option>
+                                        </InputSelect>
+                                        
+
+                                        <Input v-model="individualOwnerForm.landmark" type="text" lable="Nearest Landmark" place_holder=" Enter Nearest Landmark" id="street" isRequired="true" />
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset v-show="step === 2 selectedCategory === 'Government'" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
+                                    <div class="col-span-3">
+                                        <div class="py-8">
+                                            <h3 class=" text-xl font-medium text-tertiary-600">Agency Information</h3>
+                                            <p class="text-sm font-normal text-tertiary-300">Please fill-in all required ( <span class=" text-action-danger">*</span> ) input  field</p>
+                                        </div>
+                                    <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
+                                        <!-- <InputSelect v-model="businessOwnerForm.businessName" isRequired="true" id="business_name" > 
+                                            <option value="">Select Title</option>
+                                        </InputSelect> -->
+
+                                        <Input v-model="governmentOwnerForm.agencyName" type="text" lable="Agency Name" place_holder="Enter Agency Name" id="agency_name" isRequired="true" />
+
+                                        <InputSelect v-model="governmentOwnerForm.agencyType" isRequired="true" id="agency_type"> 
+                                            <option value="">Select Agency type</option>
+                                        </InputSelect>
+
+                                        <Input v-model="governmentOwnerForm.emailAddress" type="email" lable="Email Address" place_holder=" Enter Phone Number" id="email" isRequired="true" />
+
+                                        <Input v-model="governmentOwnerForm.phoneNumber" type="tel" lable="Phone Number" place_holder=" Enter Phone Number" id="phone_number" isRequired="true" />
+
+                                        <Input v-model="governmentOwnerForm.street" type="text" lable="Address" place_holder=" Enter Address" id="street" isRequired="true" />
+
+                                        <InputSelect v-model="governmentOwnerForm.lga" isRequired="true" id="lga"> 
+                                            <option value="">Select Local Government Area</option>
+                                        </InputSelect>
+
+                                        <InputSelect v-model="governmentOwnerForm.state" isRequired="true" id="state" lable="State"> 
+                                            <option value="">Select State</option>
+                                        </InputSelect>
+                                        
+
+                                        <Input v-model="governmentOwnerForm.landmark" type="text" lable="Nearest Landmark" place_holder=" Enter Nearest Landmark" id="street" isRequired="true" />
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
                             <!-- form fieldset 3 -->
-                            <fieldset v-show="step === 3" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
+                            <fieldset v-show="step === 3 selectedCategory === 'Individual'" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
                                     <div class="col-span-3">
                                         <div class="py-8">
                                             <h3 class=" text-xl font-medium text-tertiary-600">Demographic Information</h3>
@@ -306,29 +385,96 @@
                                         </div>
                                     <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
 
-                                        <InputSelect isRequired="true" id="gender" lable="Gender"> 
+                                        <InputSelect v-model="individualOwnerForm.gender" isRequired="true" id="gender" lable="Gender"> 
                                             <option value="">Select Gender</option>
                                         </InputSelect>
 
-                                        <Input type="date" lable="Date of Birth"  id="date_of_birth" isRequired="false" />
+                                        <Input type="date" v-model="individualOwnerForm.dateOfBirth" lable="Date of Birth"  id="date_of_birth" isRequired="false" />
 
-                                        <Input type="text" lable="Place of Birth" place_holder="Enter Place of Birth" id="place_of_birth" isRequired="false" />
+                                        <Input type="text" v-model="individualOwnerForm.placeOfBirth" lable="Place of Birth" place_holder="Enter Place of Birth" id="place_of_birth" isRequired="false" />
 
-                                        <InputSelect isRequired="true" id="marital_status" lable="Marital Status"> 
+                                        <InputSelect v-model="individualOwnerForm.maritalStatus" isRequired="true" id="marital_status" lable="Marital Status"> 
                                             <option value="">Select Marital Status</option>
                                         </InputSelect>
 
-                                        <Input type="text" lable="Residential Address" place_holder="Enter Residential Address" id="residental_address" isRequired="false" />
+                                        <Input type="text" v-model="individualOwnerForm.street" lable="Street Address" place_holder="Enter Street Address" id="street_address" isRequired="false" />
 
-                                        <Input type="email" lable="Email Address" place_holder="Enter Email Address" id="email" isRequired="false" />
+                                        <Input v-model="individualOwnerForm.email" type="email" lable="Email Address" place_holder="Enter Email Address" id="email" isRequired="false" />
 
-                                        <InputSelect isRequired="true" id="nationality" lable="Nationality"> 
+                                        <!-- <InputSelect isRequired="true" id="nationality" lable="Nationality"> 
                                             <option value="">Select Nationality </option>
+                                        </InputSelect> -->
+
+                                        <!-- <InputSelect v-model="individualOwnerForm." isRequired="true" id="state" lable="State"> 
+                                            <option value="">Select State Of Origin</option>
+                                        </InputSelect> -->
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset v-show="step === 3 selectedCategory === 'Business'" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
+                                    <div class="col-span-3">
+                                        <div class="py-8">
+                                            <h3 class=" text-xl font-medium text-tertiary-600">Representative Information</h3>
+                                            <p class="text-sm font-normal text-tertiary-300">Please fill-in all required ( <span class=" text-action-danger">*</span> ) input  field</p>
+                                        </div>
+                                    <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
+                                        <InputSelect v-model="businessOwnerForm.title" isRequired="true" id="title" lable="Title"> 
+                                            <option value="">Select Title</option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="state" lable="State"> 
-                                            <option value="">Select State </option>
+                                        <Input v-model="businessOwnerForm.firstName" type="text" lable="First Name" place_holder="Enter First Name" id="first_name" isRequired="true" />
+
+                                        <!-- <Input v-model="businessOwnerForm.otherName" type="text" lable="Other Name" place_holder="Enter Other Name" id="other_name" isRequired="false" /> -->
+
+                                        <Input v-model="businessOwnerForm.lastName" type="text" lable="Last Name" place_holder="Enter Last Name" id="last_name" isRequired="true" />
+
+                                        <!-- <InputSelect v-model="businessOwnerForm.ro" isRequired="true" id="city" lable="City"> 
+                                            <option value="">Select City</option>
+                                        </InputSelect> -->
+
+                                        <Input v-model="businessOwnerForm.role" type="text" lable="Phone Number" place_holder=" Enter Phone Number" id="phone_number" isRequired="true" />
+
+                                        <!-- <InputSelect v-model="businessOwnerForm.lga" isRequired="true" id="lga"> 
+                                            <option value="">Select Local Government Area</option>
+                                        </InputSelect> -->
+                                        
+
+                                        <InputSelect v-model="businessOwnerForm.state" isRequired="true" id="state" lable="State"> 
+                                            <option value="">Select State</option>
                                         </InputSelect>
+
+                                        <InputSelect v-model="businessOwnerForm.city" isRequired="true" id="state" lable="city"> 
+                                            <option value="">Select City</option>
+                                        </InputSelect>
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset v-show="step === 3 selectedCategory === 'Government'" class="flex-grow px-16 pb-10 grid xl:grid-cols-4">
+                                    <div class="col-span-3">
+                                        <div class="py-8">
+                                            <h3 class=" text-xl font-medium text-tertiary-600">Representative Information</h3>
+                                            <p class="text-sm font-normal text-tertiary-300">Please fill-in all required ( <span class=" text-action-danger">*</span> ) input  field</p>
+                                        </div>
+                                    <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
+                                        <InputSelect v-model="governmentOwnerForm.title" isRequired="true" id="title" lable="Title"> 
+                                            <option value="">Select Title</option>
+                                        </InputSelect>
+
+                                        <Input v-model="governmentOwnerForm.firstName" type="text" lable="First Name" place_holder="Enter First Name" id="first_name" isRequired="true" />
+
+                                        <!-- <Input v-model="governmentOwnerForm.otherName" type="text" lable="Other Name" place_holder="Enter Other Name" id="other_name" isRequired="false" /> -->
+
+                                        <Input v-model="governmentOwnerForm.lastName" type="text" lable="Last Name" place_holder="Enter Last Name" id="last_name" isRequired="true" />
+
+                                        <!-- <InputSelect v-model="governmentOwnerForm.ro" isRequired="true" id="city" lable="City"> 
+                                            <option value="">Select City</option>
+                                        </InputSelect> -->
+
+                                        <Input v-model="governmentOwnerForm.role" type="text" lable="Phone Number" place_holder=" Enter Phone Number" id="phone_number" isRequired="true" />
                                         
                                     </div>
                                 </div>
@@ -405,37 +551,41 @@
                                             
                                         </div>
                                     <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
-                                        <InputSelect isRequired="true" id="category" lable="Vehicle Category"> 
+                                        <InputSelect v-model="vehicleForm.category" isRequired="true" id="category" lable="Vehicle Category"> 
                                             <option value="">Select Category</option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="make" lable="Vehicle Make"> 
+                                        <InputSelect v-model="vehicleForm.make" isRequired="true" id="make" lable="Vehicle Make"> 
                                             <option value="">Select Make</option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="model" lable="Vehicle Model"> 
+                                        <InputSelect v-model="vehicleForm.model" isRequired="true" id="model" lable="Vehicle Model"> 
                                             <option value="">Select Model</option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="year" lable="Vehicle Year"> 
+                                        <InputSelect v-model="vehicleForm.year" isRequired="true" id="year" lable="Vehicle Year"> 
                                             <option value="">Select Year</option>
                                         </InputSelect>
 
-                                        <Input type="text" lable="Color" place_holder="Enter Color" id="color" isRequired="true" />
+                                        <Input v-model="vehicleForm.color" type="text" lable="Color" place_holder="Enter Color" id="color" isRequired="true" />
 
-                                        <Input type="text" lable="Plate Number" place_holder="Enter Plate Number" id="last_name" isRequired="true" />
+                                        <Input v-model="vehicleForm.plateNumber" type="text" lable="Plate Number" place_holder="Enter Plate Number" id="last_name" isRequired="true" />
 
-                                        <InputSelect isRequired="true" id="type" lable="Vehicle Type"> 
-                                            <option value="">Select Type</option>
+                                        <InputSelect v-model="vehicleForm.fuelType" isRequired="true" id="type" lable="Vehicle Type"> 
+                                            <option value="">Select Fuel Type</option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="seat_code" lable="Seat Code"> 
+                                        <InputSelect v-model="vehicleForm.seatCode" isRequired="true" id="seat_code" lable="Seat Code"> 
                                             <option value="">Select Seat Code</option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="state_of_plate_number_allocation" lable="State Of Plate Number Allocation"> 
-                                            <option value="">Select State Of Plate Number Allocation</option>
+                                        <InputSelect v-model="vehicleForm.hackneyCode" isRequired="true" id="hackney_code" > 
+                                            <option value="">Select hackney Code</option>
                                         </InputSelect>
+
+                                        <!-- <InputSelect  isRequired="true" id="state_of_plate_number_allocation" lable="State Of Plate Number Allocation"> 
+                                            <option value="">Select State Of Plate Number Allocation</option>
+                                        </InputSelect> -->
                                         
                                     </div>
                                 </div>
@@ -448,19 +598,19 @@
                                         </div>
                                     <div class=" grid grid-cols-3 gap-y-8 gap-x-10">
 
-                                        <Input type="number" lable="Engine Number" place_holder="Enter Engine Number"  id="engine_number" isRequired="true" />
+                                        <Input v-model="vehicleForm.engineNumber" type="number" lable="Engine Number" place_holder="Enter Engine Number"  id="engine_number" isRequired="true" />
 
-                                        <Input type="number" lable="Chasis Number" place_holder="Enter Chasis Number"  id="Chasis_number" isRequired="true" />
+                                        <Input v-model="vehicleForm.chasisNumber" type="number" lable="Chasis Number" place_holder="Enter Chasis Number"  id="Chasis_number" isRequired="true" />
 
-                                        <InputSelect isRequired="true" id="engine_capacity" lable="Engine Capacity "> 
+                                        <InputSelect v-model="vehicleForm.engineCapacity" isRequired="true" id="engine_capacity" lable="Engine Capacity "> 
                                             <option value="">Select Engine Capacity </option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="mileage" lable="Mileage "> 
+                                        <InputSelect v-model="vehicleForm.mileage" isRequired="true" id="mileage" lable="Mileage "> 
                                             <option value="">Select Mileage </option>
                                         </InputSelect>
 
-                                        <InputSelect isRequired="true" id="tank_capacity" lable="Tank Capacity "> 
+                                        <InputSelect v-model="vehicleForm.tankCapacity" isRequired="true" id="tank_capacity" lable="Tank Capacity "> 
                                             <option value="">Select Tank Capacity </option>
                                         </InputSelect>
                                         
@@ -563,6 +713,7 @@
     import InputSelect from "~/components/form/InputSelect.vue"
     import Input from "~/components/form/Input.vue"
     import { mapState } from 'vuex'
+import maritalStatusVue from '~/pages/settings/owner-manager/marital-status.vue';
     export default {
         components: {
             Table,
@@ -583,17 +734,100 @@
                 vehicleInfoModal: false,
                 selectedCategory: '',
                 form: {
-
                 },
                 createVehicleModal: false,
                 toggle_filter: false,
-                linkPlateNumber: false
+                linkPlateNumber: false,
+                individualOwnerForm: {
+                    title: "",
+                    firstName:"",
+                    lastName:"",
+                    emailAddress:"",
+                    phoneNumber:"",
+                    gender:"",
+                    maritalStatus:"",
+                    dateOfBirth:"",
+                    bvn: "",
+                    street:"",
+                    city:"",
+                    landmark: "",
+                    state: "",
+                    lga:"",
+                    type:""
+                },
+                businessOwnerForm: {
+                    title: "",
+                    businessName:"",
+                    registrationNumber:"",
+                    tin:"",
+                    businessSector: "",
+                    firstName:"",
+                    lastName:"",
+                    emailAddress:"",
+                    phoneNumber:"",
+                    street:"",
+                    city:"",
+                    landmark: "",
+                    state: "",
+                    lga:"",
+                    type:""
+                },
+                governmentOwnerForm: {
+                    agencyName:"",
+                    agencyType:"",
+                    representativeTitle:"",
+                    representativeFirstname:"",
+                    representativeLastname:"",
+                    representativeRole:"",
+                    emailAddress:"",
+                    phoneNumber:"",
+                    street:"",
+                    city: "",
+                    landmark: "",
+                    state: "",
+                    lga:"",
+                    type:"",
+                    // agencyId: ""
+                },
+                vehicleForm: {
+                    category: "",
+                    plateNumber: "",
+                    make: "",
+                    model: "",
+                    year: "",
+                    type: "",
+                    color: "",
+                    chassisNumber: "",
+                    engineNumber: "",
+                    mileage: "",
+                    fuelType: "",
+                    tankCapacity: "",
+                    hackneyCode: '',
+                    seatCode: ""
+                }
             }
+            
         },
         computed: {
             ...mapState({
                 vehicles: state => state.vehicle.vehicles,
                 isloading: state => state.isloading,
+                years:  state => state.settings.vehicle_manager.years,
+                v_types:  state => state.settings.vehicle_manager.v_types,
+                models:  state => state.settings.vehicle_manager.models,
+                makes:  state => state.settings.vehicle_manager.makes,
+                hackney_codes:  state => state.settings.vehicle_manager.hackney_codes,
+                fuels:  state => state.settings.vehicle_manager.fuels,
+                engines:  state => state.settings.vehicle_manager.engines,
+                commercial_seat_codes:  state => state.settings.vehicle_manager.commercial_seat_codes,
+                categories:  state => state.settings.vehicle_manager.categories,
+                states:  state => state.settings.owner_manager.states,
+                prefixs:  state => state.settings.owner_manager.prefixs,
+                means_of_identities:  state => state.settings.owner_manager.means_of_identities,
+                marital_statuses:  state => state.settings.owner_manager.marital_statuses,
+                lgas:  state => state.settings.owner_manager.lgas,
+                states:  state => state.settings.owner_manager.states,
+                agency_categories:  state => state.settings.owner_manager.agency_categories,
             }),
         },
         methods: {
@@ -624,6 +858,7 @@
             },
             next() {
                 this.step+= 1
+
             },
             previus() {
                 if(this.step === 1 ) {
@@ -635,10 +870,6 @@
                 this.personalInfoModal = !this.personalInfoModal
                 this.step = 1
             },
-            toggleExistigOwnerModal () {
-                this.existingOwnModal = !this.existingOwnModal
-                this.step = 1
-            },
             togglevehicleModal () {
                 this.vehicleInfoModal = !this.vehicleInfoModal
                 this.step = 1
@@ -646,6 +877,37 @@
             toggleFilterFunc() {
                 this.toggle_filter = !this.toggle_filter
             }
+        },
+        asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+            store.dispatch('settings/owner_manager/getAgencyCategories')
+
+             store.dispatch('settings/owner_manager/getLgas')
+
+             store.dispatch('settings/owner_manager/getMaritalStatuses')
+
+             store.dispatch('settings/owner_manager/getMeansOfIdentities')
+
+             store.dispatch('settings/owner_manager/getPrefixs')
+
+             store.dispatch('settings/owner_manager/getStates')
+
+             store.dispatch('settings/vehicle_manager/getCategories')
+
+             store.dispatch('settings/vehicle_manager/getCommercialSeatCodes')
+
+             store.dispatch('settings/vehicle_manager/getEngines')
+
+             store.dispatch('settings/vehicle_manager/getFuels')
+
+             store.dispatch('settings/vehicle_manager/getHackneyCodes')
+
+             store.dispatch('settings/vehicle_manager/getMakes')
+
+             store.dispatch('settings/vehicle_manager/getModels')
+
+             store.dispatch('settings/vehicle_manager/getVehicleType')
+
+             store.dispatch('settings/vehicle_manager/getYears')
         },
     }
 </script>

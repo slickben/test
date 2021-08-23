@@ -218,7 +218,8 @@ export default {
                 "Owner Information",
                 "Vehicle Information",
             ],
-            selected_plate: ''
+            selected_plate: '',
+            toggle_filter: false
         }
     },
     computed: {
@@ -236,6 +237,9 @@ export default {
         getSelectedPlate(number) {
             this.selected_plate = this.plates.find( plate => plate.number == number)
             this.toggle_slide = !this.toggle_slide
+        },
+        toggleFilterFunc( ) {
+            this.toggle_filter = !this.toggle_filter
         }
     },
     async asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {

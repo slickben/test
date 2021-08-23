@@ -141,12 +141,16 @@ export default {
             }
 
             return ownersName
+        },
+        toggleFilterFunc () {
+            this.toggle_filter = !this.toggle_filter
         }
     },
     data() {
         return {
             table_head_data: ['Vehicle ID #','Plate Number', 'Vehicle Category', 'Activity', 'Date Created', 'Status'],
-            toggleSlide: false
+            toggleSlide: false,
+            toggle_filter: false
         }
     },
 }

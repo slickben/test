@@ -31,9 +31,9 @@ export default {
             let owners = data.data
 
             commit('ADD_OWNERS', owners);
-            commit('ADD_INDIVIDUAL_OWNERS', owners);
-            commit('ADD_BUSINESS_OWNERS', owners);
-            commit('ADD_GOVERNMENT_OWNERS', owners);
+            // commit('ADD_INDIVIDUAL_OWNERS', owners);
+            // commit('ADD_BUSINESS_OWNERS', owners);
+            // commit('ADD_GOVERNMENT_OWNERS', owners);
             console.log('add here')
         } catch (err) {
             console.log(err)

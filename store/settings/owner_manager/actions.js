@@ -140,7 +140,7 @@ export default {
     // means of identity
     async getMeansOfIdentities({ commit, }) {
         try {
-            const { data } = await this.$axios.get('/settings/owner/means-of-identity');
+            const { data } = await this.$axios.get('/settings/owner/means-of-identities');
             commit('ADD_MEANS_OF_IDENTITIES', data);
         } catch (err) {
             console.log(err)
@@ -149,7 +149,7 @@ export default {
     },
     async addMeansOfIdentity({ commit, }, identity)  {
         try {
-            const { data } = await this.$axios.post('/settings/owner/means-of-identity', identity);
+            const { data } = await this.$axios.post('/settings/owner/means-of-identities', identity);
             commit('ADD_MEANS_OF_IDENTITY', data);
         } catch (err) {
             console.log(err)
@@ -158,7 +158,7 @@ export default {
     },
     async editMeansOfIdentity({ commit, }, {identity, id})  {
         try {
-            const { data } = await this.$axios.patch(`/settings/owner/means-of-identity${id}`, identity);
+            const { data } = await this.$axios.patch(`/settings/owner/means-of-identities${id}`, identity);
             commit('UPDATE_MEANS_OF_IDENTITY', data);
         } catch (err) {
             console.log(err)
@@ -214,7 +214,7 @@ export default {
     // category
     async getAgencyCategories({ commit, }) {
         try {
-            const { data } = await this.$axios.get('/settings/owner/agency-category');
+            const { data } = await this.$axios.get('/settings/owner/agency-categories');
             commit('ADD_AGENCY_CATEGORIES', data);
         } catch (err) {
             console.log(err)
@@ -223,7 +223,7 @@ export default {
     },
     async addAgencyCategory({ commit, }, agency)  {
         try {
-            const { data } = await this.$axios.post('/settings/owner/agency-category', agency);
+            const { data } = await this.$axios.post('/settings/owner/agency-categories', agency);
             commit('ADD_AGENCY_CATEGORY', data);
         } catch (err) {
             console.log(err)
@@ -232,7 +232,7 @@ export default {
     },
     async editAgencyCategory({ commit, }, {agency, id})  {
         try {
-            const { data } = await this.$axios.patch(`/settings/owner/agency-category/${id}`, agency);
+            const { data } = await this.$axios.patch(`/settings/owner/agency-categories/${id}`, agency);
             commit('UPDATE_AGENCY_CATEGORY', data);
         } catch (err) {
             console.log(err)
@@ -241,7 +241,7 @@ export default {
     },
     async deleteAgencyCategory({ commit, }, id)  {
         try {
-            const { data } = await this.$axios.delete(`/settings/owner/agency-category/${id}`);
+            const { data } = await this.$axios.delete(`/settings/owner/agency-categories/${id}`);
             commit('REMOVE_AGENCY_CATEGORY', id);
         } catch (err) {
             console.log(err)

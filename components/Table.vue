@@ -6,11 +6,11 @@
             </div>
             <div class="relative w-full pt-14 bg-primary-100 text-tertiary-800">
                 <div class="overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-200 scrollbar-track-white">
-                    <table class="min-w-full bg-primary-100 ">
+                    <table class="min-w-full bg-primary-100 overflow-auto">
                         <thead class="xl:text-sm text-xs text-tertiary-800">
-                            <tr>
+                            <tr class=" overflow-x-auto">
                                 <th v-for="val in head_data" class="text-left px-6 text-xs xl:text-sm font-normal h-0 py-0 border-0 pb-2">   
-                                    <div class="py-6 text-tertiary-800"> {{ val }}  </div>
+                                    <div class="py-6 text-tertiary-800 font-semibold"> {{ val }}  </div>
                                 </th>
                             </tr>
                         </thead>

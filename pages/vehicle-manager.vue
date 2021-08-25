@@ -15,6 +15,13 @@
         </Nav>
         <Nav
           :toggleNav="toggleNav"
+          name="Registrations"
+          link="/vehicle-manager/registrations"
+        >
+          <Icons type="vehicle" />
+        </Nav>
+        <Nav
+          :toggleNav="toggleNav"
           name="Change Of Ownership"
           link="/vehicle-manager/change-of-ownership"
         >

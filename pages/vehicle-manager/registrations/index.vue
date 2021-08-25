@@ -1,8 +1,8 @@
 <template>
     <div class="pb-8">
-        <BreadCrumb title="Vehicle">
+        <BreadCrumb title="Registrations">
             <nuxt-link to="/vehicle-manager/registrations/new" class="min-w-28 px-6 h-10 text-white text-xs flex items-center justify-center rounded-xl bg-primary-400 focus:outline-none border-0 mr-4 hover:bg-primary-600">
-                New vehicle
+                New Registration
             </nuxt-link>
         </BreadCrumb>
         <div class="max-w-lg-screen mx-auto px-10 xl:px-32 xl:py-16 py-10 2xl:px-0  h-full w-full">
@@ -11,7 +11,7 @@
                     <TableFilter class="pt-5 pb-2">
                         <template v-slot:filter>
                         <div class=" relative">
-                            <button :class="[toggle_filter ? 'bg-primary-300 text-tertiary-900 border-primary-300' : 'bg-white text-tertiary-500 border-tertiary-400']" @click="toggleFilterFunc" class=" hover:bg-primary-300 hover:text-tertiary-900 hover:border-primary-300  flex items-center focus:outline-none py-3 px-4 rounded-md border  w-60">
+                            <button :class="[toggle_filter ? 'bg-primary-300 text-tertiary-900 border-primary-300' : 'bg-white text-tertiary-500 border-tertiary-400']" @click="toggleFilterFunc" class=" hover:bg-primary-300 hover:text-tertiary-900 hover:border-primary-300  flex items-center focus:outline-none py-2 px-4 rounded-md border  w-60">
                             <img src="~/assets/images/filter.png" alt="" srcset="">
                             <span class="pl-4 text-xs">Filter Owner</span>
                             </button>
@@ -82,17 +82,16 @@
                     </TableFilter>
                 </template>
 
-                <tr class="relative" v-for="vehicle in vehicles">
-                    <td class="text-left py-4 px-5">{{ vehicle.id }}</td>
-                    <!-- <td class="text-left py-4 px-5">{{ vehicle }}</td> -->
+                <tr v-for="item in demo">
+                    <td class="text-left py-4 px-5">0000847534561</td>
+                    <td class="text-left py-4 px-5">58376525627</td>
+                    <td class="text-left py-4 px-5">46524728464674</td>
+                    <td class="text-left py-4 px-5">738635738</td>
                     <!-- <td class="text-left py-4 px-5">{{ item.category }}</td> -->
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ getOwnerName(vehicle.ownedBy) }}</a></td>
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.category }}</a></td>
-                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" >{{ vehicle.plateNumber }}</a></td>
+                    <td class="text-left py-4 px-5"><a class="hover:text-blue-500" href="tel:622322662">{{ item.date_created }}</a></td>
                     <td class="text-left py-4 px-5">
-                        {{ vehicle.type }}
+                        <Status classes="w-24 h-8 text-xs" :status="item.verification_status" />
                     </td>
-                    <nuxt-link :to="`/vehicle-manager/vehicles/${vehicle.id}`" class="absolute inset-0 "></nuxt-link>
                 </tr>
             </Table>
         </div>
@@ -108,8 +107,8 @@
     import InputFile from "~/components/form/InputFile.vue"
     import InputSelect from "~/components/form/InputSelect.vue"
     import Input from "~/components/form/Input.vue"
-    import VehicleRegistration from "~/components/Vehicle_Registration/VehicleRegistration.vue"
-    import { mapState, mapMutations } from 'vuex'
+    import Button from "~/components/Button.vue"
+    import { mapState } from 'vuex'
     export default {
         components: {
             Table,
@@ -120,54 +119,50 @@
             InputSelect,
             Input,
             InputFile,
-            VehicleRegistration
+            Button
         },
         data() {
             return {
-                table_head_data: ['Vehicle Id #', 'Owner Name', 'Vehicle Category', 'Plate Number', 'Vehicle Type'],
-                createVehicleModal: false,
+                table_head_data: ['Reference Id #', 'Vehicle Id #', 'Plate Number', 'Engine Capacity', 'Owner ', 'Registration Status'],
+                personalInfoModal: false,
+                vehicleInfoModal: false,
+                step: 1,
+                selectedCategory: '',
                 toggle_filter: false,
-                
+                change_of_ownership_modal: false
             }
-            
         },
         computed: {
             ...mapState({
-                vehicles: state => state.vehicle.vehicles,
+                demo: state => state.demo,
                 isloading: state => state.isloading,
-                toggle_vehicle_registration: state => state.vehicle_registration.toggle_vehicle_registration,
-            }),
+            })
         },
         methods: {
-            // ...mapMutations({
-            //     TOGGLE_VEHICLE_REGISTRATION: 'vehicle_registration/TOGGLE_VEHICLE_REGISTRATION'
-            // }),
-            getOwnerName (owner) {
-                let ownersName
-                if(!owner) {
-                    return
+            next() {
+                this.step+= 1
+            },
+            previus() {
+                if(this.step === 1 ) {
+                    return this.step
                 }
-                console.log(owner)
-                if(owner.type === 'Business') {
-                    ownersName = owner.businessName
-                }else if (owner.type === 'Government') {
-                    ownersName = owner.agencyName
-                }else {
-                    ownersName = `${owner.firstName} ${owner.lastName} ${owner.otherName ? owner.otherName : ''}`
-                }
-
-                return ownersName
+                this.step-= 1
             },
             toggleFilterFunc() {
                 this.toggle_filter = !this.toggle_filter
             },
-            
+            toggleChangeOfOwnershipModal(){
+                this.change_of_ownership_modal = !this.change_of_ownership_modal
+            },
             submitPersonaInfo() {
 
+            },
+            selectCategory(category) {
+                this.selectedCategory = category
+            },
+            toggleOwnerModal () {
+                this.personalInfoModal = !this.personalInfoModal
             }
-        },
-        async asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
-
-        },
+        }
     }
 </script>

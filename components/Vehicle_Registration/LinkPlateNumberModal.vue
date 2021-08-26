@@ -19,9 +19,8 @@
                         <div class="flex justify-center pt-10">
                             <div class="max-w-162 w-full px-20">
                                 <div class="py-8 pt-40 ">
-                                    <InputWithButtonRight :onClick="Submit" id="plate" BtnTitle="Verify" place_holder="Enter Plate Number" type="text" />
-                                    <!-- error -->
-                                    <p class="text-sm pt-1 text-action-danger">Owner Not Found</p>
+                                    <p class="pb-1 text-sm text-tertiary-400">Plate Number</p>
+                                    <InputWithButtonRight :onClick="verifyPlateNumber" id="plate" BtnTitle="Verify" v-model="plate_number.number" place_holder="Enter Plate Number" type="text" />
                                 </div>
                             </div>
                         </div>
@@ -49,10 +48,41 @@ export default {
         InputSelect,
         Input,
     },
+    data() {
+        return {
+            plate_number: {
+                number: ''
+            }
+        }
+    },
     props:['onclick'],
     methods: {
         Submit() {
 
+        },
+        async  verifyPlateNumber() {
+            try {
+
+                this.$toast.show('Wait verifing plate number...', {
+                    theme: "outline", 
+                    position: "top-right", 
+                    duration : 5000
+                })
+
+                const response = await this.$axios.$post('plate-number/validate', {
+                    data: this.plate_number,
+                })
+                console.log(response)
+            } catch (error) {
+                console.log(error.response)
+                if(error.response) {
+                    this.$toast.error('plate number not verify', {
+                        theme: "outline", 
+                        position: "top-right", 
+                        duration : 60000
+                    })
+                }
+            }
         }
     }
 }

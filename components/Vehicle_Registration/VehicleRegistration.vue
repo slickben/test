@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                             <div class="my-4 2xl:my-4">
-                                <h4 class="pb-2 text-center font-normal text-sm text-tertiary-600">Owner Details</h4>
+                                <h4 class="pb-2 text-center font-normal text-sm text-tertiary-600">Enter Owner Details</h4>
                                 <div class="w-96 h-32 rounded-3xl flex items-center justify-center border border-tertiary-600 ml-5">
                                     <Button class="rounded-lg" :onClick="toggleOwnerModal"  type="solid" title="New owner"/>
                                 </div>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="my-4 2xl:my-4">
-                                <h4 class="pb-2 text-center font-normal text-sm text-tertiary-600">Vehicle Details</h4>
+                                <h4 class="pb-2 text-center font-normal text-sm text-tertiary-600">Enter Vehicle Details</h4>
                                 <div class="w-96 h-32 rounded-3xl flex items-center justify-center border border-tertiary-600 ml-5 ">
                                     <Button class="rounded-lg" :onClick="toggleVehicleModal" type="solid" title="New Vehicle"/>
                                     <!-- <Button type="secondary" title="Existing owner"/> -->
@@ -110,7 +110,7 @@
 import VehicleInfoModal from '~/components/Vehicle_Registration/VehicleInfoModal.vue'
 import OwnerInfoModal from '~/components/Vehicle_Registration/OwnerInfoModal.vue'
 import LinkPlateNumberModal from '~/components/Vehicle_Registration/LinkPlateNumberModal.vue'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
     components: {
         VehicleInfoModal,
@@ -123,6 +123,12 @@ export default {
             vehicleInfoModal: false,
             linkPlateNumberModal: false,
         }
+    },
+    computed: {
+        ...mapState({
+            vehicleData: state => state.vehicle_registration.vehicleData,
+            ownerData: state => state.vehicle_registration.ownerData
+        })
     },
     methods: {
         ...mapMutations({

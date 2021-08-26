@@ -110,7 +110,7 @@
 import VehicleInfoModal from '~/components/Vehicle_Registration/VehicleInfoModal.vue'
 import OwnerInfoModal from '~/components/Vehicle_Registration/OwnerInfoModal.vue'
 import LinkPlateNumberModal from '~/components/Vehicle_Registration/LinkPlateNumberModal.vue'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
     components: {
         VehicleInfoModal,
@@ -123,6 +123,12 @@ export default {
             vehicleInfoModal: false,
             linkPlateNumberModal: false,
         }
+    },
+    computed: {
+        ...mapState({
+            vehicleData: state => state.vehicle_registration.vehicleData,
+            ownerData: state => state.vehicle_registration.ownerData
+        })
     },
     methods: {
         // ...mapMutations({
@@ -143,41 +149,41 @@ export default {
             this.$route.back()
         }
     },
-    asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+    async asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
 
-        store.dispatch('settings/owner_manager/getLgas')
+        await store.dispatch('settings/owner_manager/getLgas')
 
-        store.dispatch('settings/owner_manager/getMaritalStatuses')
+        await store.dispatch('settings/owner_manager/getMaritalStatuses')
 
-        store.dispatch('settings/owner_manager/getMeansOfIdentities')
+        await store.dispatch('settings/owner_manager/getMeansOfIdentities')
 
-        store.dispatch('settings/owner_manager/getPrefixs')
+        await store.dispatch('settings/owner_manager/getPrefixs')
 
-        store.dispatch('settings/owner_manager/getStates')
+        await store.dispatch('settings/owner_manager/getStates')
 
-        store.dispatch('settings/vehicle_manager/getCategories')
+        await store.dispatch('settings/vehicle_manager/getCategories')
 
-        store.dispatch('settings/owner_manager/getAgencyCategories')
+        await store.dispatch('settings/owner_manager/getAgencyCategories')
 
-        store.dispatch('settings/owner_manager/getStates')
+        await store.dispatch('settings/owner_manager/getStates')
 
-        store.dispatch('settings/vehicle_manager/getCategories')
+        await store.dispatch('settings/vehicle_manager/getCategories')
 
-        store.dispatch('settings/vehicle_manager/getCommercialSeatCodes')
+        await store.dispatch('settings/vehicle_manager/getCommercialSeatCodes')
 
-        store.dispatch('settings/vehicle_manager/getEngines')
+        await store.dispatch('settings/vehicle_manager/getEngines')
 
-        store.dispatch('settings/vehicle_manager/getFuels')
+        await store.dispatch('settings/vehicle_manager/getFuels')
 
-        store.dispatch('settings/vehicle_manager/getHackneyCodes')
+        await store.dispatch('settings/vehicle_manager/getHackneyCodes')
 
-        store.dispatch('settings/vehicle_manager/getMakes')
+        await store.dispatch('settings/vehicle_manager/getMakes')
 
-        store.dispatch('settings/vehicle_manager/getModels')
+        await store.dispatch('settings/vehicle_manager/getModels')
 
-        store.dispatch('settings/vehicle_manager/getVehicleType')
+        await store.dispatch('settings/vehicle_manager/getVehicleType')
 
-        store.dispatch('settings/vehicle_manager/getYears')
+        await store.dispatch('settings/vehicle_manager/getYears')
     },
 }
 </script>

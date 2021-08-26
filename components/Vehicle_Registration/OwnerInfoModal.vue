@@ -27,54 +27,130 @@
                     </div>
                     
                     <!-- form fieldset 1 -->
-                    <fieldset v-show="step === 1" class="flex-grow px-16">
+                    <fieldset v-show="step === 1 && !owner_type_selected" class="flex-grow split-background">
                         <div class="grid grid-cols-2">
                             <div>
-                                <h3 class="py-6 px-8 text-xl font-medium text-tertiary-600">Exiting Owner</h3>
-                                <div class="pl-6 px-20 pt-40">
-                                    <InputWithButtonRight v-model="individualOwnerForm.bvn" :onClick="next" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter BVN/NIN" type="text" />
-                                    <!-- error -->
-                                    <p class="text-sm pt-1 text-action-danger">Owner Not Found</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="py-6 px-8 text-xl font-medium text-tertiary-600">New Owner</h3>
-                                <div class="pt-8">
+                                <h3 class="pt-16 px-8 text-2xl font-semibold text-tertiary-600 text-center">New Owner</h3>
+                                <div class="pt-10">
                                     <h2 class="text-center text-tertiary-600">Select Owner's Category</h2>
                                 </div>
-                                <div class="flex justify-center pt-10">
+                                <div class="flex justify-center pt-8">
                                     <div>
                                         <div class="flex items-center">
                                             <div :class="[selectedCategory === 'Individual' ? 'text-primary-400' : 'text-tertiary-500']" @click="selectCategory('Individual')" class="text-center px-5 hover:text-primary-400 group">
-                                                <div class="border border-tertiary-200 rounded-2xl p-8 group-hover:text-primary-400">
-                                                    <CategoryIcon type="user" />
+                                                <div class="shadow rounded-2xl h-28 w-28 flex justify-center items-center group-hover:text-primary-400">
+                                                    <CategoryIcon class="w-12" type="user" />
                                                 </div>
-                                                <p class="text-xs py-3">Individual</p>
+                                                <p class="text-sm py-3">Individual</p>
                                             </div>
                                             <div :class="[selectedCategory === 'Business' ? 'text-primary-400' : 'text-tertiary-500']" @click="selectCategory('Business')" class="text-center px-5 hover:text-primary-400 group">
-                                                <div class="border border-tertiary-200 rounded-2xl p-8 group-hover:text-primary-400 ">
-                                                    <CategoryIcon type="business" />
+                                                <div class="shadow rounded-2xl h-28 w-28  justify-center flex items-center group-hover:text-primary-400 ">
+                                                    <CategoryIcon class="w-12" type="business" />
                                                 </div>
-                                                <p class="group-hover:text-primary-400 text-xs py-3">Business</p>
+                                                <p class="group-hover:text-primary-400 text-sm py-3">Business</p>
                                             </div>
                                             <div :class="[selectedCategory === 'Government' ? 'text-primary-400' : 'text-tertiary-500']" @click="selectCategory('Government')" class="text-center px-5 hover:text-primary-400 group">
-                                                <div class="border border-tertiary-200 rounded-2xl p-8 group-hover:text-primary-400">
-                                                    <CategoryIcon type="government " />
+                                                <div class="shadow rounded-2xl group-hover:text-primary-400 h-28 w-28 flex justify-center items-center">
+                                                    <CategoryIcon class="w-12" type="government " />
                                                 </div>
-                                                <p class="group-hover:text-primary-400 text-xs py-3">Government</p>
+                                                <p class="group-hover:text-primary-400 text-sm py-3">Government Agency</p>
                                             </div>
-                                        </div>
-                                        <div class="py-8">
-                                            <InputWithButtonRight v-model="individualOwnerForm.bvn" :onClick="next" v-show="selectedCategory === 'Individual'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter BVN/NIN" type="text" />
-                                            <!-- error -->
-                                            <p v-show="selectedCategory === 'Individual'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
-                                            <InputWithButtonRight v-model="businessOwnerForm.tin" :onClick="next" v-show="selectedCategory === 'Business'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter TIN/CRN" type="text" />
-                                            <p v-show="selectedCategory === 'Business'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
-                                            <InputWithButtonRight v-model="governmentOwnerForm.agencyId" :onClick="next" v-show="selectedCategory === 'Government'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter Agency Id" type="text" />
-                                            <p v-show="selectedCategory === 'Government'" class="text-sm pt-1 text-action-danger">Owner Not Found</p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div>
+                                <h3 class="pt-16 px-8 text-2xl font-semibold text-tertiary-600 text-center">Exiting Owner</h3>
+                                <div class="pt-10">
+                                    <h2 class="text-center text-tertiary-600">Enter Owner ID</h2>
+                                </div>
+                                <div class="mx-28 pt-16">
+                                    <Input v-model="individualOwnerForm.bvn" :onClick="next" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter BVN/NIN" type="text" />
+                                    <!-- error -->
+                                    <p class="text-xs pt-1 text-action-danger">Owner Not Found</p>
+                                </div>
+                                <div class="flex items-center justify-center">
+                                    <Button :onClick="verifyOwnerIfExisted" class="px-8 rounded" title="Continue" type="solid" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset v-show="step === 1 && owner_type_selected" class="flex-grow">
+                        <div v-show="owner_type == 'new'" class="relative">
+                            <h3 class="pt-16 px-8 text-2xl font-semibold text-tertiary-600 text-center">New Owner</h3>
+                            <div class="pt-10">
+                                <h2 class="text-center text-tertiary-600">Verification</h2>
+                            </div>
+                            <div class="flex flex-col justify-center items-center">
+                                <div class=" max-w-162 w-full">
+                                    <div class="py-6 pt-4">
+                                        <Input v-model="individualOwnerForm.bvn" :onClick="next" v-show="selectedCategory === 'Individual'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter BVN/NIN" type="text" />
+                                        <!-- error -->
+                                        <p v-show="selectedCategory === 'Individual'" class="text-xs pt-1 text-action-danger">Owner already exist on the system</p>
+                                        <Input v-model="businessOwnerForm.tin" :onClick="next" v-show="selectedCategory === 'Business'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter TIN/CRN" type="text" />
+                                        <p v-show="selectedCategory === 'Business'" class="text-xs pt-1 text-action-danger">Owner Not Found</p>
+                                        <Input v-model="governmentOwnerForm.agencyId" :onClick="next" v-show="selectedCategory === 'Government'" id="nin_or_bvn" BtnTitle="Continue" place_holder="Enter Agency Id" type="text" />
+                                        <p v-show="selectedCategory === 'Government'" class="text-xs pt-1 text-action-danger">Owner Not Found</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center">
+                                    <Button :onClick="verifyOwner" class="px-8 rounded" title="Continue" type="solid" />
+                                </div>
+                            </div>
+                            <div class="absolute left-0 top-0 pt-6 px-6">
+                                <a href="" @click.prevent="goBackToSelcetOwnerType()">
+                                    <img src="~/assets/images/back.svg" alt="" srcset="">
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div v-show="owner_type == 'exist'" class="bg-primary-100 h-full flex flex-col items-center relative">
+                            <h3 class="pt-10 px-8 text-2xl font-semibold text-tertiary-600 text-center">Exiting Owner</h3>
+                            <div class="pt-6">
+                                <h2 class="text-center text-tertiary-600">Owner Details</h2>
+                            </div>
+                            <div class="pt-4 flex-grow max-w-162 w-full px-20 flex flex-col">
+                                <div class="flex-grow bg-white w-full p-6">
+                                    <div class="flex justify-between items-center pb-4">
+                                        <p class=" text-tertiary-400">Name</p>
+                                        <p class=" text-primary-800">Benson Momodu</p>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-4">
+                                        <p class=" text-tertiary-400">Category</p>
+                                        <p class=" text-primary-800 text-sm">Private</p>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-4">
+                                        <p class=" text-tertiary-400">Email Address </p>
+                                        <p class=" text-primary-800 text-sm">benson.isaac.momodu@gmail.com</p>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-4">
+                                        <p class=" text-tertiary-400">Phone Number</p>
+                                        <p class=" text-primary-800 text-sm">09073221511</p>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-4">
+                                        <p class=" text-tertiary-400">Address</p>
+                                        <p class=" text-primary-800 text-sm">Plot 3 mfm vgc way behind fedelity bank</p>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-4">
+                                        <p class=" text-tertiary-400">City</p>
+                                        <p class=" text-primary-800 text-sm">Ikeja</p>
+                                    </div>
+                                     <div class="flex justify-between items-center pb-4">
+                                        <p class=" text-tertiary-400">State</p>
+                                        <p class=" text-primary-800 text-sm">Lagos</p>
+                                    </div>
+                                    <div class="flex justify-end items-center py-1">
+                                        <Button class="rounded-lg" type="secondary" :onClick="confirmOwner" title="Confirmed Owner" />
+                                    </div>
+                                </div>
+                                <div class="py-4 text-lg text-tertiary-400 ">
+                                    Not Owner? <a class=" text-primary-400 underline" href="#"> Go Back</a>
+                                </div>
+                            </div>
+                            <div class="absolute left-0 top-0 pt-6 px-6">
+                                <a href="" @click.prevent="goBackToSelcetOwnerType">
+                                    <img src="~/assets/images/back.svg" alt="" srcset="">
+                                </a>
                             </div>
                         </div>
                     </fieldset>
@@ -137,7 +213,7 @@
                                 </div>
 
                                 <div>
-                                    <InputSelect v-model="individualOwnerForm.lga" isRequired="true" id="lga"> 
+                                    <InputSelect v-model="individualOwnerForm.lga" isRequired="true" id="lga" lable="Local Government Area"> 
                                         <option value="">Select Local Government Area</option>
                                         <option v-for="(lga, index) in selectedLgas" :key="index" :value="lga.name"> {{ lga.name }} </option>
                                     </InputSelect>
@@ -325,8 +401,13 @@
                                 </div>
 
                                 <div>
-                                    <Input v-model="individualOwnerForm.email" type="email" lable="Email Address" place_holder="Enter Email Address" id="email" isRequired="false" />
-                                    <p v-show="errors.email" class="text-sm pt-1 text-action-danger"> {{ errors.email }} </p>
+                                    <Input v-model="individualOwnerForm.emailAddress" type="email" lable="Email Address" place_holder="Enter Email Address" id="email" isRequired="false" />
+                                    <p v-show="errors.emailAddress" class="text-sm pt-1 text-action-danger"> {{ errors.emailAddress }} </p>
+                                </div>
+
+                                <div>
+                                    <Input v-model="individualOwnerForm.landmark" type="text" lable="Landmark Address" place_holder="Enter Landmark" id="landmark" isRequired="false" />
+                                    <p v-show="errors.landmark" class="text-sm pt-1 text-action-danger"> {{ errors.landmark }} </p>
                                 </div>
 
                                 <!-- <InputSelect isRequired="true" id="nationality" lable="Nationality"> 
@@ -457,8 +538,8 @@
                     <!-- navigatiom Button -->
                     <div class="flex justify-start items-center py-6 px-10 border-t">
                         <Button type="secondary" :onClick="previus" v-show="step > 1 && step < 5" class="mr-12 rounded-lg"  title="Previous"/>
-                        <Button class="rounded-lg" type="solid" :onClick="next" v-show="step > 1 && step < 4"   title="Next"/>
-                        <Button class="rounded-lg" :onClick="submitOwnerInfo" v-show="step > 3"  type="solid" title="Submit"/>
+                        <Button class="rounded-lg" type="solid" :onClick="next" v-show="step > 1 && step < 3"   title="Next"/>
+                        <Button class="rounded-lg" :onClick="submitOwnerInfo" v-show="step > 2"  type="solid" title="Submit"/>
                     </div>
                 </form>
             </div>
@@ -471,13 +552,15 @@ import InputWithButtonRight from "~/components/form/InputWithButtonRight.vue"
 import InputFile from "~/components/form/InputFile.vue"
 import InputSelect from "~/components/form/InputSelect.vue"
 import Input from "~/components/form/Input.vue"
-import { mapState } from 'vuex'
+import Button from "~/components/Button.vue"
+import { mapState, mapMutations } from 'vuex'
 export default {
     components: {
         InputWithButtonRight,
         InputFile,
         InputSelect,
         Input,
+        Button
     },
     props: ['onclick'],
     data() {
@@ -540,12 +623,17 @@ export default {
                 { name: 'Female'}
             ],
             selectedLgas: [],
-            selectedCategory: '',
+            selectedCategory: 'Individual',
             errors: {},
-            busines_sectors: ['benn', 'gggg', 'hhhhh']
+            busines_sectors: ['benn', 'gggg', 'hhhhh'],
+            owner_type_selected: false,
+            owner_type: ''
         }
     },
     methods: {
+        ...mapMutations({
+            ADD_OWNER_INFO: 'vehicle_registration/ADD_OWNER_INFO'
+        }),
         next() {
             
             if(this.step == 1){
@@ -684,13 +772,45 @@ export default {
         },
         selectCategory(category) {
             this.selectedCategory = category
+            this.owner_type = 'new'
+            this.owner_type_selected = true
         },
-
+        verifyOwnerIfExisted() {
+            // after vrification
+            this.owner_type = 'exist'
+            this.owner_type_selected = true
+        },
+        verifyOwner() {
+            this.step++
+        },
+        goBackToSelcetOwnerType() {
+            this.owner_type = ''
+            this.owner_type_selected = false
+        },
         submitOwnerInfo() {
             if(this.step == 3 && this.selectedCategory == 'Individual') {
                 if(this.individualOwnerForm.gender && this.individualOwnerForm.dateOfBirth && this.individualOwnerForm.maritalStatus && this.individualOwnerForm.street && this.individualOwnerForm.emailAddress && this.individualOwnerForm.landmark){
                     this.errors = {};
                     this.step = 1
+                    let data = {
+                        title: this.individualOwnerForm.title,
+                        firstName: this.individualOwnerForm.firstName,
+                        lastName: this.individualOwnerForm.lastName,
+                        otherName: this.individualOwnerForm.otherName,
+                        emailAddress: this.individualOwnerForm.emailAddress,
+                        phoneNumber: this.individualOwnerForm.phoneNumber,
+                        gender: this.individualOwnerForm.gender,
+                        maritalStatus: this.individualOwnerForm.maritalStatus,
+                        dateOfBirth: this.individualOwnerForm.dateOfBirth,
+                        bvn: this.individualOwnerForm.bvn,
+                        street: this.individualOwnerForm.street,
+                        city: this.individualOwnerForm.city,
+                        landmark: this.individualOwnerForm.landmark,
+                        state: this.individualOwnerForm.state,
+                        lga: this.individualOwnerForm.lga,
+                        type: this.individualOwnerForm.type,
+                    }
+                    this.ADD_OWNER_INFO(data)
                     this.onclick()
                     return
                 }
@@ -719,6 +839,24 @@ export default {
                 if(this.businessOwnerForm.title && this.businessOwnerForm.firstName && this.businessOwnerForm.lastName && this.businessOwnerForm.landmark && this.businessOwnerForm.city ){
                     this.errors = {};
                     this.step = 1
+                    let data = {
+                        title: this.businessOwnerForm.title,
+                        businessName: this.businessOwnerForm.businessName,
+                        registrationNumber: this.businessOwnerForm.registrationNumber,
+                        tin: this.businessOwnerForm.tin,
+                        businessSector: this.businessOwnerForm.businessSector,
+                        firstName: this.businessOwnerForm.firstName,
+                        lastName: this.businessOwnerForm.lastName,
+                        emailAddress: this.businessOwnerForm.emailAddress,
+                        phoneNumber: this.businessOwnerForm.phoneNumber,
+                        street: this.businessOwnerForm.street,
+                        city: this.businessOwnerForm.city,
+                        landmark: this.businessOwnerForm.landmark,
+                        state: this.businessOwnerForm.state,
+                        lga: this.businessOwnerForm.lga,
+                        type: this.businessOwnerForm.type,
+                    }
+                    this.ADD_OWNER_INFO(data)
                     this.onclick()
                     return
                 }
@@ -744,6 +882,23 @@ export default {
                 if(this.governmentOwnerForm.representativeTitle && this.governmentOwnerForm.representativeFirstname && this.governmentOwnerForm.representativeLastname && this.governmentOwnerForm.representativeRole){
                     this.errors = {};
                     this.step = 1
+                    let data = {
+                        agencyName: this.governmentOwnerForm.agencyName,
+                        agencyType: this.governmentOwnerForm.agencyType,
+                        representativeTitle: this.governmentOwnerForm.representativeTitle,
+                        representativeFirstname: this.governmentOwnerForm.representativeFirstname,
+                        representativeLastname: this.governmentOwnerForm.representativeLastname,
+                        representativeRole: this.governmentOwnerForm.representativeRole,
+                        emailAddress: this.governmentOwnerForm.emailAddress,
+                        phoneNumber: this.governmentOwnerForm.phoneNumber,
+                        street: this.governmentOwnerForm.street,
+                        city: this.governmentOwnerForm.city,
+                        landmark: this.governmentOwnerForm.landmark,
+                        state: this.governmentOwnerForm.state,
+                        lga: this.governmentOwnerForm.lga,
+                        type: this.governmentOwnerForm.type,
+                    }
+                    this.ADD_OWNER_INFO(data)
                     this.onclick()
                     return
                 }
@@ -763,6 +918,9 @@ export default {
                     this.errors.representativeRole = 'representativeRole required.' ;
                 }
             }
+        },
+        confirmOwner() {
+            this.onclick()
         }
     },
     computed: {

@@ -10,10 +10,9 @@ export default {
         state.toggle_vehicle_registration = !state.toggle_vehicle_registration
     },
     ADD_VEHICLE_INFO(state, data) {
-        console.log(data)
-        state.vehicleData.push(data)
+        state.vehicleData = data
     },
     ADD_OWNER_INFO (state, data) {
-        state.ownerData.push(data)
+        state.ownerData = data
     }
 }

@@ -82,7 +82,7 @@
                                 </div>
 
                                 <div>
-                                    <InputSelect v-model="vehicleForm.seatCode" isRequired="true" id="seat_code" lable="Seat Code"> 
+                                    <InputSelect v-show="vehicleForm.category == 'commercial'" v-model="vehicleForm.seatCode" isRequired="true" id="seat_code" lable="Seat Code"> 
                                         <option value="">Select Seat Code</option>
                                         <option v-for="(commercial_seat_code, index) in commercial_seat_codes" :value="commercial_seat_code.code">{{commercial_seat_code.code}}</option>
                                     </InputSelect>
@@ -90,7 +90,7 @@
                                 </div>
 
                                 <div>
-                                    <InputSelect v-model="vehicleForm.hackneyCode" isRequired="true" id="hackney_code" lable="Hackney Code"> 
+                                    <InputSelect v-show="vehicleForm.category == 'commercial'" v-model="vehicleForm.hackneyCode" isRequired="true" id="hackney_code" lable="Hackney Code"> 
                                         <option value="">Select hackney Code</option>
                                         <option v-for="(hackney_code, index) in hackney_codes" :value="hackney_code.name">{{hackney_code.name}}</option>
                                     </InputSelect>
@@ -154,7 +154,7 @@
                     </fieldset>
                     <!-- navigatiom Button -->
                     <div class="flex justify-start items-center py-6 px-10 border-t">
-                        <Button type="secondary" :onClick="previus" v-show="step > 0 && step < 5" class="mr-12 rounded-lg"  title="Previous"/>
+                        <Button type="secondary" :onClick="previus" v-show="step > 1 && step < 5" class="mr-12 rounded-lg"  title="Previous"/>
                         <Button class="rounded-lg" type="solid" :onClick="next" v-show="step > 0 && step < 2"   title="Next"/>
                         <Button class="rounded-lg" :onClick="submitVehicleInfo" v-show="step > 1"  type="solid" title="Submit"/>
                     </div>
@@ -196,8 +196,8 @@ export default {
                 mileage: null,
                 fuelType: null,
                 tankCapacity: null,
-                hackneyCode: null,
-                seatCode: null,
+                hackneyCode: 'null',
+                seatCode: 'null',
             },
             selectedModels: [],
         }
